@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fishing Resort Spawn Map</title>
+<style>
+@font-face { font-family: "Lilita One"; src: url("fonts/lilita-one-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+:root {
+  --display: "Lilita One", "Plus Jakarta Sans", system-ui, sans-serif;
+  --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hot: #ff7d54;
+  color-scheme: dark;
+  --bg: #0b0b0c;
+  --panel: #131314;
+  --panel2: #1c1c1e;
+  --line: #2a2a2d;
+  --text: #ececee;
+  --dim: #8b8b92;
+  --accent: #f2f2f3;
+  --t0: #b8c0c8;
+  --t1: #6fcf7a;
+  --t2: #59a8f0;
+  --t3: #b77cf2;
+  --t4: #f2a33a;
+  --t5: #f25a6e;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { display: flex; flex-direction: column; background: var(--bg); color: var(--text); font: 14px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+button, input { font: inherit; color: inherit; }
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--panel); }
+header h1 { font: 400 24px/1 var(--display); margin: 0 12px 0 0; letter-spacing: .6px; white-space: nowrap; }
+header h1 span { color: var(--hot); }
+.group { display: flex; align-items: center; gap: 6px; }
+.group > span { color: var(--dim); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg button { background: transparent; border: 0; padding: 6px 12px; font-weight: 600; transition: background .18s ease, color .18s ease; cursor: pointer; color: var(--dim); border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button:hover { background: var(--panel2); color: var(--text); }
+.seg button.on { background: var(--accent); color: #0b0b0c; font-weight: 600; }
+.btn { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; cursor: pointer; font-weight: 600; transition: border-color .18s ease, color .18s ease; }
+.btn:hover { border-color: #55555b; }
+.btn.on { border-color: var(--accent); color: var(--accent); }
+#search { width: 220px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; }
+#search:focus { outline: none; border-color: var(--hot); }
+#search::placeholder { color: #6a6a71; }
+main { flex: 1; display: grid; grid-template-columns: 220px 1fr 340px; min-height: 0; }
+nav { border-right: 1px solid var(--line); overflow: auto; padding: 8px; background: var(--panel); }
+nav button { display: block; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 10px; padding: 8px 12px; margin-bottom: 2px; cursor: pointer; color: var(--dim); font-weight: 600; transition: background .18s ease, color .18s ease; }
+nav button small { display: block; font-size: 11px; font-weight: 400; color: var(--dim); opacity: .8; }
+nav button:hover { background: var(--panel2); color: var(--text); }
+nav button.on { background: var(--panel2); color: var(--text); box-shadow: inset 3px 0 0 var(--hot); }
+nav button.hit { color: var(--text); }
+nav button .hitc { float: right; font-size: 11px; font-weight: 700; color: #0b0b0c; background: var(--hot); border-radius: 9px; padding: 0 7px; }
+#mapwrap { position: relative; overflow: hidden; background: #070708; min-height: 300px; }
+canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+canvas.drag { cursor: grabbing; }
+#tip { position: absolute; pointer-events: none; background: rgba(11,11,12,.95); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; font-size: 12.5px; display: none; max-width: 260px; }
+#tip b { font: 400 15px var(--display); color: var(--hot); letter-spacing: .3px; }
+.mapbar { position: absolute; right: 10px; top: 10px; display: flex; gap: 6px; }
+.mapbar .btn { background: rgba(19,19,20,.92); }
+#areatitle { position: absolute; left: 12px; top: 10px; background: rgba(11,11,12,.88); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font: 400 17px/1.2 var(--display); letter-spacing: .4px; }
+#areatitle small { color: var(--dim); font: 500 12px var(--sans); letter-spacing: 0; margin-left: 8px; }
+aside { border-left: 1px solid var(--line); overflow: auto; background: var(--panel); padding: 14px; }
+aside h2 { font: 400 22px/1.15 var(--display); letter-spacing: .4px; margin: 0 0 6px; }
+aside h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--dim); margin: 20px 0 8px; }
+.muted { color: var(--dim); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; color: var(--dim); font-weight: 500; font-size: 12px; border-bottom: 1px solid var(--line); padding: 4px 4px; }
+td { padding: 4px 4px; border-bottom: 1px solid rgba(255,255,255,.06); vertical-align: middle; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.click { cursor: pointer; }
+tr.click:hover td { background: var(--panel2); }
+tr.found td { background: rgba(255,255,255,.08); }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.bar { height: 4px; background: var(--accent); border-radius: 2px; margin-top: 3px; opacity: .7; }
+.bands { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.bands div { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 6px; text-align: center; }
+.bands div.on { border-color: var(--hot); }
+.bands b { display: block; font: 400 22px/1.1 var(--display); }
+.bands small { color: var(--dim); font-size: 11px; }
+.legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; font-size: 12.5px; }
+.chip { display: inline-block; padding: 1px 7px; border-radius: 10px; background: var(--panel2); border: 1px solid var(--line); font-size: 12px; margin: 2px 3px 2px 0; }
+#help { display: none; }
+#help.show { display: block; }
+#help p, #help li { color: #c4c4ca; }
+code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 1px 5px; }
+#help ul { padding-left: 18px; margin: 6px 0; }
+.note { font-size: 12px; color: var(--dim); border-top: 1px solid var(--line); margin-top: 16px; padding-top: 10px; }
+@media (max-width: 900px) {
+  body { height: auto; display: block; }
+  main { grid-template-columns: 1fr; grid-template-rows: auto 60vh auto; }
+  nav { display: flex; overflow-x: auto; gap: 4px; border-right: 0; border-bottom: 1px solid var(--line); }
+  nav button { white-space: nowrap; width: auto; }
+  nav button small { display: none; }
+  aside { border-left: 0; border-top: 1px solid var(--line); }
+  #search { width: 100%; }
+  header .group.grow { flex: 1 1 100%; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Fishing Resort <span>Spawn Map</span></h1>
+  <div class="group"><span>Time</span><div class="seg" id="bands"></div></div>
+  <div class="group grow"><span>Species</span><input id="search" list="specieslist" placeholder="Type a fish name" autocomplete="off"><datalist id="specieslist"></datalist><button class="btn" id="clear" title="Clear search">Clear</button></div>
+  <div class="group"><button class="btn on" id="labels">Zone labels</button><button class="btn" id="helpbtn">How to read this</button></div>
+</header>
+<main>
+  <nav id="areas"></nav>
+  <div id="mapwrap">
+    <canvas id="map"></canvas>
+    <div id="areatitle"></div>
+    <div class="mapbar"><button class="btn" id="zin" title="Zoom in">+</button><button class="btn" id="zout" title="Zoom out">-</button><button class="btn" id="fit">Fit</button></div>
+    <div id="tip"></div>
+  </div>
+  <aside>
+    <div id="help">
+      <h2>How to read this</h2>
+      <p>Each area is drawn from above, with the game x axis to the right and z axis up. Water is blue (darker is deeper), land is green, rock is grey, sand is beige, piers and buildings are brown, and tree cover is a darker green tint.</p>
+      <ul>
+        <li><b>Zones</b> are the coloured boxes. Fish of a zone only spawn inside its box.</li>
+        <li><b>Zone numbers</b> are the same as the SPOT numbers in the in-game debug overlay.</li>
+        <li><b>Time bands</b>: the game uses four bands. Morning 06:00 to 11:59, Day 12:00 to 15:59, Evening 16:00 to 17:59, Night 18:00 to 05:59.</li>
+        <li><b>Fish count</b> is how many fish the zone holds in a band.</li>
+        <li><b>Share</b> is the chance that a fish spawned in the zone is that species: its weight divided by the sum of all weights of the zone in that band. A species with weight 0 does not spawn there in that band.</li>
+        <li><b>Search</b> a species to light up every zone where it can spawn in the chosen band, with its share.</li>
+      </ul>
+    </div>
+    <div id="detail"></div>
+    <h3>Rarity</h3>
+    <div class="legend" id="legend"></div>
+    <div class="note">Zone boxes, numbers and fish counts come from <code>Fish/setSightArea.bin</code>. Species and weights come from the <code>fishFree</code> tables of each area. The map image is rendered from the stage models, so small details may be rough.</div>
+  </aside>
+</main>
+<script src="data.js"></script>
+<script>
+(() => {
+  const D = window.FR_DATA;
+  const BANDS = [
+    { name: "Morning", time: "06:00 to 11:59" },
+    { name: "Day", time: "12:00 to 15:59" },
+    { name: "Evening", time: "16:00 to 17:59" },
+    { name: "Night", time: "18:00 to 05:59" },
+  ];
+  const TIERS = ["Tier 0, common", "Tier 1", "Tier 2", "Tier 3", "Tier 4", "Tier 5, legend"];
+  const TIER_COL = [0, 1, 2, 3, 4, 5].map(i => getComputedStyle(document.documentElement).getPropertyValue("--t" + i).trim());
+  const $ = id => document.getElementById(id);
+  const canvas = $("map"), ctx = canvas.getContext("2d"), wrap = $("mapwrap"), tip = $("tip");
+  const state = { moved: false, area: 0, band: 0, labels: true, species: null, hover: null, sel: null, view: { s: 1, x: 0, y: 0 } };
+  const images = {};
+
+  const zoneColor = n => `hsl(${(n * 137.508) % 360}, 85%, 62%)`;
+  const zoneFill = (n, a) => `hsla(${(n * 137.508) % 360}, 85%, 62%, ${a})`;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const area = () => D.areas[state.area];
+
+  function shares(z, band) {
+    const tot = z.fish.reduce((s, f) => s + f[1 + band], 0);
+    return z.fish.filter(f => f[1 + band] > 0).map(f => ({ id: f[0], w: f[1 + band], share: tot ? f[1 + band] / tot : 0 }))
+      .sort((a, b) => b.w - a.w);
+  }
+  function speciesShare(z, id, band) {
+    const tot = z.fish.reduce((s, f) => s + f[1 + band], 0);
+    const f = z.fish.find(f => f[0] === id);
+    return f && f[1 + band] > 0 ? f[1 + band] / tot : 0;
+  }
+
+  function buildBands() {
+    $("bands").innerHTML = BANDS.map((b, i) => `<button data-b="${i}" title="${b.time}">${b.name}</button>`).join("");
+    $("bands").onclick = e => { const b = e.target.dataset.b; if (b != null) { state.band = +b; refresh(); } };
+  }
+  function buildLegend() {
+    $("legend").innerHTML = TIERS.map((t, i) => `<div><span class="dot" style="background:${TIER_COL[i]}"></span>${t}</div>`).join("");
+  }
+  function buildSpecies() {
+    const ids = Object.keys(D.species).sort((a, b) => D.species[a].name.localeCompare(D.species[b].name));
+    $("specieslist").innerHTML = ids.map(id => `<option value="${esc(D.species[id].name)}">`).join("");
+  }
+  function buildAreas() {
+    $("areas").innerHTML = D.areas.map((a, i) => {
+      let hit = "";
+      if (state.species != null) {
+        const n = a.zones.filter(z => speciesShare(z, state.species, state.band) > 0).length;
+        if (n) hit = `<span class="hitc">${n}</span>`;
+      }
+      return `<button data-i="${i}" class="${i === state.area ? "on" : ""} ${hit ? "hit" : ""}">${hit}${esc(a.name)}<small>${a.zones.length} zones, ${a.stages[0]}</small></button>`;
+    }).join("");
+  }
+  $("areas").onclick = e => { const b = e.target.closest("button"); if (b) selectArea(+b.dataset.i); };
+
+  function selectArea(i) {
+    state.area = i; state.sel = null; state.hover = null; state.moved = false;
+    location.hash = "area=" + D.areas[i].key;
+    loadImage(area()).then(() => { fit(); draw(); });
+    refresh();
+  }
+  function loadImage(a) {
+    if (images[a.img]) return Promise.resolve(images[a.img]);
+    return new Promise(res => { const im = new Image(); im.onload = () => { images[a.img] = im; res(im); }; im.onerror = () => res(null); im.src = a.img; });
+  }
+
+  function resize() {
+    const r = wrap.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.max(1, r.width * dpr); canvas.height = Math.max(1, r.height * dpr);
+    if (!state.moved) fit();
+    draw();
+  }
+  function fit() {
+    const a = area(), r = wrap.getBoundingClientRect();
+    const s = Math.min(r.width / a.w, r.height / a.h) * 0.96;
+    state.view = { s, x: (r.width - a.w * s) / 2, y: (r.height - a.h * s) / 2 };
+  }
+  const toPx = (a, x, z) => [(x - a.x0) * a.scale, (a.z1 - z) * a.scale];
+  const toScreen = (p) => [p[0] * state.view.s + state.view.x, p[1] * state.view.s + state.view.y];
+
+  function draw() {
+    const a = area(), dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = "#070708"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const im = images[a.img];
+    if (im) {
+      ctx.imageSmoothingEnabled = state.view.s < 2;
+      ctx.drawImage(im, state.view.x, state.view.y, a.w * state.view.s, a.h * state.view.s);
+    }
+    const sp = state.species;
+    const order = a.zones.map((z, i) => i).sort((i, j) => area2(a.zones[j]) - area2(a.zones[i]));
+    for (const i of order) {
+      const z = a.zones[i];
+      const pts = z.c.map(c => toScreen(toPx(a, c[0], c[1])));
+      const hot = state.hover === i || state.sel === i;
+      let fillA = hot ? 0.32 : 0.12, strokeW = hot ? 2.5 : 1.3, col = zoneColor(z.n), dim = false;
+      if (sp != null) {
+        const sh = speciesShare(z, sp, state.band);
+        if (sh > 0) { fillA = 0.15 + 0.35 * Math.min(1, sh * 2); strokeW = hot ? 3 : 2; col = "#ffffff"; }
+        else { dim = true; fillA = 0.04; strokeW = 1; }
+      }
+      ctx.beginPath(); pts.forEach((p, k) => k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath();
+      ctx.fillStyle = sp != null && !dim ? `rgba(255,214,90,${fillA})` : zoneFill(z.n, fillA);
+      ctx.fill();
+      ctx.globalAlpha = dim ? 0.35 : 1;
+      ctx.lineWidth = strokeW; ctx.strokeStyle = col; ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    if (state.labels || sp != null) {
+      ctx.font = "700 12px 'Plus Jakarta Sans', system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      for (const i of order) {
+        const z = a.zones[i];
+        let label = String(z.n);
+        const sz = Math.sqrt(area2(z)) * a.scale * state.view.s;
+        const hit = sp != null && speciesShare(z, sp, state.band) > 0;
+        if (sz < 16 && !hit && state.hover !== i && state.sel !== i) continue;
+        if (sp != null) {
+          const sh = speciesShare(z, sp, state.band);
+          if (!sh) { if (!state.labels) continue; } else label += "  " + (sh * 100).toFixed(sh < 0.1 ? 1 : 0) + "%";
+        }
+        const [x, y] = toScreen(toPx(a, z.cx, z.cz));
+        const w = ctx.measureText(label).width + 8;
+        ctx.fillStyle = "rgba(7,7,8,.8)"; ctx.fillRect(x - w / 2, y - 8, w, 16);
+        ctx.fillStyle = sp != null && speciesShare(z, sp, state.band) ? "#ffd65a" : zoneColor(z.n);
+        ctx.fillText(label, x, y + 0.5);
+      }
+    }
+  }
+  function area2(z) {
+    const c = z.c; let s = 0;
+    for (let i = 0; i < 4; i++) { const p = c[i], q = c[(i + 1) % 4]; s += p[0] * q[1] - q[0] * p[1]; }
+    return Math.abs(s / 2);
+  }
+
+  function zoneAt(mx, my) {
+    const a = area();
+    const px = (mx - state.view.x) / state.view.s, py = (my - state.view.y) / state.view.s;
+    const x = px / a.scale + a.x0, z = a.z1 - py / a.scale;
+    let best = null, bestA = Infinity;
+    a.zones.forEach((zn, i) => {
+      if (inPoly(zn.c, x, z)) { const ar = area2(zn); if (ar < bestA) { bestA = ar; best = i; } }
+    });
+    return best;
+  }
+  function inPoly(c, x, z) {
+    let ins = false;
+    for (let i = 0, j = 3; i < 4; j = i++) {
+      const [xi, zi] = c[i], [xj, zj] = c[j];
+      if ((zi > z) !== (zj > z) && x < (xj - xi) * (z - zi) / (zj - zi) + xi) ins = !ins;
+    }
+    return ins;
+  }
+
+  function showTip(i, mx, my) {
+    if (i == null) { tip.style.display = "none"; return; }
+    const z = area().zones[i], b = state.band;
+    let html = `<b>Zone ${z.n}</b> &middot; ${esc(area().name)}<br>${BANDS[b].name}: ${z.counts[b]} fish`;
+    if (state.species != null) {
+      const sh = speciesShare(z, state.species, b);
+      html += `<br>${esc(D.species[state.species].name)}: ${sh ? (sh * 100).toFixed(1) + "%" : "not here"}`;
+    } else {
+      const top = shares(z, b).slice(0, 3).map(s => esc(D.species[s.id].name) + " " + (s.share * 100).toFixed(0) + "%");
+      if (top.length) html += `<br><span class="muted">${top.join(", ")}</span>`;
+      else if (z.nodata) html += `<br><span class="muted">no species table</span>`;
+    }
+    tip.innerHTML = html; tip.style.display = "block";
+    const r = wrap.getBoundingClientRect();
+    let tx = mx + 14, ty = my + 14;
+    if (tx + 260 > r.width) tx = mx - 270;
+    if (ty + 90 > r.height) ty = my - 90;
+    tx = Math.max(4, Math.min(tx, r.width - tip.offsetWidth - 4));
+    ty = Math.max(4, ty);
+    tip.style.left = tx + "px"; tip.style.top = ty + "px";
+  }
+
+  function renderDetail() {
+    const a = area(), b = state.band, el = $("detail");
+    if (state.sel != null) {
+      const z = a.zones[state.sel], list = shares(z, b);
+      const bands = BANDS.map((bd, i) => `<div class="${i === b ? "on" : ""}"><b>${z.counts[i]}</b><small>${bd.name}</small></div>`).join("");
+      const rows = list.map(s => {
+        const sp = D.species[s.id], found = s.id === state.species ? "found" : "";
+        return `<tr class="click ${found}" data-sp="${s.id}"><td><span class="dot" style="background:${TIER_COL[sp.tier]}" title="${TIERS[sp.tier]}"></span>${esc(sp.name)}</td><td class="num">${(s.share * 100).toFixed(1)}%<div class="bar" style="width:${Math.max(4, s.share * 100)}%;background:${TIER_COL[sp.tier]}"></div></td><td class="num">${s.w}</td></tr>`;
+      }).join("");
+      const off = z.fish.filter(f => f[1 + b] === 0).map(f => `<span class="chip">${esc(D.species[f[0]].name)}</span>`).join("");
+      el.innerHTML = `<h2>Zone ${z.n} <span class="muted">&middot; ${esc(a.name)}</span></h2>
+        <div class="muted">Centre x ${z.cx}, z ${z.cz}, height ${z.y}</div>
+        <h3>Fish count per band</h3><div class="bands">${bands}</div>
+        <h3>Species, ${BANDS[b].name} (${BANDS[b].time})</h3>
+        ${z.nodata ? `<p class="muted">This zone has no species table in fishFree_${esc(a.stem)}.</p>` :
+          rows ? `<table><thead><tr><th>Fish</th><th class="num">Share</th><th class="num">Weight</th></tr></thead><tbody>${rows}</tbody></table>` : `<p class="muted">No species spawn here in this band.</p>`}
+        ${off ? `<h3>Listed but not in this band</h3><div>${off}</div>` : ""}
+        <p><button class="btn" id="back">Back to area</button></p>`;
+      $("back").onclick = () => { state.sel = null; refresh(); };
+      el.querySelectorAll("tr[data-sp]").forEach(tr => tr.onclick = () => setSpecies(+tr.dataset.sp));
+      return;
+    }
+    if (state.species != null) {
+      const sp = D.species[state.species];
+      const hits = [];
+      D.areas.forEach((ar, ai) => ar.zones.forEach((z, zi) => {
+        const sh = speciesShare(z, state.species, b);
+        if (sh > 0) hits.push({ ai, zi, ar, z, sh });
+      }));
+      hits.sort((p, q) => (p.ai === state.area ? 0 : 1) - (q.ai === state.area ? 0 : 1) || q.sh - p.sh);
+      const rows = hits.map(h => `<tr class="click" data-a="${h.ai}" data-z="${h.zi}"><td>${esc(h.ar.name)}</td><td class="num">${h.z.n}</td><td class="num">${(h.sh * 100).toFixed(1)}%</td><td class="num">${h.z.counts[b]}</td></tr>`).join("");
+      const other = BANDS.map((bd, i) => {
+        let n = 0; D.areas.forEach(ar => ar.zones.forEach(z => { if (speciesShare(z, state.species, i) > 0) n++; }));
+        return `<div class="${i === b ? "on" : ""}"><b>${n}</b><small>${bd.name}</small></div>`;
+      }).join("");
+      el.innerHTML = `<h2><span class="dot" style="background:${TIER_COL[sp.tier]}"></span>${esc(sp.name)}</h2>
+        <div class="muted">Rarity: ${TIERS[sp.tier]}</div>
+        <h3>Zones per band</h3><div class="bands">${other}</div>
+        <h3>Where, ${BANDS[b].name}</h3>
+        ${rows ? `<table><thead><tr><th>Area</th><th class="num">Zone</th><th class="num">Share</th><th class="num">Fish</th></tr></thead><tbody>${rows}</tbody></table>` : `<p class="muted">Does not spawn in any zone in this band.</p>`}`;
+      el.querySelectorAll("tr[data-a]").forEach(tr => tr.onclick = () => focusZone(+tr.dataset.a, +tr.dataset.z));
+      return;
+    }
+    const totals = BANDS.map((bd, i) => `<div class="${i === b ? "on" : ""}"><b>${a.zones.reduce((s, z) => s + z.counts[i], 0)}</b><small>${bd.name}</small></div>`).join("");
+    const pool = {};
+    a.zones.forEach(z => shares(z, b).forEach(s => { pool[s.id] = (pool[s.id] || 0) + s.share * z.counts[b]; }));
+    const tot = Object.values(pool).reduce((s, v) => s + v, 0);
+    const rows = Object.entries(pool).sort((p, q) => q[1] - p[1]).map(([id, v]) => {
+      const sp = D.species[id];
+      return `<tr class="click" data-sp="${id}"><td><span class="dot" style="background:${TIER_COL[sp.tier]}"></span>${esc(sp.name)}</td><td class="num">${(v / tot * 100).toFixed(1)}%</td></tr>`;
+    }).join("");
+    el.innerHTML = `<h2>${esc(a.name)}</h2>
+      <div class="muted">${a.zones.length} zones &middot; stage ${a.stages.join(" + ")}</div>
+      <h3>Fish in the whole area per band</h3><div class="bands">${totals}</div>
+      <h3>Species mix, ${BANDS[b].name}</h3>
+      <p class="muted" style="margin:0 0 6px">Expected share of all fish in the area, each zone weighted by its fish count. Click a zone on the map for its own table.</p>
+      ${rows ? `<table><tbody>${rows}</tbody></table>` : `<p class="muted">No fish in this band.</p>`}`;
+    el.querySelectorAll("tr[data-sp]").forEach(tr => tr.onclick = () => setSpecies(+tr.dataset.sp));
+  }
+
+  function focusZone(ai, zi) {
+    const go = () => {
+      state.sel = zi;
+      const a = area(), z = a.zones[zi], r = wrap.getBoundingClientRect();
+      const [px, py] = toPx(a, z.cx, z.cz);
+      const ext = Math.max(...z.c.map(c => Math.hypot(c[0] - z.cx, c[1] - z.cz))) * a.scale * 2;
+      const s = Math.min(8, Math.max(state.view.s, Math.min(r.width, r.height) / Math.max(ext * 3, 1)));
+      state.view = { s, x: r.width / 2 - px * s, y: r.height / 2 - py * s };
+      state.moved = true;
+      refresh();
+    };
+    if (ai !== state.area) {
+      state.area = ai; state.moved = false; location.hash = "area=" + D.areas[ai].key;
+      loadImage(area()).then(() => { fit(); go(); });
+    } else go();
+  }
+
+  function setSpecies(id) {
+    state.species = id;
+    $("search").value = id == null ? "" : D.species[id].name;
+    state.sel = null;
+    refresh();
+  }
+  $("search").addEventListener("input", e => {
+    const v = e.target.value.trim().toLowerCase();
+    if (!v) { if (state.species != null) setSpecies(null); return; }
+    const ids = Object.keys(D.species);
+    const exact = ids.find(id => D.species[id].name.toLowerCase() === v);
+    if (exact) { state.species = +exact; state.sel = null; refresh(); }
+  });
+  $("search").addEventListener("keydown", e => {
+    if (e.key !== "Enter") return;
+    const v = e.target.value.trim().toLowerCase();
+    const id = Object.keys(D.species).find(id => D.species[id].name.toLowerCase().includes(v));
+    if (v && id) setSpecies(+id);
+  });
+  $("clear").onclick = () => setSpecies(null);
+  $("labels").onclick = () => { state.labels = !state.labels; refresh(); };
+  $("helpbtn").onclick = () => { $("help").classList.toggle("show"); $("helpbtn").classList.toggle("on"); };
+  $("fit").onclick = () => { state.moved = false; fit(); draw(); };
+  const zoomAt = (f, mx, my) => {
+    state.moved = true;
+    const v = state.view, s = Math.min(40, Math.max(0.1, v.s * f));
+    state.view = { s, x: mx - (mx - v.x) * s / v.s, y: my - (my - v.y) * s / v.s };
+    draw();
+  };
+  $("zin").onclick = () => { const r = wrap.getBoundingClientRect(); zoomAt(1.4, r.width / 2, r.height / 2); };
+  $("zout").onclick = () => { const r = wrap.getBoundingClientRect(); zoomAt(1 / 1.4, r.width / 2, r.height / 2); };
+
+  canvas.addEventListener("wheel", e => {
+    e.preventDefault();
+    const r = canvas.getBoundingClientRect();
+    zoomAt(Math.exp(-e.deltaY * 0.0015), e.clientX - r.left, e.clientY - r.top);
+  }, { passive: false });
+  const pointers = new Map();
+  let drag = null, pinch = null;
+  canvas.addEventListener("pointerdown", e => {
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [p, q] = [...pointers.values()];
+      pinch = { d: Math.hypot(p.x - q.x, p.y - q.y) }; drag = null;
+    } else drag = { x: e.clientX, y: e.clientY, vx: state.view.x, vy: state.view.y, moved: false };
+  });
+  canvas.addEventListener("pointermove", e => {
+    const r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    if (pointers.has(e.pointerId)) pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pinch && pointers.size === 2) {
+      const [p, q] = [...pointers.values()], d = Math.hypot(p.x - q.x, p.y - q.y);
+      zoomAt(d / pinch.d, (p.x + q.x) / 2 - r.left, (p.y + q.y) / 2 - r.top); pinch.d = d; return;
+    }
+    if (drag) {
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 3) { drag.moved = true; state.moved = true; canvas.classList.add("drag"); }
+      if (drag.moved) { state.view.x = drag.vx + dx; state.view.y = drag.vy + dy; draw(); tip.style.display = "none"; return; }
+    }
+    const h = zoneAt(mx, my);
+    if (h !== state.hover) { state.hover = h; draw(); }
+    showTip(h, mx, my);
+  });
+  const end = e => {
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinch = null;
+    if (drag && !drag.moved && e.type === "pointerup") {
+      const r = canvas.getBoundingClientRect();
+      const h = zoneAt(e.clientX - r.left, e.clientY - r.top);
+      state.sel = h; refresh();
+    }
+    drag = null; canvas.classList.remove("drag");
+  };
+  canvas.addEventListener("pointerup", end);
+  canvas.addEventListener("pointercancel", end);
+  canvas.addEventListener("pointerleave", () => { if (!drag) { state.hover = null; tip.style.display = "none"; draw(); } });
+
+  function refresh() {
+    $("bands").querySelectorAll("button").forEach((b, i) => b.classList.toggle("on", i === state.band));
+    $("labels").classList.toggle("on", state.labels);
+    const a = area();
+    $("areatitle").innerHTML = `${esc(a.name)}<small>${BANDS[state.band].name}, ${BANDS[state.band].time}</small>`;
+    buildAreas(); renderDetail(); draw();
+  }
+
+  buildBands(); buildLegend(); buildSpecies();
+  const m = /area=(\d+)/.exec(location.hash);
+  const start = m ? D.areas.findIndex(a => a.key === +m[1]) : 0;
+  if (document.fonts) document.fonts.ready.then(() => draw());
+  new ResizeObserver(resize).observe(wrap);
+  selectArea(start >= 0 ? start : 0);
+})();
+</script>
+</body>
+</html>
