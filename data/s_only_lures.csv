@@ -1,0 +1,331 @@
+fish_id,fish,lure_id,lure,pass_min_cm,pass_max_cm
+33,Normal Driftwood,17,Light Blue Goblin Toy,50.0,51.96
+33,Normal Driftwood,18,Red Goblin Toy,50.0,51.96
+33,Normal Driftwood,19,Black Goblin Toy,50.0,51.96
+33,Normal Driftwood,32,Deep Green McCoy,50.0,51.96
+33,Normal Driftwood,43,Black Gold McCoy,50.0,51.96
+33,Normal Driftwood,44,Blue McCoy,50.0,51.96
+33,Normal Driftwood,45,Silver McCoy,50.0,51.96
+33,Normal Driftwood,46,White McCoy,50.0,51.96
+33,Normal Driftwood,47,Pink McCoy,50.0,51.96
+33,Normal Driftwood,64,Silver Glory,50.0,51.96
+33,Normal Driftwood,75,Green Glory,50.0,51.96
+33,Normal Driftwood,76,Pink Glory,50.0,51.96
+33,Normal Driftwood,77,Brown Glory,50.0,51.96
+33,Normal Driftwood,78,Dark Glory,50.0,51.96
+33,Normal Driftwood,79,Gold Glory,50.0,51.96
+33,Normal Driftwood,80,Green Zebra Crank,50.0,51.96
+33,Normal Driftwood,81,Blue Zebra Crank,50.0,51.96
+33,Normal Driftwood,82,Pink Zebra Crank,50.0,51.96
+33,Normal Driftwood,83,Yellow Zebra Crank,50.0,51.96
+33,Normal Driftwood,84,Silver Zebra Crank,50.0,51.96
+33,Normal Driftwood,85,Orange Zebra Crank,50.0,51.96
+33,Normal Driftwood,96,Green Paragon,50.0,51.96
+33,Normal Driftwood,102,Yellow Paragon,50.0,51.96
+33,Normal Driftwood,103,White Paragon,50.0,51.96
+33,Normal Driftwood,104,Red Paragon,50.0,51.96
+33,Normal Driftwood,105,Blue Paragon,50.0,51.96
+33,Normal Driftwood,106,Brown Paragon,50.0,51.96
+33,Normal Driftwood,112,Big Pink Glow,50.0,51.96
+33,Normal Driftwood,116,Big Blue Glow,50.0,51.96
+33,Normal Driftwood,117,Big Green Glow,50.0,51.96
+33,Normal Driftwood,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+33,Normal Driftwood,145,Pink Trolling Dish,50.0,51.96
+33,Normal Driftwood,146,Green Trolling Dish,50.0,51.96
+33,Normal Driftwood,147,Blue Trolling Dish,50.0,51.96
+33,Normal Driftwood,148,Orange Trolling Dish,50.0,51.96
+33,Normal Driftwood,149,Red Trolling Dish,50.0,51.96
+42,Rainbow Trout,17,Light Blue Goblin Toy,50.0,51.96
+42,Rainbow Trout,18,Red Goblin Toy,50.0,51.96
+42,Rainbow Trout,19,Black Goblin Toy,50.0,51.96
+42,Rainbow Trout,32,Deep Green McCoy,50.0,51.96
+42,Rainbow Trout,43,Black Gold McCoy,50.0,51.96
+42,Rainbow Trout,44,Blue McCoy,50.0,51.96
+42,Rainbow Trout,45,Silver McCoy,50.0,51.96
+42,Rainbow Trout,46,White McCoy,50.0,51.96
+42,Rainbow Trout,47,Pink McCoy,50.0,51.96
+42,Rainbow Trout,64,Silver Glory,50.0,51.96
+42,Rainbow Trout,75,Green Glory,50.0,51.96
+42,Rainbow Trout,76,Pink Glory,50.0,51.96
+42,Rainbow Trout,77,Brown Glory,50.0,51.96
+42,Rainbow Trout,78,Dark Glory,50.0,51.96
+42,Rainbow Trout,79,Gold Glory,50.0,51.96
+42,Rainbow Trout,80,Green Zebra Crank,50.0,51.96
+42,Rainbow Trout,81,Blue Zebra Crank,50.0,51.96
+42,Rainbow Trout,82,Pink Zebra Crank,50.0,51.96
+42,Rainbow Trout,83,Yellow Zebra Crank,50.0,51.96
+42,Rainbow Trout,84,Silver Zebra Crank,50.0,51.96
+42,Rainbow Trout,85,Orange Zebra Crank,50.0,51.96
+42,Rainbow Trout,96,Green Paragon,50.0,51.96
+42,Rainbow Trout,102,Yellow Paragon,50.0,51.96
+42,Rainbow Trout,103,White Paragon,50.0,51.96
+42,Rainbow Trout,104,Red Paragon,50.0,51.96
+42,Rainbow Trout,105,Blue Paragon,50.0,51.96
+42,Rainbow Trout,106,Brown Paragon,50.0,51.96
+42,Rainbow Trout,112,Big Pink Glow,50.0,51.96
+42,Rainbow Trout,116,Big Blue Glow,50.0,51.96
+42,Rainbow Trout,117,Big Green Glow,50.0,51.96
+42,Rainbow Trout,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+42,Rainbow Trout,145,Pink Trolling Dish,50.0,51.96
+42,Rainbow Trout,146,Green Trolling Dish,50.0,51.96
+42,Rainbow Trout,147,Blue Trolling Dish,50.0,51.96
+42,Rainbow Trout,148,Orange Trolling Dish,50.0,51.96
+42,Rainbow Trout,149,Red Trolling Dish,50.0,51.96
+77,Brook Trout,32,Deep Green McCoy,50.0,51.96
+77,Brook Trout,43,Black Gold McCoy,50.0,51.96
+77,Brook Trout,44,Blue McCoy,50.0,51.96
+77,Brook Trout,45,Silver McCoy,50.0,51.96
+77,Brook Trout,46,White McCoy,50.0,51.96
+77,Brook Trout,47,Pink McCoy,50.0,51.96
+93,Yellow Bullhead,17,Light Blue Goblin Toy,50.0,51.96
+93,Yellow Bullhead,18,Red Goblin Toy,50.0,51.96
+93,Yellow Bullhead,19,Black Goblin Toy,50.0,51.96
+97,Tigerfish,126,Pink Vivitie,150.0,155.88
+97,Tigerfish,139,Blue Vivitie,150.0,155.88
+97,Tigerfish,140,Yellow Vivitie,150.0,155.88
+97,Tigerfish,141,Green Vivitie,150.0,155.88
+97,Tigerfish,142,Orange Vivitie,150.0,155.88
+97,Tigerfish,143,Purple Vivitie,150.0,155.88
+106,Longnose Gar,126,Pink Vivitie,150.0,155.88
+106,Longnose Gar,139,Blue Vivitie,150.0,155.88
+106,Longnose Gar,140,Yellow Vivitie,150.0,155.88
+106,Longnose Gar,141,Green Vivitie,150.0,155.88
+106,Longnose Gar,142,Orange Vivitie,150.0,155.88
+106,Longnose Gar,143,Purple Vivitie,150.0,155.88
+117,Royal Knife Fish,17,Light Blue Goblin Toy,50.0,51.96
+117,Royal Knife Fish,18,Red Goblin Toy,50.0,51.96
+117,Royal Knife Fish,19,Black Goblin Toy,50.0,51.96
+117,Royal Knife Fish,32,Deep Green McCoy,50.0,51.96
+117,Royal Knife Fish,43,Black Gold McCoy,50.0,51.96
+117,Royal Knife Fish,44,Blue McCoy,50.0,51.96
+117,Royal Knife Fish,45,Silver McCoy,50.0,51.96
+117,Royal Knife Fish,46,White McCoy,50.0,51.96
+117,Royal Knife Fish,47,Pink McCoy,50.0,51.96
+117,Royal Knife Fish,64,Silver Glory,50.0,51.96
+117,Royal Knife Fish,75,Green Glory,50.0,51.96
+117,Royal Knife Fish,76,Pink Glory,50.0,51.96
+117,Royal Knife Fish,77,Brown Glory,50.0,51.96
+117,Royal Knife Fish,78,Dark Glory,50.0,51.96
+117,Royal Knife Fish,79,Gold Glory,50.0,51.96
+117,Royal Knife Fish,80,Green Zebra Crank,50.0,51.96
+117,Royal Knife Fish,81,Blue Zebra Crank,50.0,51.96
+117,Royal Knife Fish,82,Pink Zebra Crank,50.0,51.96
+117,Royal Knife Fish,83,Yellow Zebra Crank,50.0,51.96
+117,Royal Knife Fish,84,Silver Zebra Crank,50.0,51.96
+117,Royal Knife Fish,85,Orange Zebra Crank,50.0,51.96
+117,Royal Knife Fish,96,Green Paragon,50.0,51.96
+117,Royal Knife Fish,102,Yellow Paragon,50.0,51.96
+117,Royal Knife Fish,103,White Paragon,50.0,51.96
+117,Royal Knife Fish,104,Red Paragon,50.0,51.96
+117,Royal Knife Fish,105,Blue Paragon,50.0,51.96
+117,Royal Knife Fish,106,Brown Paragon,50.0,51.96
+117,Royal Knife Fish,112,Big Pink Glow,50.0,51.96
+117,Royal Knife Fish,116,Big Blue Glow,50.0,51.96
+117,Royal Knife Fish,117,Big Green Glow,50.0,51.96
+117,Royal Knife Fish,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+117,Royal Knife Fish,145,Pink Trolling Dish,50.0,51.96
+117,Royal Knife Fish,146,Green Trolling Dish,50.0,51.96
+117,Royal Knife Fish,147,Blue Trolling Dish,50.0,51.96
+117,Royal Knife Fish,148,Orange Trolling Dish,50.0,51.96
+117,Royal Knife Fish,149,Red Trolling Dish,50.0,51.96
+126,Smallmouth Bass,17,Light Blue Goblin Toy,50.0,51.96
+126,Smallmouth Bass,18,Red Goblin Toy,50.0,51.96
+126,Smallmouth Bass,19,Black Goblin Toy,50.0,51.96
+126,Smallmouth Bass,32,Deep Green McCoy,50.0,51.96
+126,Smallmouth Bass,43,Black Gold McCoy,50.0,51.96
+126,Smallmouth Bass,44,Blue McCoy,50.0,51.96
+126,Smallmouth Bass,45,Silver McCoy,50.0,51.96
+126,Smallmouth Bass,46,White McCoy,50.0,51.96
+126,Smallmouth Bass,47,Pink McCoy,50.0,51.96
+126,Smallmouth Bass,64,Silver Glory,50.0,51.96
+126,Smallmouth Bass,75,Green Glory,50.0,51.96
+126,Smallmouth Bass,76,Pink Glory,50.0,51.96
+126,Smallmouth Bass,77,Brown Glory,50.0,51.96
+126,Smallmouth Bass,78,Dark Glory,50.0,51.96
+126,Smallmouth Bass,79,Gold Glory,50.0,51.96
+126,Smallmouth Bass,80,Green Zebra Crank,50.0,51.96
+126,Smallmouth Bass,81,Blue Zebra Crank,50.0,51.96
+126,Smallmouth Bass,82,Pink Zebra Crank,50.0,51.96
+126,Smallmouth Bass,83,Yellow Zebra Crank,50.0,51.96
+126,Smallmouth Bass,84,Silver Zebra Crank,50.0,51.96
+126,Smallmouth Bass,85,Orange Zebra Crank,50.0,51.96
+126,Smallmouth Bass,96,Green Paragon,50.0,51.96
+126,Smallmouth Bass,102,Yellow Paragon,50.0,51.96
+126,Smallmouth Bass,103,White Paragon,50.0,51.96
+126,Smallmouth Bass,104,Red Paragon,50.0,51.96
+126,Smallmouth Bass,105,Blue Paragon,50.0,51.96
+126,Smallmouth Bass,106,Brown Paragon,50.0,51.96
+126,Smallmouth Bass,112,Big Pink Glow,50.0,51.96
+126,Smallmouth Bass,116,Big Blue Glow,50.0,51.96
+126,Smallmouth Bass,117,Big Green Glow,50.0,51.96
+126,Smallmouth Bass,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+126,Smallmouth Bass,145,Pink Trolling Dish,50.0,51.96
+126,Smallmouth Bass,146,Green Trolling Dish,50.0,51.96
+126,Smallmouth Bass,147,Blue Trolling Dish,50.0,51.96
+126,Smallmouth Bass,148,Orange Trolling Dish,50.0,51.96
+126,Smallmouth Bass,149,Red Trolling Dish,50.0,51.96
+141,Bothriolepis,17,Light Blue Goblin Toy,50.0,51.96
+141,Bothriolepis,18,Red Goblin Toy,50.0,51.96
+141,Bothriolepis,19,Black Goblin Toy,50.0,51.96
+141,Bothriolepis,32,Deep Green McCoy,50.0,51.96
+141,Bothriolepis,43,Black Gold McCoy,50.0,51.96
+141,Bothriolepis,44,Blue McCoy,50.0,51.96
+141,Bothriolepis,45,Silver McCoy,50.0,51.96
+141,Bothriolepis,46,White McCoy,50.0,51.96
+141,Bothriolepis,47,Pink McCoy,50.0,51.96
+141,Bothriolepis,64,Silver Glory,50.0,51.96
+141,Bothriolepis,75,Green Glory,50.0,51.96
+141,Bothriolepis,76,Pink Glory,50.0,51.96
+141,Bothriolepis,77,Brown Glory,50.0,51.96
+141,Bothriolepis,78,Dark Glory,50.0,51.96
+141,Bothriolepis,79,Gold Glory,50.0,51.96
+141,Bothriolepis,80,Green Zebra Crank,50.0,51.96
+141,Bothriolepis,81,Blue Zebra Crank,50.0,51.96
+141,Bothriolepis,82,Pink Zebra Crank,50.0,51.96
+141,Bothriolepis,83,Yellow Zebra Crank,50.0,51.96
+141,Bothriolepis,84,Silver Zebra Crank,50.0,51.96
+141,Bothriolepis,85,Orange Zebra Crank,50.0,51.96
+141,Bothriolepis,96,Green Paragon,50.0,51.96
+141,Bothriolepis,102,Yellow Paragon,50.0,51.96
+141,Bothriolepis,103,White Paragon,50.0,51.96
+141,Bothriolepis,104,Red Paragon,50.0,51.96
+141,Bothriolepis,105,Blue Paragon,50.0,51.96
+141,Bothriolepis,106,Brown Paragon,50.0,51.96
+141,Bothriolepis,112,Big Pink Glow,50.0,51.96
+141,Bothriolepis,116,Big Blue Glow,50.0,51.96
+141,Bothriolepis,117,Big Green Glow,50.0,51.96
+141,Bothriolepis,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+141,Bothriolepis,145,Pink Trolling Dish,50.0,51.96
+141,Bothriolepis,146,Green Trolling Dish,50.0,51.96
+141,Bothriolepis,147,Blue Trolling Dish,50.0,51.96
+141,Bothriolepis,148,Orange Trolling Dish,50.0,51.96
+141,Bothriolepis,149,Red Trolling Dish,50.0,51.96
+142,Coral Trout,17,Light Blue Goblin Toy,50.0,51.96
+142,Coral Trout,18,Red Goblin Toy,50.0,51.96
+142,Coral Trout,19,Black Goblin Toy,50.0,51.96
+142,Coral Trout,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+142,Coral Trout,145,Pink Trolling Dish,50.0,51.96
+142,Coral Trout,146,Green Trolling Dish,50.0,51.96
+142,Coral Trout,147,Blue Trolling Dish,50.0,51.96
+142,Coral Trout,148,Orange Trolling Dish,50.0,51.96
+142,Coral Trout,149,Red Trolling Dish,50.0,51.96
+163,Silver Carp,126,Pink Vivitie,150.0,155.88
+163,Silver Carp,139,Blue Vivitie,150.0,155.88
+163,Silver Carp,140,Yellow Vivitie,150.0,155.88
+163,Silver Carp,141,Green Vivitie,150.0,155.88
+163,Silver Carp,142,Orange Vivitie,150.0,155.88
+163,Silver Carp,143,Purple Vivitie,150.0,155.88
+202,Black Sea Bream,17,Light Blue Goblin Toy,50.0,51.96
+202,Black Sea Bream,18,Red Goblin Toy,50.0,51.96
+202,Black Sea Bream,19,Black Goblin Toy,50.0,51.96
+222,Fine Driftwood,17,Light Blue Goblin Toy,50.0,51.96
+222,Fine Driftwood,18,Red Goblin Toy,50.0,51.96
+222,Fine Driftwood,19,Black Goblin Toy,50.0,51.96
+222,Fine Driftwood,32,Deep Green McCoy,50.0,51.96
+222,Fine Driftwood,43,Black Gold McCoy,50.0,51.96
+222,Fine Driftwood,44,Blue McCoy,50.0,51.96
+222,Fine Driftwood,45,Silver McCoy,50.0,51.96
+222,Fine Driftwood,46,White McCoy,50.0,51.96
+222,Fine Driftwood,47,Pink McCoy,50.0,51.96
+222,Fine Driftwood,64,Silver Glory,50.0,51.96
+222,Fine Driftwood,75,Green Glory,50.0,51.96
+222,Fine Driftwood,76,Pink Glory,50.0,51.96
+222,Fine Driftwood,77,Brown Glory,50.0,51.96
+222,Fine Driftwood,78,Dark Glory,50.0,51.96
+222,Fine Driftwood,79,Gold Glory,50.0,51.96
+222,Fine Driftwood,80,Green Zebra Crank,50.0,51.96
+222,Fine Driftwood,81,Blue Zebra Crank,50.0,51.96
+222,Fine Driftwood,82,Pink Zebra Crank,50.0,51.96
+222,Fine Driftwood,83,Yellow Zebra Crank,50.0,51.96
+222,Fine Driftwood,84,Silver Zebra Crank,50.0,51.96
+222,Fine Driftwood,85,Orange Zebra Crank,50.0,51.96
+222,Fine Driftwood,96,Green Paragon,50.0,51.96
+222,Fine Driftwood,102,Yellow Paragon,50.0,51.96
+222,Fine Driftwood,103,White Paragon,50.0,51.96
+222,Fine Driftwood,104,Red Paragon,50.0,51.96
+222,Fine Driftwood,105,Blue Paragon,50.0,51.96
+222,Fine Driftwood,106,Brown Paragon,50.0,51.96
+222,Fine Driftwood,112,Big Pink Glow,50.0,51.96
+222,Fine Driftwood,116,Big Blue Glow,50.0,51.96
+222,Fine Driftwood,117,Big Green Glow,50.0,51.96
+222,Fine Driftwood,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+222,Fine Driftwood,145,Pink Trolling Dish,50.0,51.96
+222,Fine Driftwood,146,Green Trolling Dish,50.0,51.96
+222,Fine Driftwood,147,Blue Trolling Dish,50.0,51.96
+222,Fine Driftwood,148,Orange Trolling Dish,50.0,51.96
+222,Fine Driftwood,149,Red Trolling Dish,50.0,51.96
+223,Average Driftwood,17,Light Blue Goblin Toy,50.0,51.96
+223,Average Driftwood,18,Red Goblin Toy,50.0,51.96
+223,Average Driftwood,19,Black Goblin Toy,50.0,51.96
+223,Average Driftwood,32,Deep Green McCoy,50.0,51.96
+223,Average Driftwood,43,Black Gold McCoy,50.0,51.96
+223,Average Driftwood,44,Blue McCoy,50.0,51.96
+223,Average Driftwood,45,Silver McCoy,50.0,51.96
+223,Average Driftwood,46,White McCoy,50.0,51.96
+223,Average Driftwood,47,Pink McCoy,50.0,51.96
+223,Average Driftwood,64,Silver Glory,50.0,51.96
+223,Average Driftwood,75,Green Glory,50.0,51.96
+223,Average Driftwood,76,Pink Glory,50.0,51.96
+223,Average Driftwood,77,Brown Glory,50.0,51.96
+223,Average Driftwood,78,Dark Glory,50.0,51.96
+223,Average Driftwood,79,Gold Glory,50.0,51.96
+223,Average Driftwood,80,Green Zebra Crank,50.0,51.96
+223,Average Driftwood,81,Blue Zebra Crank,50.0,51.96
+223,Average Driftwood,82,Pink Zebra Crank,50.0,51.96
+223,Average Driftwood,83,Yellow Zebra Crank,50.0,51.96
+223,Average Driftwood,84,Silver Zebra Crank,50.0,51.96
+223,Average Driftwood,85,Orange Zebra Crank,50.0,51.96
+223,Average Driftwood,96,Green Paragon,50.0,51.96
+223,Average Driftwood,102,Yellow Paragon,50.0,51.96
+223,Average Driftwood,103,White Paragon,50.0,51.96
+223,Average Driftwood,104,Red Paragon,50.0,51.96
+223,Average Driftwood,105,Blue Paragon,50.0,51.96
+223,Average Driftwood,106,Brown Paragon,50.0,51.96
+223,Average Driftwood,112,Big Pink Glow,50.0,51.96
+223,Average Driftwood,116,Big Blue Glow,50.0,51.96
+223,Average Driftwood,117,Big Green Glow,50.0,51.96
+223,Average Driftwood,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+223,Average Driftwood,145,Pink Trolling Dish,50.0,51.96
+223,Average Driftwood,146,Green Trolling Dish,50.0,51.96
+223,Average Driftwood,147,Blue Trolling Dish,50.0,51.96
+223,Average Driftwood,148,Orange Trolling Dish,50.0,51.96
+223,Average Driftwood,149,Red Trolling Dish,50.0,51.96
+224,Straight Driftwood,17,Light Blue Goblin Toy,50.0,51.96
+224,Straight Driftwood,18,Red Goblin Toy,50.0,51.96
+224,Straight Driftwood,19,Black Goblin Toy,50.0,51.96
+224,Straight Driftwood,32,Deep Green McCoy,50.0,51.96
+224,Straight Driftwood,43,Black Gold McCoy,50.0,51.96
+224,Straight Driftwood,44,Blue McCoy,50.0,51.96
+224,Straight Driftwood,45,Silver McCoy,50.0,51.96
+224,Straight Driftwood,46,White McCoy,50.0,51.96
+224,Straight Driftwood,47,Pink McCoy,50.0,51.96
+224,Straight Driftwood,64,Silver Glory,50.0,51.96
+224,Straight Driftwood,75,Green Glory,50.0,51.96
+224,Straight Driftwood,76,Pink Glory,50.0,51.96
+224,Straight Driftwood,77,Brown Glory,50.0,51.96
+224,Straight Driftwood,78,Dark Glory,50.0,51.96
+224,Straight Driftwood,79,Gold Glory,50.0,51.96
+224,Straight Driftwood,80,Green Zebra Crank,50.0,51.96
+224,Straight Driftwood,81,Blue Zebra Crank,50.0,51.96
+224,Straight Driftwood,82,Pink Zebra Crank,50.0,51.96
+224,Straight Driftwood,83,Yellow Zebra Crank,50.0,51.96
+224,Straight Driftwood,84,Silver Zebra Crank,50.0,51.96
+224,Straight Driftwood,85,Orange Zebra Crank,50.0,51.96
+224,Straight Driftwood,96,Green Paragon,50.0,51.96
+224,Straight Driftwood,102,Yellow Paragon,50.0,51.96
+224,Straight Driftwood,103,White Paragon,50.0,51.96
+224,Straight Driftwood,104,Red Paragon,50.0,51.96
+224,Straight Driftwood,105,Blue Paragon,50.0,51.96
+224,Straight Driftwood,106,Brown Paragon,50.0,51.96
+224,Straight Driftwood,112,Big Pink Glow,50.0,51.96
+224,Straight Driftwood,116,Big Blue Glow,50.0,51.96
+224,Straight Driftwood,117,Big Green Glow,50.0,51.96
+224,Straight Driftwood,144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",50.0,51.96
+224,Straight Driftwood,145,Pink Trolling Dish,50.0,51.96
+224,Straight Driftwood,146,Green Trolling Dish,50.0,51.96
+224,Straight Driftwood,147,Blue Trolling Dish,50.0,51.96
+224,Straight Driftwood,148,Orange Trolling Dish,50.0,51.96
+224,Straight Driftwood,149,Red Trolling Dish,50.0,51.96
+226,Arctic Grayling,17,Light Blue Goblin Toy,50.0,51.96
+226,Arctic Grayling,18,Red Goblin Toy,50.0,51.96
+226,Arctic Grayling,19,Black Goblin Toy,50.0,51.96

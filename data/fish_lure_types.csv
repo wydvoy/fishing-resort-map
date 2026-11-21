@@ -1,0 +1,854 @@
+fish_id,fish,type,size_min_cm,size_max_cm,coverage
+0,Horse Mackerel,Spoon,0,70,all
+3,Black Rockfish,Spoon,0,70,all
+4,Mackerel,Spoon,0,70,all
+4,Mackerel,Spinner,0,70,all
+4,Mackerel,Crankbait,20,70,all
+4,Mackerel,Crankbait,20,200,all
+4,Mackerel,Swimming Lure,20,70,all
+4,Mackerel,Swimming Lure,20,200,all
+4,Mackerel,Minnow,20,70,all
+4,Mackerel,Minnow,20,200,all
+6,Sea Bass,Spoon,0,70,part
+6,Sea Bass,Spoon,50,,all
+6,Sea Bass,Spinner,0,70,part
+6,Sea Bass,Spinner,50,,all
+6,Sea Bass,Crankbait,20,70,part
+6,Sea Bass,Crankbait,20,200,all
+6,Sea Bass,Crankbait,50,200,all
+6,Sea Bass,Crankbait,50,,all
+6,Sea Bass,Swimming Lure,20,70,part
+6,Sea Bass,Swimming Lure,20,200,all
+6,Sea Bass,Swimming Lure,50,200,all
+6,Sea Bass,Swimming Lure,50,,all
+6,Sea Bass,Minnow,20,70,part
+6,Sea Bass,Minnow,20,200,all
+6,Sea Bass,Minnow,50,200,all
+13,Black Cod,Minnow,20,200,all
+13,Black Cod,Minnow,50,200,all
+16,Coelacanth,Spoon,50,,all
+16,Coelacanth,Spinner,50,,all
+16,Coelacanth,Crankbait,20,200,part
+16,Coelacanth,Crankbait,50,200,part
+16,Coelacanth,Crankbait,50,,all
+16,Coelacanth,Swimming Lure,20,200,part
+16,Coelacanth,Swimming Lure,50,200,part
+16,Coelacanth,Swimming Lure,50,,all
+16,Coelacanth,Swimming Lure,150,,part
+16,Coelacanth,Minnow,20,200,part
+16,Coelacanth,Minnow,50,200,part
+16,Coelacanth,Minnow,150,,part
+17,Catfish,Spoon,0,70,all
+17,Catfish,Spoon,50,,part
+18,Bluegill,Spoon,0,70,all
+18,Bluegill,Spinner,0,70,all
+19,Pirarucu,Spoon,50,,all
+19,Pirarucu,Spinner,50,,all
+19,Pirarucu,Crankbait,50,,all
+19,Pirarucu,Swimming Lure,50,,all
+19,Pirarucu,Swimming Lure,150,,all
+19,Pirarucu,Minnow,150,,all
+20,Dorado,Spoon,50,,all
+20,Dorado,Spinner,50,,all
+20,Dorado,Crankbait,20,200,all
+20,Dorado,Crankbait,50,200,all
+20,Dorado,Crankbait,50,,all
+20,Dorado,Swimming Lure,20,200,all
+20,Dorado,Swimming Lure,50,200,all
+20,Dorado,Swimming Lure,50,,all
+20,Dorado,Minnow,20,200,all
+20,Dorado,Minnow,50,200,all
+22,Black Bass,Spoon,0,70,all
+22,Black Bass,Spoon,50,,part
+22,Black Bass,Spinner,0,70,all
+22,Black Bass,Spinner,50,,part
+22,Black Bass,Crankbait,20,70,all
+22,Black Bass,Crankbait,20,200,all
+22,Black Bass,Crankbait,50,200,part
+22,Black Bass,Crankbait,50,,part
+22,Black Bass,Swimming Lure,20,70,all
+22,Black Bass,Swimming Lure,20,200,all
+22,Black Bass,Swimming Lure,50,200,part
+22,Black Bass,Swimming Lure,50,,part
+22,Black Bass,Minnow,20,70,all
+22,Black Bass,Minnow,20,200,all
+22,Black Bass,Minnow,50,200,part
+23,King Salmon,Spoon,50,,all
+23,King Salmon,Spinner,50,,all
+23,King Salmon,Crankbait,20,200,all
+23,King Salmon,Crankbait,50,200,all
+23,King Salmon,Crankbait,50,,all
+23,King Salmon,Swimming Lure,20,200,all
+23,King Salmon,Swimming Lure,50,200,all
+23,King Salmon,Swimming Lure,50,,all
+23,King Salmon,Minnow,20,200,all
+23,King Salmon,Minnow,50,200,all
+24,Arowana,Spoon,50,,all
+24,Arowana,Spinner,50,,all
+24,Arowana,Crankbait,20,200,all
+24,Arowana,Crankbait,50,200,all
+24,Arowana,Crankbait,50,,all
+24,Arowana,Swimming Lure,20,200,all
+24,Arowana,Swimming Lure,50,200,all
+24,Arowana,Swimming Lure,50,,all
+24,Arowana,Minnow,20,200,all
+24,Arowana,Minnow,50,200,all
+25,Piranha,Spoon,0,70,all
+25,Piranha,Spinner,0,70,all
+25,Piranha,Crankbait,20,70,all
+25,Piranha,Crankbait,20,200,all
+25,Piranha,Swimming Lure,20,70,all
+25,Piranha,Swimming Lure,20,200,all
+25,Piranha,Minnow,20,70,all
+25,Piranha,Minnow,20,200,all
+27,Alligator Gar,Spoon,50,,all
+27,Alligator Gar,Spinner,50,,all
+27,Alligator Gar,Crankbait,50,,all
+27,Alligator Gar,Swimming Lure,50,,all
+27,Alligator Gar,Swimming Lure,150,,all
+27,Alligator Gar,Minnow,150,,all
+30,Platinum Alligator Gar,Spoon,50,,all
+30,Platinum Alligator Gar,Spinner,50,,all
+30,Platinum Alligator Gar,Crankbait,50,,all
+30,Platinum Alligator Gar,Swimming Lure,50,,all
+30,Platinum Alligator Gar,Swimming Lure,150,,all
+30,Platinum Alligator Gar,Minnow,150,,all
+32,Armored Catfish,Spoon,0,70,all
+32,Armored Catfish,Spinner,0,70,all
+33,Normal Driftwood,Spoon,0,70,all
+33,Normal Driftwood,Spoon,50,,part
+33,Normal Driftwood,Spinner,0,70,all
+33,Normal Driftwood,Spinner,50,,part
+33,Normal Driftwood,Crankbait,20,70,all
+33,Normal Driftwood,Crankbait,20,200,all
+33,Normal Driftwood,Crankbait,50,200,part
+33,Normal Driftwood,Crankbait,50,,part
+33,Normal Driftwood,Swimming Lure,20,70,all
+33,Normal Driftwood,Swimming Lure,20,200,all
+33,Normal Driftwood,Swimming Lure,50,200,part
+33,Normal Driftwood,Swimming Lure,50,,part
+33,Normal Driftwood,Minnow,20,70,all
+33,Normal Driftwood,Minnow,20,200,all
+33,Normal Driftwood,Minnow,50,200,part
+40,Barramundi,Spoon,50,,all
+40,Barramundi,Spinner,50,,all
+40,Barramundi,Crankbait,20,200,all
+40,Barramundi,Crankbait,50,200,all
+40,Barramundi,Crankbait,50,,all
+40,Barramundi,Swimming Lure,20,200,all
+40,Barramundi,Swimming Lure,50,200,all
+40,Barramundi,Swimming Lure,50,,all
+40,Barramundi,Swimming Lure,150,,part
+40,Barramundi,Minnow,20,200,all
+40,Barramundi,Minnow,50,200,all
+40,Barramundi,Minnow,150,,part
+41,Japanese Salmon,Spoon,0,70,all
+41,Japanese Salmon,Spinner,0,70,all
+41,Japanese Salmon,Crankbait,20,70,all
+41,Japanese Salmon,Crankbait,20,200,all
+41,Japanese Salmon,Swimming Lure,20,70,all
+41,Japanese Salmon,Swimming Lure,20,200,all
+41,Japanese Salmon,Minnow,20,70,all
+41,Japanese Salmon,Minnow,20,200,all
+42,Rainbow Trout,Spoon,0,70,all
+42,Rainbow Trout,Spoon,50,,part
+42,Rainbow Trout,Spinner,0,70,all
+42,Rainbow Trout,Spinner,50,,part
+42,Rainbow Trout,Crankbait,20,70,all
+42,Rainbow Trout,Crankbait,20,200,all
+42,Rainbow Trout,Crankbait,50,200,part
+42,Rainbow Trout,Crankbait,50,,part
+42,Rainbow Trout,Swimming Lure,20,70,all
+42,Rainbow Trout,Swimming Lure,20,200,all
+42,Rainbow Trout,Swimming Lure,50,200,part
+42,Rainbow Trout,Swimming Lure,50,,part
+42,Rainbow Trout,Minnow,20,70,all
+42,Rainbow Trout,Minnow,20,200,all
+42,Rainbow Trout,Minnow,50,200,part
+45,Peacock Bass,Spoon,50,,all
+45,Peacock Bass,Spinner,50,,all
+45,Peacock Bass,Crankbait,20,200,all
+45,Peacock Bass,Crankbait,50,200,all
+45,Peacock Bass,Crankbait,50,,all
+45,Peacock Bass,Swimming Lure,20,200,all
+45,Peacock Bass,Swimming Lure,50,200,all
+45,Peacock Bass,Swimming Lure,50,,all
+45,Peacock Bass,Minnow,20,200,all
+45,Peacock Bass,Minnow,50,200,all
+46,Snakehead,Spoon,0,70,part
+46,Snakehead,Spoon,50,,all
+46,Snakehead,Spinner,0,70,part
+46,Snakehead,Spinner,50,,all
+46,Snakehead,Crankbait,20,70,part
+46,Snakehead,Crankbait,20,200,all
+46,Snakehead,Crankbait,50,200,all
+46,Snakehead,Crankbait,50,,all
+46,Snakehead,Swimming Lure,20,70,part
+46,Snakehead,Swimming Lure,20,200,all
+46,Snakehead,Swimming Lure,50,200,all
+46,Snakehead,Swimming Lure,50,,all
+46,Snakehead,Minnow,20,70,part
+46,Snakehead,Minnow,20,200,all
+46,Snakehead,Minnow,50,200,all
+47,Northern Pike,Spoon,50,,all
+47,Northern Pike,Spinner,50,,all
+47,Northern Pike,Crankbait,20,200,all
+47,Northern Pike,Crankbait,50,200,all
+47,Northern Pike,Crankbait,50,,all
+47,Northern Pike,Swimming Lure,20,200,all
+47,Northern Pike,Swimming Lure,50,200,all
+47,Northern Pike,Swimming Lure,50,,all
+47,Northern Pike,Minnow,20,200,all
+47,Northern Pike,Minnow,50,200,all
+49,Trevally,Minnow,20,70,part
+49,Trevally,Minnow,20,200,all
+49,Trevally,Minnow,50,200,all
+50,Moray Eel,Spoon,0,70,part
+50,Moray Eel,Spoon,50,,all
+51,Sea Robin,Spoon,0,70,all
+52,Redtail Catfish,Spoon,50,,all
+52,Redtail Catfish,Spinner,50,,all
+52,Redtail Catfish,Crankbait,20,200,all
+52,Redtail Catfish,Crankbait,50,200,all
+52,Redtail Catfish,Crankbait,50,,all
+52,Redtail Catfish,Swimming Lure,20,200,all
+52,Redtail Catfish,Swimming Lure,50,200,all
+52,Redtail Catfish,Swimming Lure,50,,all
+52,Redtail Catfish,Minnow,20,200,all
+52,Redtail Catfish,Minnow,50,200,all
+59,Marbled Rockfish,Spoon,0,70,all
+61,Smallscale Blackfish,Spoon,0,70,all
+61,Smallscale Blackfish,Spoon,50,,part
+62,Bonefish,Spoon,0,70,part
+62,Bonefish,Spoon,50,,all
+62,Bonefish,Spinner,0,70,part
+62,Bonefish,Spinner,50,,all
+62,Bonefish,Crankbait,20,70,part
+62,Bonefish,Crankbait,20,200,all
+62,Bonefish,Crankbait,50,200,all
+62,Bonefish,Crankbait,50,,all
+62,Bonefish,Swimming Lure,20,70,part
+62,Bonefish,Swimming Lure,20,200,all
+62,Bonefish,Swimming Lure,50,200,all
+62,Bonefish,Swimming Lure,50,,all
+62,Bonefish,Minnow,20,70,part
+62,Bonefish,Minnow,20,200,all
+62,Bonefish,Minnow,50,200,all
+63,Yellowtail Amberjack,Minnow,20,200,all
+63,Yellowtail Amberjack,Minnow,50,200,all
+64,Greater Amberjack,Minnow,20,200,all
+64,Greater Amberjack,Minnow,50,200,all
+65,Lionfish,Minnow,20,70,all
+65,Lionfish,Minnow,20,200,all
+69,Thick Seaweed,Spoon,0,70,part
+69,Thick Seaweed,Spoon,50,,all
+69,Thick Seaweed,Spinner,0,70,part
+69,Thick Seaweed,Spinner,50,,all
+69,Thick Seaweed,Crankbait,20,70,part
+69,Thick Seaweed,Crankbait,20,200,all
+69,Thick Seaweed,Crankbait,50,200,all
+69,Thick Seaweed,Crankbait,50,,all
+69,Thick Seaweed,Swimming Lure,20,70,part
+69,Thick Seaweed,Swimming Lure,20,200,all
+69,Thick Seaweed,Swimming Lure,50,200,all
+69,Thick Seaweed,Swimming Lure,50,,all
+69,Thick Seaweed,Minnow,20,70,part
+69,Thick Seaweed,Minnow,20,200,all
+69,Thick Seaweed,Minnow,50,200,all
+71,Bluefin Trevally,Minnow,20,200,all
+71,Bluefin Trevally,Minnow,50,200,all
+72,Japanese Char,Spinner,0,70,all
+73,Japanese Dace,Spoon,0,70,all
+73,Japanese Dace,Spinner,0,70,all
+73,Japanese Dace,Crankbait,20,70,all
+73,Japanese Dace,Crankbait,20,200,all
+73,Japanese Dace,Swimming Lure,20,70,all
+73,Japanese Dace,Swimming Lure,20,200,all
+73,Japanese Dace,Minnow,20,70,all
+73,Japanese Dace,Minnow,20,200,all
+74,Steelhead,Spinner,0,70,part
+74,Steelhead,Spinner,50,,all
+75,Dolly Varden,Spinner,0,70,all
+76,Brown Trout,Spinner,0,70,all
+77,Brook Trout,Spinner,0,70,all
+77,Brook Trout,Spinner,50,,part
+80,Nile Perch,Spoon,50,,all
+80,Nile Perch,Spinner,50,,all
+80,Nile Perch,Crankbait,20,200,all
+80,Nile Perch,Crankbait,50,200,all
+80,Nile Perch,Crankbait,50,,all
+80,Nile Perch,Swimming Lure,20,200,all
+80,Nile Perch,Swimming Lure,50,200,all
+80,Nile Perch,Swimming Lure,50,,all
+80,Nile Perch,Swimming Lure,150,,part
+80,Nile Perch,Minnow,20,200,all
+80,Nile Perch,Minnow,50,200,all
+80,Nile Perch,Minnow,150,,part
+81,White Sturgeon,Spoon,50,,all
+81,White Sturgeon,Spinner,50,,all
+81,White Sturgeon,Crankbait,50,,all
+81,White Sturgeon,Swimming Lure,50,,all
+81,White Sturgeon,Swimming Lure,150,,all
+81,White Sturgeon,Minnow,150,,all
+82,Dogtooth Tuna,Minnow,20,200,all
+82,Dogtooth Tuna,Minnow,50,200,all
+87,Male Sockeye Salmon,Spoon,0,70,all
+87,Male Sockeye Salmon,Spoon,50,,part
+87,Male Sockeye Salmon,Spinner,0,70,all
+87,Male Sockeye Salmon,Spinner,50,,part
+87,Male Sockeye Salmon,Crankbait,20,70,all
+87,Male Sockeye Salmon,Crankbait,20,200,all
+87,Male Sockeye Salmon,Crankbait,50,200,part
+87,Male Sockeye Salmon,Crankbait,50,,part
+87,Male Sockeye Salmon,Swimming Lure,20,70,all
+87,Male Sockeye Salmon,Swimming Lure,20,200,all
+87,Male Sockeye Salmon,Swimming Lure,50,200,part
+87,Male Sockeye Salmon,Swimming Lure,50,,part
+87,Male Sockeye Salmon,Minnow,20,70,all
+87,Male Sockeye Salmon,Minnow,20,200,all
+87,Male Sockeye Salmon,Minnow,50,200,part
+88,Silver Salmon,Spoon,0,70,part
+88,Silver Salmon,Spoon,50,,all
+88,Silver Salmon,Spinner,0,70,part
+88,Silver Salmon,Spinner,50,,all
+88,Silver Salmon,Crankbait,20,70,part
+88,Silver Salmon,Crankbait,20,200,all
+88,Silver Salmon,Crankbait,50,200,all
+88,Silver Salmon,Crankbait,50,,all
+88,Silver Salmon,Swimming Lure,20,70,part
+88,Silver Salmon,Swimming Lure,20,200,all
+88,Silver Salmon,Swimming Lure,50,200,all
+88,Silver Salmon,Swimming Lure,50,,all
+88,Silver Salmon,Minnow,20,70,part
+88,Silver Salmon,Minnow,20,200,all
+88,Silver Salmon,Minnow,50,200,all
+89,Chum Salmon,Spoon,0,70,part
+89,Chum Salmon,Spoon,50,,all
+89,Chum Salmon,Spinner,0,70,part
+89,Chum Salmon,Spinner,50,,all
+89,Chum Salmon,Crankbait,20,70,part
+89,Chum Salmon,Crankbait,20,200,all
+89,Chum Salmon,Crankbait,50,200,all
+89,Chum Salmon,Crankbait,50,,all
+89,Chum Salmon,Swimming Lure,20,70,part
+89,Chum Salmon,Swimming Lure,20,200,all
+89,Chum Salmon,Swimming Lure,50,200,all
+89,Chum Salmon,Swimming Lure,50,,all
+89,Chum Salmon,Minnow,20,70,part
+89,Chum Salmon,Minnow,20,200,all
+89,Chum Salmon,Minnow,50,200,all
+90,Pink Salmon,Spoon,0,70,all
+90,Pink Salmon,Spoon,50,,part
+90,Pink Salmon,Spinner,0,70,all
+90,Pink Salmon,Spinner,50,,part
+90,Pink Salmon,Crankbait,20,70,all
+90,Pink Salmon,Crankbait,20,200,all
+90,Pink Salmon,Crankbait,50,200,part
+90,Pink Salmon,Crankbait,50,,part
+90,Pink Salmon,Swimming Lure,20,70,all
+90,Pink Salmon,Swimming Lure,20,200,all
+90,Pink Salmon,Swimming Lure,50,200,part
+90,Pink Salmon,Swimming Lure,50,,part
+90,Pink Salmon,Minnow,20,70,all
+90,Pink Salmon,Minnow,20,200,all
+90,Pink Salmon,Minnow,50,200,part
+91,Black Bullhead,Spoon,0,70,all
+91,Black Bullhead,Spinner,0,70,all
+91,Black Bullhead,Crankbait,20,70,part
+91,Black Bullhead,Crankbait,20,200,part
+91,Black Bullhead,Swimming Lure,20,70,part
+91,Black Bullhead,Swimming Lure,20,200,part
+91,Black Bullhead,Minnow,20,70,part
+91,Black Bullhead,Minnow,20,200,part
+92,Brown Bullhead,Spoon,0,70,all
+92,Brown Bullhead,Spinner,0,70,all
+92,Brown Bullhead,Crankbait,20,70,all
+92,Brown Bullhead,Crankbait,20,200,all
+92,Brown Bullhead,Swimming Lure,20,70,all
+92,Brown Bullhead,Swimming Lure,20,200,all
+92,Brown Bullhead,Minnow,20,70,all
+92,Brown Bullhead,Minnow,20,200,all
+93,Yellow Bullhead,Spoon,0,70,all
+93,Yellow Bullhead,Spoon,50,,part
+94,Rooster Fish,Minnow,20,200,all
+94,Rooster Fish,Minnow,50,200,all
+95,Papuan Black Bass,Spoon,50,,all
+95,Papuan Black Bass,Spinner,50,,all
+95,Papuan Black Bass,Crankbait,20,200,all
+95,Papuan Black Bass,Crankbait,50,200,all
+95,Papuan Black Bass,Crankbait,50,,all
+95,Papuan Black Bass,Swimming Lure,20,200,all
+95,Papuan Black Bass,Swimming Lure,50,200,all
+95,Papuan Black Bass,Swimming Lure,50,,all
+95,Papuan Black Bass,Minnow,20,200,all
+95,Papuan Black Bass,Minnow,50,200,all
+96,Payara,Minnow,20,70,part
+96,Payara,Minnow,20,200,all
+96,Payara,Minnow,50,200,all
+97,Tigerfish,Minnow,20,200,all
+97,Tigerfish,Minnow,50,200,all
+97,Tigerfish,Minnow,150,,part
+98,Murray Cod,Minnow,20,200,all
+98,Murray Cod,Minnow,50,200,all
+99,White Perch,Spoon,0,70,all
+99,White Perch,Minnow,20,70,all
+99,White Perch,Minnow,20,200,all
+100,Rock Bass,Spoon,0,70,all
+100,Rock Bass,Spinner,0,70,all
+100,Rock Bass,Crankbait,20,70,all
+100,Rock Bass,Crankbait,20,200,all
+100,Rock Bass,Swimming Lure,20,70,all
+100,Rock Bass,Swimming Lure,20,200,all
+100,Rock Bass,Minnow,20,70,all
+100,Rock Bass,Minnow,20,200,all
+101,Black Carp,Minnow,20,200,all
+101,Black Carp,Minnow,50,200,all
+101,Black Carp,Minnow,150,,part
+102,Burbot,Spoon,0,70,part
+102,Burbot,Spoon,50,,all
+103,Muskie,Spoon,50,,all
+103,Muskie,Spinner,50,,all
+103,Muskie,Crankbait,20,200,all
+103,Muskie,Crankbait,50,200,all
+103,Muskie,Crankbait,50,,all
+103,Muskie,Swimming Lure,20,200,all
+103,Muskie,Swimming Lure,50,200,all
+103,Muskie,Swimming Lure,50,,all
+103,Muskie,Minnow,20,200,all
+103,Muskie,Minnow,50,200,all
+104,Chain Pike,Spoon,0,70,part
+104,Chain Pike,Spoon,50,,all
+104,Chain Pike,Spinner,0,70,part
+104,Chain Pike,Spinner,50,,all
+104,Chain Pike,Crankbait,20,70,part
+104,Chain Pike,Crankbait,20,200,all
+104,Chain Pike,Crankbait,50,200,all
+104,Chain Pike,Crankbait,50,,all
+104,Chain Pike,Swimming Lure,20,70,part
+104,Chain Pike,Swimming Lure,20,200,all
+104,Chain Pike,Swimming Lure,50,200,all
+104,Chain Pike,Swimming Lure,50,,all
+104,Chain Pike,Minnow,20,70,part
+104,Chain Pike,Minnow,20,200,all
+104,Chain Pike,Minnow,50,200,all
+105,American Pickerel,Spoon,0,70,all
+105,American Pickerel,Spoon,50,,part
+105,American Pickerel,Spinner,0,70,all
+105,American Pickerel,Spinner,50,,part
+105,American Pickerel,Crankbait,20,70,all
+105,American Pickerel,Crankbait,20,200,all
+105,American Pickerel,Crankbait,50,200,part
+105,American Pickerel,Crankbait,50,,part
+105,American Pickerel,Swimming Lure,20,70,all
+105,American Pickerel,Swimming Lure,20,200,all
+105,American Pickerel,Swimming Lure,50,200,part
+105,American Pickerel,Swimming Lure,50,,part
+105,American Pickerel,Minnow,20,70,all
+105,American Pickerel,Minnow,20,200,all
+105,American Pickerel,Minnow,50,200,part
+106,Longnose Gar,Minnow,20,200,all
+106,Longnose Gar,Minnow,50,200,all
+106,Longnose Gar,Minnow,150,,part
+107,Shortnose Gar,Minnow,20,70,all
+107,Shortnose Gar,Minnow,20,200,all
+108,Elephantnose Fish,Minnow,20,70,all
+108,Elephantnose Fish,Minnow,20,200,all
+109,Bowfin,Spoon,0,70,part
+109,Bowfin,Spoon,50,,all
+109,Bowfin,Spinner,0,70,part
+109,Bowfin,Spinner,50,,all
+109,Bowfin,Crankbait,20,70,part
+109,Bowfin,Crankbait,20,200,all
+109,Bowfin,Crankbait,50,200,all
+109,Bowfin,Crankbait,50,,all
+109,Bowfin,Swimming Lure,20,70,part
+109,Bowfin,Swimming Lure,20,200,all
+109,Bowfin,Swimming Lure,50,200,all
+109,Bowfin,Swimming Lure,50,,all
+109,Bowfin,Minnow,20,70,part
+109,Bowfin,Minnow,20,200,all
+109,Bowfin,Minnow,50,200,all
+111,Sockeye Salmon (F),Spoon,0,70,all
+111,Sockeye Salmon (F),Spoon,50,,part
+111,Sockeye Salmon (F),Spinner,0,70,all
+111,Sockeye Salmon (F),Spinner,50,,part
+111,Sockeye Salmon (F),Crankbait,20,70,all
+111,Sockeye Salmon (F),Crankbait,20,200,all
+111,Sockeye Salmon (F),Crankbait,50,200,part
+111,Sockeye Salmon (F),Crankbait,50,,part
+111,Sockeye Salmon (F),Swimming Lure,20,70,all
+111,Sockeye Salmon (F),Swimming Lure,20,200,all
+111,Sockeye Salmon (F),Swimming Lure,50,200,part
+111,Sockeye Salmon (F),Swimming Lure,50,,part
+111,Sockeye Salmon (F),Minnow,20,70,all
+111,Sockeye Salmon (F),Minnow,20,200,all
+111,Sockeye Salmon (F),Minnow,50,200,part
+112,Sockeye Salmon,Spoon,0,70,all
+112,Sockeye Salmon,Spoon,50,,part
+112,Sockeye Salmon,Spinner,0,70,all
+112,Sockeye Salmon,Spinner,50,,part
+112,Sockeye Salmon,Crankbait,20,70,all
+112,Sockeye Salmon,Crankbait,20,200,all
+112,Sockeye Salmon,Crankbait,50,200,part
+112,Sockeye Salmon,Crankbait,50,,part
+112,Sockeye Salmon,Swimming Lure,20,70,all
+112,Sockeye Salmon,Swimming Lure,20,200,all
+112,Sockeye Salmon,Swimming Lure,50,200,part
+112,Sockeye Salmon,Swimming Lure,50,,part
+112,Sockeye Salmon,Minnow,20,70,all
+112,Sockeye Salmon,Minnow,20,200,all
+112,Sockeye Salmon,Minnow,50,200,part
+117,Royal Knife Fish,Spoon,0,70,all
+117,Royal Knife Fish,Spoon,50,,part
+117,Royal Knife Fish,Spinner,0,70,all
+117,Royal Knife Fish,Spinner,50,,part
+117,Royal Knife Fish,Crankbait,20,70,all
+117,Royal Knife Fish,Crankbait,20,200,all
+117,Royal Knife Fish,Crankbait,50,200,part
+117,Royal Knife Fish,Crankbait,50,,part
+117,Royal Knife Fish,Swimming Lure,20,70,all
+117,Royal Knife Fish,Swimming Lure,20,200,all
+117,Royal Knife Fish,Swimming Lure,50,200,part
+117,Royal Knife Fish,Swimming Lure,50,,part
+117,Royal Knife Fish,Minnow,20,70,all
+117,Royal Knife Fish,Minnow,20,200,all
+117,Royal Knife Fish,Minnow,50,200,part
+118,Polypterus,Spoon,0,70,part
+118,Polypterus,Spoon,50,,all
+118,Polypterus,Spinner,0,70,part
+118,Polypterus,Spinner,50,,all
+118,Polypterus,Crankbait,20,70,part
+118,Polypterus,Crankbait,20,200,all
+118,Polypterus,Crankbait,50,200,all
+118,Polypterus,Crankbait,50,,all
+118,Polypterus,Swimming Lure,20,70,part
+118,Polypterus,Swimming Lure,20,200,all
+118,Polypterus,Swimming Lure,50,200,all
+118,Polypterus,Swimming Lure,50,,all
+118,Polypterus,Minnow,20,70,part
+118,Polypterus,Minnow,20,200,all
+118,Polypterus,Minnow,50,200,all
+126,Smallmouth Bass,Spoon,0,70,all
+126,Smallmouth Bass,Spoon,50,,part
+126,Smallmouth Bass,Spinner,0,70,all
+126,Smallmouth Bass,Spinner,50,,part
+126,Smallmouth Bass,Crankbait,20,70,all
+126,Smallmouth Bass,Crankbait,20,200,all
+126,Smallmouth Bass,Crankbait,50,200,part
+126,Smallmouth Bass,Crankbait,50,,part
+126,Smallmouth Bass,Swimming Lure,20,70,all
+126,Smallmouth Bass,Swimming Lure,20,200,all
+126,Smallmouth Bass,Swimming Lure,50,200,part
+126,Smallmouth Bass,Swimming Lure,50,,part
+126,Smallmouth Bass,Minnow,20,70,all
+126,Smallmouth Bass,Minnow,20,200,all
+126,Smallmouth Bass,Minnow,50,200,part
+127,Lake Trout,Spoon,0,70,all
+127,Lake Trout,Spoon,50,,part
+127,Lake Trout,Spinner,0,70,all
+127,Lake Trout,Spinner,50,,part
+127,Lake Trout,Crankbait,20,70,all
+127,Lake Trout,Crankbait,20,200,all
+127,Lake Trout,Crankbait,50,200,part
+127,Lake Trout,Crankbait,50,,part
+127,Lake Trout,Swimming Lure,20,70,all
+127,Lake Trout,Swimming Lure,20,200,all
+127,Lake Trout,Swimming Lure,50,200,part
+127,Lake Trout,Swimming Lure,50,,part
+127,Lake Trout,Minnow,20,70,all
+127,Lake Trout,Minnow,20,200,all
+127,Lake Trout,Minnow,50,200,part
+128,Walleye,Minnow,20,70,part
+128,Walleye,Minnow,20,200,all
+128,Walleye,Minnow,50,200,all
+129,Giant Snakehead,Spoon,0,70,part
+129,Giant Snakehead,Spoon,50,,all
+129,Giant Snakehead,Spinner,0,70,part
+129,Giant Snakehead,Spinner,50,,all
+129,Giant Snakehead,Crankbait,20,70,part
+129,Giant Snakehead,Crankbait,20,200,all
+129,Giant Snakehead,Crankbait,50,200,all
+129,Giant Snakehead,Crankbait,50,,all
+129,Giant Snakehead,Swimming Lure,20,70,part
+129,Giant Snakehead,Swimming Lure,20,200,all
+129,Giant Snakehead,Swimming Lure,50,200,all
+129,Giant Snakehead,Swimming Lure,50,,all
+129,Giant Snakehead,Minnow,20,70,part
+129,Giant Snakehead,Minnow,20,200,all
+129,Giant Snakehead,Minnow,50,200,all
+130,Channa Lucius,Spoon,0,70,all
+130,Channa Lucius,Spinner,0,70,all
+130,Channa Lucius,Crankbait,20,70,all
+130,Channa Lucius,Crankbait,20,200,all
+130,Channa Lucius,Swimming Lure,20,70,all
+130,Channa Lucius,Swimming Lure,20,200,all
+130,Channa Lucius,Minnow,20,70,all
+130,Channa Lucius,Minnow,20,200,all
+131,Ocellated Snakehead,Spoon,0,70,all
+131,Ocellated Snakehead,Spinner,0,70,all
+131,Ocellated Snakehead,Crankbait,20,70,all
+131,Ocellated Snakehead,Crankbait,20,200,all
+131,Ocellated Snakehead,Swimming Lure,20,70,all
+131,Ocellated Snakehead,Swimming Lure,20,200,all
+131,Ocellated Snakehead,Minnow,20,70,all
+131,Ocellated Snakehead,Minnow,20,200,all
+132,Rainbow Runner,Spoon,50,,all
+132,Rainbow Runner,Minnow,20,200,all
+132,Rainbow Runner,Minnow,50,200,all
+133,Spanish Mackerel,Minnow,20,70,part
+133,Spanish Mackerel,Minnow,20,200,all
+133,Spanish Mackerel,Minnow,50,200,all
+134,Bonito,Spoon,0,70,all
+134,Bonito,Spoon,50,,part
+134,Bonito,Spinner,0,70,all
+134,Bonito,Spinner,50,,part
+134,Bonito,Crankbait,20,70,all
+134,Bonito,Crankbait,20,200,all
+134,Bonito,Crankbait,50,200,part
+134,Bonito,Crankbait,50,,part
+134,Bonito,Swimming Lure,20,70,all
+134,Bonito,Swimming Lure,20,200,all
+134,Bonito,Swimming Lure,50,200,part
+134,Bonito,Swimming Lure,50,,part
+134,Bonito,Minnow,20,70,all
+134,Bonito,Minnow,20,200,all
+134,Bonito,Minnow,50,200,part
+135,Japanese Amberjack,Minnow,20,200,all
+135,Japanese Amberjack,Minnow,50,200,all
+140,Pteraspis,Spoon,0,70,all
+140,Pteraspis,Spinner,0,70,all
+140,Pteraspis,Crankbait,20,70,all
+140,Pteraspis,Crankbait,20,200,all
+140,Pteraspis,Swimming Lure,20,70,all
+140,Pteraspis,Swimming Lure,20,200,all
+140,Pteraspis,Minnow,20,70,all
+140,Pteraspis,Minnow,20,200,all
+141,Bothriolepis,Spoon,0,70,all
+141,Bothriolepis,Spoon,50,,part
+141,Bothriolepis,Spinner,0,70,all
+141,Bothriolepis,Spinner,50,,part
+141,Bothriolepis,Crankbait,20,70,all
+141,Bothriolepis,Crankbait,20,200,all
+141,Bothriolepis,Crankbait,50,200,part
+141,Bothriolepis,Crankbait,50,,part
+141,Bothriolepis,Swimming Lure,20,70,all
+141,Bothriolepis,Swimming Lure,20,200,all
+141,Bothriolepis,Swimming Lure,50,200,part
+141,Bothriolepis,Swimming Lure,50,,part
+141,Bothriolepis,Minnow,20,70,all
+141,Bothriolepis,Minnow,20,200,all
+141,Bothriolepis,Minnow,50,200,part
+142,Coral Trout,Spoon,0,70,all
+142,Coral Trout,Spoon,50,,part
+142,Coral Trout,Minnow,20,70,all
+142,Coral Trout,Minnow,20,200,all
+142,Coral Trout,Minnow,50,200,part
+143,Japanese Huchen,Spoon,50,,all
+143,Japanese Huchen,Spinner,50,,all
+144,Red Emperor (Adult),Minnow,20,70,part
+144,Red Emperor (Adult),Minnow,20,200,all
+144,Red Emperor (Adult),Minnow,50,200,all
+150,Tarpon,Spoon,50,,all
+150,Tarpon,Minnow,20,200,part
+150,Tarpon,Minnow,50,200,part
+150,Tarpon,Minnow,150,,all
+156,Red Stingray,Spoon,50,,all
+158,Wels Catfish,Spoon,50,,all
+159,Red Snapper,Minnow,20,70,part
+159,Red Snapper,Minnow,20,200,all
+159,Red Snapper,Minnow,50,200,all
+160,Cutthroat Trout,Spinner,0,70,all
+161,Alaska Pollock,Minnow,20,70,part
+161,Alaska Pollock,Minnow,20,200,all
+161,Alaska Pollock,Minnow,50,200,all
+162,Bighead Carp,Minnow,20,200,part
+162,Bighead Carp,Minnow,50,200,part
+162,Bighead Carp,Minnow,150,,part
+163,Silver Carp,Minnow,20,200,all
+163,Silver Carp,Minnow,50,200,all
+163,Silver Carp,Minnow,150,,part
+164,Acanthodes,Spoon,0,70,all
+164,Acanthodes,Spinner,0,70,all
+164,Acanthodes,Crankbait,20,70,all
+164,Acanthodes,Crankbait,20,200,all
+164,Acanthodes,Swimming Lure,20,70,all
+164,Acanthodes,Swimming Lure,20,200,all
+164,Acanthodes,Minnow,20,70,all
+164,Acanthodes,Minnow,20,200,all
+167,Mackerel Tuna,Spoon,50,,all
+167,Mackerel Tuna,Minnow,20,200,all
+167,Mackerel Tuna,Minnow,50,200,all
+169,Chicken Grunt,Minnow,20,70,all
+169,Chicken Grunt,Minnow,20,200,all
+169,Chicken Grunt,Minnow,50,200,part
+171,Coalfish,Minnow,20,70,part
+171,Coalfish,Minnow,20,200,all
+171,Coalfish,Minnow,50,200,all
+174,Wild Water Weed,Spoon,0,70,part
+174,Wild Water Weed,Spoon,50,,all
+174,Wild Water Weed,Spinner,0,70,part
+174,Wild Water Weed,Spinner,50,,all
+174,Wild Water Weed,Crankbait,20,70,part
+174,Wild Water Weed,Crankbait,20,200,all
+174,Wild Water Weed,Crankbait,50,200,all
+174,Wild Water Weed,Crankbait,50,,all
+174,Wild Water Weed,Swimming Lure,20,70,part
+174,Wild Water Weed,Swimming Lure,20,200,all
+174,Wild Water Weed,Swimming Lure,50,200,all
+174,Wild Water Weed,Swimming Lure,50,,all
+174,Wild Water Weed,Minnow,20,70,part
+174,Wild Water Weed,Minnow,20,200,all
+174,Wild Water Weed,Minnow,50,200,all
+175,Bushy Water Weed,Spoon,0,70,part
+175,Bushy Water Weed,Spoon,50,,all
+175,Bushy Water Weed,Spinner,0,70,part
+175,Bushy Water Weed,Spinner,50,,all
+175,Bushy Water Weed,Crankbait,20,70,part
+175,Bushy Water Weed,Crankbait,20,200,all
+175,Bushy Water Weed,Crankbait,50,200,all
+175,Bushy Water Weed,Crankbait,50,,all
+175,Bushy Water Weed,Swimming Lure,20,70,part
+175,Bushy Water Weed,Swimming Lure,20,200,all
+175,Bushy Water Weed,Swimming Lure,50,200,all
+175,Bushy Water Weed,Swimming Lure,50,,all
+175,Bushy Water Weed,Minnow,20,70,part
+175,Bushy Water Weed,Minnow,20,200,all
+175,Bushy Water Weed,Minnow,50,200,all
+177,Octopus,Spoon,0,70,part
+177,Octopus,Spoon,50,,all
+180,Ammonite Fossil,Spoon,0,70,all
+180,Ammonite Fossil,Spinner,0,70,all
+181,Trilobite Fossil,Spoon,0,70,all
+181,Trilobite Fossil,Spinner,0,70,all
+183,Yellow Perch,Spoon,0,70,all
+183,Yellow Perch,Spinner,0,70,all
+183,Yellow Perch,Crankbait,20,70,part
+183,Yellow Perch,Crankbait,20,200,part
+183,Yellow Perch,Swimming Lure,20,70,part
+183,Yellow Perch,Swimming Lure,20,200,part
+183,Yellow Perch,Minnow,20,70,part
+183,Yellow Perch,Minnow,20,200,part
+184,Cheiracanthus,Spoon,0,70,all
+184,Cheiracanthus,Spinner,0,70,all
+184,Cheiracanthus,Crankbait,20,70,all
+184,Cheiracanthus,Crankbait,20,200,all
+184,Cheiracanthus,Swimming Lure,20,70,all
+184,Cheiracanthus,Swimming Lure,20,200,all
+184,Cheiracanthus,Minnow,20,70,all
+184,Cheiracanthus,Minnow,20,200,all
+185,Pacific Herring,Spoon,0,70,all
+186,Grass Carp,Minnow,20,200,all
+186,Grass Carp,Minnow,50,200,all
+186,Grass Carp,Minnow,150,,part
+188,Giant Grouper,Minnow,20,200,part
+188,Giant Grouper,Minnow,50,200,part
+188,Giant Grouper,Minnow,150,,all
+189,African Pike,Spoon,0,70,all
+189,African Pike,Spoon,50,,part
+190,Hyneria,Spoon,50,,all
+190,Hyneria,Spinner,50,,all
+190,Hyneria,Crankbait,50,,all
+190,Hyneria,Swimming Lure,50,,all
+190,Hyneria,Swimming Lure,150,,all
+190,Hyneria,Minnow,150,,all
+191,Permit,Spoon,0,70,part
+191,Permit,Spoon,50,,all
+191,Permit,Minnow,20,70,part
+191,Permit,Minnow,20,200,all
+191,Permit,Minnow,50,200,all
+192,Longfin Yellowtail,Minnow,20,200,all
+192,Longfin Yellowtail,Minnow,50,200,all
+196,Red-bellied Fusilier,Spoon,0,70,all
+198,Giant Trevally,Minnow,20,200,all
+198,Giant Trevally,Minnow,50,200,all
+201,Red Sea Bream,Spoon,0,70,all
+201,Red Sea Bream,Spoon,50,,part
+202,Black Sea Bream,Spoon,0,70,all
+202,Black Sea Bream,Spoon,50,,part
+204,Lenok,Spoon,0,70,all
+204,Lenok,Spoon,50,,part
+209,Amur Pike,Minnow,20,70,part
+209,Amur Pike,Minnow,20,200,all
+209,Amur Pike,Minnow,50,200,all
+211,Auxis Rochei,Spoon,0,70,all
+211,Auxis Rochei,Spoon,50,,part
+213,Arabesque Greenling,Minnow,20,70,part
+213,Arabesque Greenling,Minnow,20,200,all
+213,Arabesque Greenling,Minnow,50,200,all
+215,Parrotfish,Spoon,0,70,all
+215,Parrotfish,Spoon,50,,part
+216,Hucho Taimen,Minnow,20,200,all
+216,Hucho Taimen,Minnow,50,200,all
+216,Hucho Taimen,Minnow,150,,part
+220,Needlefish,Minnow,20,200,all
+220,Needlefish,Minnow,50,200,all
+222,Fine Driftwood,Spoon,0,70,all
+222,Fine Driftwood,Spoon,50,,part
+222,Fine Driftwood,Spinner,0,70,all
+222,Fine Driftwood,Spinner,50,,part
+222,Fine Driftwood,Crankbait,20,70,all
+222,Fine Driftwood,Crankbait,20,200,all
+222,Fine Driftwood,Crankbait,50,200,part
+222,Fine Driftwood,Crankbait,50,,part
+222,Fine Driftwood,Swimming Lure,20,70,all
+222,Fine Driftwood,Swimming Lure,20,200,all
+222,Fine Driftwood,Swimming Lure,50,200,part
+222,Fine Driftwood,Swimming Lure,50,,part
+222,Fine Driftwood,Minnow,20,70,all
+222,Fine Driftwood,Minnow,20,200,all
+222,Fine Driftwood,Minnow,50,200,part
+223,Average Driftwood,Spoon,0,70,all
+223,Average Driftwood,Spoon,50,,part
+223,Average Driftwood,Spinner,0,70,all
+223,Average Driftwood,Spinner,50,,part
+223,Average Driftwood,Crankbait,20,70,all
+223,Average Driftwood,Crankbait,20,200,all
+223,Average Driftwood,Crankbait,50,200,part
+223,Average Driftwood,Crankbait,50,,part
+223,Average Driftwood,Swimming Lure,20,70,all
+223,Average Driftwood,Swimming Lure,20,200,all
+223,Average Driftwood,Swimming Lure,50,200,part
+223,Average Driftwood,Swimming Lure,50,,part
+223,Average Driftwood,Minnow,20,70,all
+223,Average Driftwood,Minnow,20,200,all
+223,Average Driftwood,Minnow,50,200,part
+224,Straight Driftwood,Spoon,0,70,all
+224,Straight Driftwood,Spoon,50,,part
+224,Straight Driftwood,Spinner,0,70,all
+224,Straight Driftwood,Spinner,50,,part
+224,Straight Driftwood,Crankbait,20,70,all
+224,Straight Driftwood,Crankbait,20,200,all
+224,Straight Driftwood,Crankbait,50,200,part
+224,Straight Driftwood,Crankbait,50,,part
+224,Straight Driftwood,Swimming Lure,20,70,all
+224,Straight Driftwood,Swimming Lure,20,200,all
+224,Straight Driftwood,Swimming Lure,50,200,part
+224,Straight Driftwood,Swimming Lure,50,,part
+224,Straight Driftwood,Minnow,20,70,all
+224,Straight Driftwood,Minnow,20,200,all
+224,Straight Driftwood,Minnow,50,200,part
+225,Average Seaweed,Spoon,0,70,part
+225,Average Seaweed,Spoon,50,,all
+225,Average Seaweed,Spinner,0,70,part
+225,Average Seaweed,Spinner,50,,all
+225,Average Seaweed,Crankbait,20,70,part
+225,Average Seaweed,Crankbait,20,200,all
+225,Average Seaweed,Crankbait,50,200,all
+225,Average Seaweed,Crankbait,50,,all
+225,Average Seaweed,Swimming Lure,20,70,part
+225,Average Seaweed,Swimming Lure,20,200,all
+225,Average Seaweed,Swimming Lure,50,200,all
+225,Average Seaweed,Swimming Lure,50,,all
+225,Average Seaweed,Minnow,20,70,part
+225,Average Seaweed,Minnow,20,200,all
+225,Average Seaweed,Minnow,50,200,all
+226,Arctic Grayling,Spoon,0,70,all
+226,Arctic Grayling,Spoon,50,,part
+232,Demon Stinger,Spoon,0,70,all
+232,Demon Stinger,Spinner,0,70,all
+232,Demon Stinger,Crankbait,20,70,all
+232,Demon Stinger,Crankbait,20,200,all
+232,Demon Stinger,Swimming Lure,20,70,all
+232,Demon Stinger,Swimming Lure,20,200,all
+232,Demon Stinger,Minnow,20,70,all
+232,Demon Stinger,Minnow,20,200,all

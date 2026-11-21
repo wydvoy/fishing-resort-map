@@ -1,0 +1,234 @@
+fish_id,name,grade,points,exp,base_cm,min_cm,max_cm,s_min_result_cm,s_min_dex_cm,base_color,mechanism,bait_group,lure_types,lure_accept_rate,unlock,note,areas,hold,pull_class,pull_speed_a,pull_speed_b,stamina,speed_coef,rush_threshold,rush_div,speed_cap
+0,Horse Mackerel,1,85,20,20.0,16.98,25.98,24.98,24.98,1,0,0,Spoon,0.1,,,Beach;Bluecave;Offshore,holds the line,3,26.0,35.0,1.2,1.0,25.0,0.8,1.0
+1,Sea Eel,1,115,20,50.0,42.45,64.94,62.44,62.45,2,1,1,,0,,,Beach,holds the line,4,32.0,30.0,1.4,1.0,25.0,1.0,0.6
+2,Saury,1,90,20,20.0,16.98,25.98,24.98,24.98,3,2,2,,0,,,Offshore,holds the line,3,26.0,35.0,1.2,1.0,25.0,1.0,1.0
+3,Black Rockfish,1,135,20,30.0,25.47,38.97,37.46,37.47,4,0,0,Spoon,0.1,,,Beach,holds the line,6,44.0,20.0,1.6,1.0,75.0,1.2,1.2
+4,Mackerel,1,85,20,30.0,25.47,38.97,37.46,37.47,5,1,1,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0,,,BeachB;Bluecave;Offshore,holds the line,3,26.0,35.0,1.4,1.0,25.0,0.9,1.0
+5,Japanese Lobster,1,70,20,20.0,16.98,25.98,24.98,24.98,6,2,2,,0,,,Beach,holds the line,2,20.0,45.0,1.0,0.7,25.0,0.8,1.0
+6,Sea Bass,2,300,40,60.0,50.94,77.94,74.93,74.94,7,0,3,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0,,,Beach;Offshore,holds the line,7,50.0,15.0,1.8,1.0,125.0,1.6,1.6
+7,Halibut,2,340,40,50.0,42.45,64.94,62.44,62.45,8,1,4,,0,,,Beach;BeachB,holds the line,6,44.0,20.0,1.8,1.0,75.0,1.4,1.2
+8,Black Porgy,3,525,80,40.0,33.96,51.96,49.96,49.96,9,2,6,,0,,,Beach;BeachB,holds the line,7,50.0,15.0,2.0,1.0,125.0,1.6,1.6
+9,Oriental Butterflyfish,1,75,20,20.0,16.98,25.98,24.98,24.98,10,0,0,,0,,,Beach,holds the line,1,14.0,55.0,0.9,0.7,5.0,0.8,0.4
+10,Pennant Coralfish,1,85,20,20.0,16.98,25.98,24.98,24.98,11,1,1,,0,,,Beach,holds the line,1,14.0,55.0,0.9,0.7,5.0,0.8,0.4
+11,Clownfish,1,60,20,14.0,11.88,18.18,17.48,17.48,12,2,2,,0,,,Beach,palm,0,8.0,60.0,0.9,0.7,5.0,0.8,0.4
+12,Ocellaris Clownfish,2,675,40,10.0,8.49,12.99,12.49,12.49,1,0,5,,0,,,Beach,palm,3,26.0,35.0,1.2,0.7,5.0,0.9,0.4
+13,Black Cod,1,340,20,100.0,84.9,129.89,124.89,124.9,2,1,11,Minnow,0.1,,,Offshore,two hands,5,38.0,25.0,1.4,1.0,25.0,1.4,1.2
+14,King of Herrings,5,6750,1000,540.0,458.46,701.46,674.46,674.46,3,2,14,,0,,,Bluecave,underwater,9,58.0,11.0,2.8,0.9,175.0,2.0,0.6
+15,Football Fish,2,975,40,40.0,33.96,51.96,49.96,49.96,4,0,3,,0,,,Bluecave,holds the line,5,38.0,25.0,1.6,1.0,5.0,1.2,0.8
+16,Coelacanth,4,3750,300,160.0,135.84,207.84,199.84,199.84,5,1,15,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,stock password,,Bluecave,underwater,6,44.0,20.0,2.4,1.0,75.0,1.4,1.4
+17,Catfish,1,190,20,50.0,42.45,64.94,62.44,62.45,6,2,0,Spoon,0.8,,,LakeB;RiverA;RiverB,holds the line,4,32.0,30.0,1.8,1.0,5.0,1.4,0.4
+18,Bluegill,1,90,20,30.0,25.47,38.97,37.46,37.47,7,0,1,Spoon;Spinner,1.0,,,LakeA;LakeB,holds the line,3,26.0,35.0,1.2,1.0,25.0,1.0,1.2
+19,Pirarucu,3,1450,80,360.0,305.64,467.64,449.64,449.64,8,1,16,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,quest,,Jungle,underwater,6,44.0,20.0,0.9,1.0,125.0,0.8,1.6
+20,Dorado,4,1600,300,100.0,84.9,129.89,124.89,124.9,9,2,14,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,quest,,Jungle,two hands,7,50.0,15.0,1.1,1.0,125.0,0.9,1.6
+21,Black Ghost Knifefish,4,1200,300,30.0,25.47,38.97,37.46,37.47,10,0,7,,0,,,Jungle,holds the line,4,32.0,30.0,1.2,1.0,25.0,1.0,0.8
+22,Black Bass,1,510,20,40.0,39.88,61.02,58.67,58.67,11,1,2,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0,,,LakeB,holds the line,7,50.0,15.0,1.4,1.0,175.0,1.4,1.8
+23,King Salmon,3,1575,80,100.0,84.9,129.89,124.89,124.9,12,2,12,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,Submap01,two hands,8,56.0,12.0,2.0,1.0,175.0,1.5,1.8
+24,Arowana,2,940,40,100.0,84.9,129.89,124.89,124.9,1,0,13,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,Jungle,two hands,5,38.0,25.0,1.6,1.0,5.0,1.4,0.6
+25,Piranha,1,165,20,30.0,25.47,38.97,37.46,37.47,2,1,0,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,Jungle,holds the line,5,38.0,25.0,1.2,1.0,5.0,1.1,1.4
+26,Koi,1,90,20,80.0,67.92,103.92,99.92,99.92,0,2,11,,0,,unused id,,holds the line,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+27,Alligator Gar,3,1240,80,240.0,203.76,311.76,299.75,299.76,4,0,15,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,Jungle,underwater,6,44.0,20.0,1.0,1.0,5.0,0.8,0.8
+28,Mahi-mahi,2,1050,40,140.0,118.86,181.86,174.86,174.86,5,1,12,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0,,,,underwater,7,50.0,15.0,2.0,1.0,75.0,2.0,1.2
+29,Swordfish,5,8250,1000,350.0,297.15,454.65,437.15,437.15,6,2,16,Minnow,0.1,,,,underwater,9,58.0,11.0,3.0,1.0,175.0,2.4,1.8
+30,Platinum Alligator Gar,5,2880,1000,240.0,203.76,311.76,299.75,299.76,7,0,14,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,quest,,Jungle,underwater,8,56.0,12.0,1.1,1.0,75.0,0.9,0.8
+31,Flounder,1,160,20,40.0,33.96,51.96,49.96,49.96,8,1,1,,0,,,Beach;BeachB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.2,1.0
+32,Armored Catfish,1,180,20,15.0,12.73,19.48,18.73,18.73,9,2,2,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,Jungle,holds the line,3,26.0,35.0,1.2,1.0,5.0,0.8,0.6
+33,Normal Driftwood,0,30,5,40.0,33.96,51.96,49.96,49.96,10,0,3,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Beach;BeachB;Bluecave;IslandA;IslandB;Offshore,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+34,Ocean Sunfish,4,2625,300,200.0,169.8,259.79,249.79,249.8,11,1,15,,0,,,,underwater,4,32.0,30.0,1.2,1.0,5.0,1.5,0.2
+35,Guppy,1,410,20,5.0,4.24,6.49,6.24,6.24,12,2,2,,0,,,JungleB,palm,2,20.0,45.0,1.0,1.0,5.0,0.7,0.4
+36,Platinum Guppy,3,1875,80,5.0,4.24,6.49,6.24,6.24,1,0,6,,0,,,JungleB,palm,3,26.0,35.0,1.0,1.0,5.0,0.8,0.4
+37,Cardinal Tetra,1,145,20,5.0,4.24,6.49,6.24,6.24,2,1,0,,0,,,Jungle,palm,2,20.0,45.0,1.0,1.0,5.0,0.8,0.4
+38,Porcupine Fish,3,630,80,30.0,25.47,38.97,37.46,37.47,3,2,7,,0,stock password,,Beach,holds the line,4,32.0,30.0,1.4,1.0,5.0,1.2,0.8
+39,Great White Shark,4,5700,300,450.0,382.05,584.55,562.05,562.05,4,0,16,Minnow,0.8,,,,underwater,9,58.0,11.0,2.4,1.0,175.0,2.1,1.8
+40,Barramundi,5,2580,1000,150.0,127.35,194.85,187.35,187.35,5,1,16,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,quest,,JungleB,underwater,9,58.0,11.0,2.0,1.0,175.0,2.0,1.8
+41,Japanese Salmon,1,390,20,30.0,25.47,38.97,37.46,37.47,6,2,1,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,RiverB,holds the line,5,38.0,25.0,1.4,1.0,25.0,1.2,1.4
+42,Rainbow Trout,1,380,20,40.0,33.96,51.96,49.96,49.96,7,0,2,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,quest,,LakeA;RiverB,holds the line,6,44.0,20.0,1.6,1.0,75.0,1.5,1.2
+43,Crucian Carp,1,85,20,25.0,21.22,32.47,31.22,31.22,8,1,0,,0,,,RiverA;RiverB,holds the line,3,26.0,35.0,1.2,1.0,5.0,0.8,1.0
+44,Japanese Whiting,1,75,20,30.0,25.47,38.97,37.46,37.47,9,2,1,,0,,,Offshore,holds the line,3,26.0,35.0,1.0,1.0,5.0,0.9,1.0
+45,Peacock Bass,2,470,40,80.0,75.92,94.9,90.4,90.4,10,0,13,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,Jungle,two hands,8,56.0,12.0,1.6,1.0,175.0,1.8,1.8
+46,Snakehead,2,510,40,60.0,50.94,77.94,74.93,74.94,11,1,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeB;RiverA,holds the line,7,50.0,15.0,1.4,1.0,25.0,1.4,1.0
+47,Northern Pike,2,300,40,100.0,84.9,129.89,124.89,124.9,12,2,11,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,Submap01,two hands,6,44.0,20.0,1.4,1.0,75.0,1.5,1.6
+48,Pacific Bluefin Tuna,5,6600,1000,250.0,212.25,324.75,312.25,312.25,1,0,14,Minnow,0.1,,,,underwater,9,58.0,11.0,2.2,1.0,175.0,2.1,1.8
+49,Trevally,3,1470,80,80.0,67.92,103.92,99.92,99.92,2,1,14,Minnow,0.8,quest,,BeachB;IslandA,holds the line,7,50.0,15.0,1.7,1.0,175.0,1.8,1.8
+50,Moray Eel,1,165,20,80.0,67.92,103.92,99.92,99.92,3,2,12,Spoon,0.1,,,Beach,holds the line,6,44.0,20.0,1.4,1.0,25.0,1.6,0.8
+51,Sea Robin,1,180,20,30.0,25.47,38.97,37.46,37.47,4,0,0,Spoon,0.1,,,Beach;Offshore,holds the line,3,26.0,35.0,1.4,1.0,25.0,1.1,1.0
+52,Redtail Catfish,3,1410,80,100.0,84.9,129.89,124.89,124.9,5,1,15,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,Jungle,two hands,7,50.0,15.0,1.6,1.0,125.0,1.6,1.4
+53,Pond Smelt,1,180,20,15.0,12.73,19.48,18.73,18.73,6,2,1,,0,,,,holds the line,2,20.0,45.0,1.0,1.0,5.0,1.0,1.0
+54,Hammerhead Shark,4,2790,300,300.0,254.7,389.7,374.7,374.7,7,0,15,Minnow,0.8,,,,underwater,8,56.0,12.0,2.0,1.0,175.0,2.2,1.8
+55,Giant Squid,5,6960,1000,550.0,466.95,714.45,686.95,686.95,8,1,16,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,,underwater,9,58.0,11.0,3.0,1.0,175.0,2.4,0.6
+56,Seahorse,2,270,40,10.0,8.49,12.99,12.49,12.49,9,2,5,,0,,,Beach,palm,1,14.0,55.0,0.9,0.5,5.0,0.8,0.2
+57,Longnose Hawkfish,1,105,20,12.0,10.18,15.58,14.98,14.98,10,0,2,,0,,,Beach;IslandA,palm,3,26.0,35.0,1.0,1.0,5.0,0.9,0.6
+58,Flying Fish,2,240,40,30.0,25.47,38.97,37.46,37.47,11,1,3,,0,stock password,,Offshore,holds the line,6,44.0,20.0,1.2,1.0,125.0,1.3,1.6
+59,Marbled Rockfish,1,175,20,25.0,21.22,32.47,31.22,31.22,12,2,0,Spoon,0.1,,,Beach,holds the line,5,38.0,25.0,1.2,1.0,25.0,1.2,1.0
+60,Threespot Dascyllus,1,220,20,15.0,12.73,19.48,18.73,18.73,1,0,1,,0,stock password,,Beach,holds the line,3,26.0,35.0,1.0,1.0,5.0,1.0,0.8
+61,Smallscale Blackfish,3,1080,80,50.0,42.45,64.94,62.44,62.45,2,1,6,Spoon,0.1,,,Beach,holds the line,7,50.0,15.0,2.0,1.0,75.0,1.6,1.4
+62,Bonefish,3,1830,80,60.0,50.94,77.94,74.93,74.94,3,2,7,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,quest,,BeachB;IslandB,holds the line,8,56.0,12.0,2.4,1.0,125.0,1.8,1.8
+63,Yellowtail Amberjack,2,780,40,100.0,84.9,129.89,124.89,124.9,4,0,12,Minnow,0.1,,,Offshore,two hands,8,56.0,12.0,2.2,1.0,175.0,1.7,1.8
+64,Greater Amberjack,2,810,40,100.0,84.9,129.89,124.89,124.9,5,1,13,Minnow,0.1,,,Offshore,two hands,8,56.0,12.0,2.0,1.0,175.0,1.7,1.8
+65,Lionfish,1,120,20,30.0,25.47,38.97,37.46,37.47,6,2,2,Minnow,0.1,,,Beach,holds the line,3,26.0,35.0,1.0,1.0,5.0,1.1,0.6
+66,Blue Tang,1,115,20,20.0,16.98,25.98,24.98,24.98,7,0,0,,0,,,Beach;BeachB;IslandA,holds the line,2,20.0,45.0,1.0,0.9,5.0,1.0,1.0
+67,Forceps Fish,1,105,20,18.0,15.28,23.38,22.48,22.48,8,1,1,,0,,,Beach;BeachB;IslandA,holds the line,2,20.0,45.0,1.0,0.8,5.0,0.9,0.6
+68,Napoleon Fish,3,1740,80,140.0,118.86,181.86,174.86,174.86,9,2,16,,0,stock password,,BeachB;IslandB,underwater,6,44.0,20.0,1.7,1.0,125.0,1.6,0.6
+69,Thick Seaweed,0,50,5,60.0,50.94,77.94,74.93,74.94,10,0,3,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Beach;BeachB;IslandA;Offshore,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+70,Moorish Idol,1,90,20,20.1,17.06,26.1,25.1,25.1,11,1,2,,0,,,Beach,holds the line,3,26.0,35.0,1.0,0.8,5.0,0.9,0.6
+71,Bluefin Trevally,2,495,40,90.0,76.41,116.91,112.41,112.41,12,2,13,Minnow,0.1,,,BeachB;IslandA,two hands,7,50.0,15.0,1.5,1.0,125.0,1.5,1.8
+72,Japanese Char,1,375,20,20.0,16.98,25.98,24.98,24.98,1,0,0,Spinner,0.8,,,RiverB,holds the line,4,32.0,30.0,1.4,1.0,25.0,1.1,1.4
+73,Japanese Dace,1,345,20,30.0,25.47,38.97,37.46,37.47,2,1,1,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,RiverB,holds the line,4,32.0,30.0,1.4,1.0,25.0,1.2,1.2
+74,Steelhead,2,360,40,70.0,59.43,90.93,87.43,87.43,3,2,3,Spinner,0.1,quest,,LakeA,holds the line,6,44.0,20.0,1.6,1.0,175.0,1.5,1.4
+75,Dolly Varden,3,870,80,25.0,21.22,32.47,31.22,31.22,4,0,8,Spinner,0.8,,,Submap01,holds the line,7,50.0,15.0,2.0,1.0,175.0,1.6,1.4
+76,Brown Trout,2,340,40,25.0,21.22,32.47,31.22,31.22,5,1,3,Spinner,0.8,,,LakeA;RiverB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.4,1.4
+77,Brook Trout,2,315,40,40.0,33.96,51.96,49.96,49.96,6,2,4,Spinner,0.8,,,LakeA;RiverB,holds the line,4,32.0,30.0,1.2,1.0,5.0,1.3,1.4
+78,Bigmouth Buffalo,2,465,40,100.0,84.9,129.89,124.89,124.9,7,0,12,,0,,,LakeB,two hands,5,38.0,25.0,1.8,1.0,5.0,1.6,1.0
+79,Smallmouth Buffalo,2,360,40,100.0,84.9,129.89,124.89,124.9,8,1,13,,0,,,LakeB,two hands,5,38.0,25.0,1.6,1.0,5.0,1.6,1.0
+80,Nile Perch,2,935,40,150.0,127.35,194.85,187.35,187.35,9,2,11,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0,,,JungleB,underwater,6,44.0,20.0,2.0,1.0,125.0,1.7,1.4
+81,White Sturgeon,5,8250,1000,550.0,466.95,714.45,686.95,686.95,10,0,14,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,quest,,LakeA,underwater,9,58.0,11.0,2.6,0.9,175.0,2.2,0.6
+82,Dogtooth Tuna,3,1065,80,100.0,84.9,129.89,124.89,124.9,11,1,15,Minnow,0.1,,,BeachB,two hands,8,56.0,12.0,1.6,1.0,125.0,1.8,1.8
+83,Clown Triggerfish,1,145,20,18.0,15.28,23.38,22.48,22.48,12,2,2,,0,,,BeachB;IslandA,holds the line,3,26.0,35.0,1.2,1.0,5.0,1.0,0.4
+84,Blueface Angelfish,1,120,20,25.0,21.22,32.47,31.22,31.22,1,0,0,,0,,,Beach;BeachB;IslandA,holds the line,1,14.0,55.0,0.9,0.9,5.0,0.9,0.6
+85,Emperor Angelfish,1,135,20,35.0,29.71,45.46,43.71,43.71,2,1,1,,0,,,Beach;BeachB;IslandA,holds the line,1,14.0,55.0,0.9,0.9,5.0,0.9,0.6
+86,Royal Angelfish,1,130,20,25.0,21.22,32.47,31.22,31.22,3,2,2,,0,,,Beach;BeachB;IslandA,holds the line,1,14.0,55.0,0.9,0.9,5.0,0.9,0.6
+87,Male Sockeye Salmon,2,420,40,50.0,42.45,64.94,62.44,62.45,4,0,5,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeA;RiverA,holds the line,7,50.0,15.0,1.6,1.0,125.0,1.6,1.6
+88,Silver Salmon,2,405,40,60.0,50.94,77.94,74.93,74.94,5,1,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeA;Offshore;RiverA,holds the line,5,38.0,25.0,1.4,1.0,125.0,1.4,1.6
+89,Chum Salmon,1,415,20,60.0,50.94,77.94,74.93,74.94,6,2,5,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeA;Offshore;RiverA,holds the line,5,38.0,25.0,1.4,1.0,125.0,1.4,1.6
+90,Pink Salmon,1,360,20,50.0,42.45,64.94,62.44,62.45,7,0,1,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeA,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.4,1.6
+91,Black Bullhead,1,400,20,20.1,17.06,26.1,25.1,25.1,8,1,2,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeB,holds the line,5,38.0,25.0,1.8,1.0,25.0,1.5,1.0
+92,Brown Bullhead,1,430,20,30.0,25.47,38.97,37.46,37.47,9,2,0,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeB,holds the line,5,38.0,25.0,1.8,1.0,25.0,1.5,1.0
+93,Yellow Bullhead,2,480,40,40.0,33.96,51.96,49.96,49.96,10,0,3,Spoon,0.1,quest,,LakeB,holds the line,5,38.0,25.0,1.8,1.0,25.0,1.6,1.0
+94,Rooster Fish,3,1830,80,100.0,84.9,129.89,124.89,124.9,11,1,16,Minnow,0.1,,,IslandB,two hands,9,58.0,11.0,2.0,1.0,175.0,2.0,1.8
+95,Papuan Black Bass,3,1755,80,100.0,84.9,129.89,124.89,124.9,12,2,14,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,JungleB,two hands,8,56.0,12.0,2.2,1.0,175.0,1.8,1.8
+96,Payara,3,920,80,80.0,67.92,103.92,99.92,99.92,1,0,15,Minnow,0.1,,,Jungle,holds the line,7,50.0,15.0,1.8,1.0,125.0,1.5,1.6
+97,Tigerfish,4,2670,300,120.0,101.88,155.88,149.87,149.88,2,1,16,Minnow,0.1,quest,,JungleB,underwater,9,58.0,11.0,2.4,1.0,175.0,2.0,1.8
+98,Murray Cod,3,1440,80,90.0,76.41,116.91,112.41,112.41,3,2,14,Minnow,0.1,,,LakeB,two hands,7,50.0,15.0,1.6,1.0,125.0,1.6,1.6
+99,White Perch,2,370,40,30.0,25.47,38.97,37.46,37.47,4,0,4,Spoon;Minnow,0.8,,,LakeB,holds the line,6,44.0,20.0,1.4,1.0,75.0,1.4,1.4
+100,Rock Bass,1,185,20,35.0,29.71,45.46,43.71,43.71,5,1,1,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,stock password,,LakeB,holds the line,5,38.0,25.0,1.2,1.0,75.0,1.2,1.4
+101,Black Carp,4,3330,300,150.0,127.35,194.85,187.35,187.35,6,2,15,Minnow,0.1,quest,,RiverA,underwater,9,58.0,11.0,2.4,1.0,5.0,2.0,0.6
+102,Burbot,3,1215,80,80.0,67.92,103.92,99.92,99.92,7,0,16,Spoon,0.8,,,LakeA,holds the line,6,44.0,20.0,2.0,1.0,75.0,1.4,1.4
+103,Muskie,2,630,40,100.0,84.9,129.89,124.89,124.9,8,1,13,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeA,two hands,6,44.0,20.0,1.5,1.0,75.0,1.4,1.4
+104,Chain Pike,2,465,40,60.0,50.94,77.94,74.93,74.94,9,2,3,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,stock password,,LakeA,holds the line,5,38.0,25.0,1.5,1.0,75.0,1.6,1.4
+105,American Pickerel,2,265,40,50.0,42.45,64.94,62.44,62.45,10,0,5,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeB,holds the line,5,38.0,25.0,1.8,1.0,25.0,1.5,1.0
+106,Longnose Gar,3,1485,80,120.0,101.88,155.88,149.87,149.88,11,1,14,Minnow,0.8,,,LakeB,two hands,6,44.0,20.0,1.6,1.0,75.0,1.5,1.2
+107,Shortnose Gar,3,1065,80,30.0,25.47,38.97,37.46,37.47,12,2,6,Minnow,0.8,stock password,,LakeB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.4,1.2
+108,Elephantnose Fish,2,780,40,25.0,21.22,32.47,31.22,31.22,1,0,3,Minnow,0.1,,,JungleB,holds the line,6,44.0,20.0,1.6,1.0,75.0,1.6,1.4
+109,Bowfin,3,1245,80,60.0,50.94,77.94,74.93,74.94,2,1,6,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeB,holds the line,6,44.0,20.0,1.4,1.0,125.0,1.5,1.4
+110,Sailfish,4,6150,300,300.0,254.7,389.7,374.7,374.7,3,2,16,Spoon;Minnow,0.1,stock password,,,underwater,9,58.0,11.0,2.6,1.0,175.0,2.6,1.8
+111,Sockeye Salmon (F),3,855,80,50.0,42.45,64.94,62.44,62.45,4,0,7,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeA;RiverA,holds the line,8,56.0,12.0,1.5,1.0,175.0,1.7,1.8
+112,Sockeye Salmon,1,315,20,50.0,42.45,64.94,62.44,62.45,5,1,2,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,Offshore,holds the line,6,44.0,20.0,1.4,1.0,125.0,1.4,1.6
+113,Barracuda,4,3255,300,150.0,127.35,194.85,187.35,187.35,6,2,14,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,,underwater,7,50.0,15.0,2.0,1.0,175.0,1.8,1.8
+114,Rock Porgy,3,780,80,50.0,42.45,64.94,62.44,62.45,7,0,7,,0,,,BeachB,holds the line,5,38.0,25.0,1.4,1.0,125.0,1.2,1.6
+115,Striped Beakfish,3,775,80,50.0,42.45,64.94,62.44,62.45,8,1,8,,0,,,BeachB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.3,1.6
+116,Whale Shark,4,3210,300,200.0,169.8,259.79,249.79,249.8,9,2,14,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,exhibit only,,underwater,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+117,Royal Knife Fish,3,970,80,40.0,33.96,51.96,49.96,49.96,10,0,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,JungleB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.5,1.4
+118,Polypterus,3,1140,100,60.0,50.94,77.94,74.93,74.94,11,1,6,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,JungleB,holds the line,9,58.0,11.0,2.5,1.0,25.0,2.0,1.0
+119,Butterfly Fish,3,815,80,20.1,17.06,26.1,25.1,25.1,12,2,6,,0,,,JungleB,holds the line,6,44.0,20.0,1.4,1.0,25.0,1.4,1.4
+120,Manta Ray,5,15000,1000,200.0,169.8,259.79,249.79,249.8,1,0,16,,0,,exhibit only,,holds the line,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+121,Bottlenose Dolphin,5,15000,1000,200.0,169.8,259.79,249.79,249.8,2,1,14,,0,,exhibit only,,holds the line,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+122,Green Sea Turtle,5,15000,1000,20.0,16.98,25.98,24.98,24.98,3,2,7,,0,,exhibit only,,holds the line,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+123,Emperor Penguin,5,15000,1000,20.0,16.98,25.98,24.98,24.98,4,0,8,,0,,exhibit only,,holds the line,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+124,Milkfish,3,1555,80,100.0,84.9,129.89,124.89,124.9,5,1,14,,0,,,Offshore,two hands,5,38.0,25.0,1.2,1.0,75.0,2.0,1.2
+125,Calfornia Corbina,2,555,40,35.0,29.71,45.46,43.71,43.71,6,2,4,,0,,,BeachB;IslandB,holds the line,4,32.0,30.0,1.4,1.0,75.0,1.4,1.4
+126,Smallmouth Bass,1,240,20,40.0,33.96,51.96,49.96,49.96,7,0,0,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeA;LakeB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.4,1.6
+127,Lake Trout,1,235,20,50.0,42.45,64.94,62.44,62.45,8,1,1,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,LakeA,holds the line,5,38.0,25.0,1.5,1.0,75.0,1.3,1.4
+128,Walleye,1,255,20,80.0,67.92,103.92,99.92,99.92,9,2,12,Minnow,0.8,,,LakeA,holds the line,6,44.0,20.0,1.4,1.0,75.0,1.4,1.6
+129,Giant Snakehead,2,1980,40,70.0,59.43,90.93,87.43,87.43,10,0,13,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,JungleB,holds the line,8,56.0,12.0,2.0,1.0,175.0,2.0,1.8
+130,Channa Lucius,2,1210,40,35.0,29.71,45.46,43.71,43.71,11,1,5,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,JungleB,holds the line,7,50.0,15.0,1.8,1.0,25.0,1.6,1.4
+131,Ocellated Snakehead,2,1340,40,30.0,25.47,38.97,37.46,37.47,12,2,3,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,JungleB,holds the line,6,44.0,20.0,1.6,1.0,5.0,1.5,0.8
+132,Rainbow Runner,1,285,20,100.0,84.9,129.89,124.89,124.9,1,0,11,Spoon;Minnow,0.1,,,Bluecave;Offshore,two hands,6,44.0,20.0,1.4,1.0,125.0,1.7,1.6
+133,Spanish Mackerel,1,280,20,75.0,63.67,97.42,93.67,93.67,2,1,12,Minnow,0.8,,,Offshore,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.4,1.4
+134,Bonito,2,535,40,50.0,42.45,64.94,62.44,62.45,3,2,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8,,,Offshore,holds the line,8,56.0,12.0,1.5,1.0,175.0,1.6,1.8
+135,Japanese Amberjack,2,540,40,100.0,84.9,129.89,124.89,124.9,4,0,13,Minnow,0.1,,,Offshore,two hands,7,50.0,15.0,1.6,1.0,125.0,1.7,1.6
+136,Striped Marlin,4,7800,300,300.0,254.7,389.7,374.7,374.7,5,1,15,Minnow,0.1,,,,underwater,9,58.0,11.0,3.0,1.0,175.0,2.4,1.8
+137,John Dory,1,310,20,40.0,33.96,51.96,49.96,49.96,6,2,2,,0,,,Bluecave;Offshore,holds the line,6,44.0,20.0,1.2,1.0,75.0,1.4,1.4
+138,Xiphactinus,5,15000,1000,500.0,424.5,649.5,624.5,624.5,7,0,16,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,,underwater,9,58.0,11.0,4.0,1.0,175.0,2.8,1.2
+139,Japanese Bullhead Shark,4,1330,300,100.0,84.9,129.89,124.89,124.9,8,1,14,,0,quest,,Beach;IslandB,two hands,6,44.0,20.0,2.0,1.0,125.0,1.6,1.4
+140,Pteraspis,5,11250,1000,25.0,21.22,32.47,31.22,31.22,9,2,7,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,Jungle,holds the line,9,58.0,11.0,2.5,1.0,175.0,2.5,1.8
+141,Bothriolepis,5,12750,1000,40.0,33.96,51.96,49.96,49.96,10,0,8,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,RiverB,holds the line,7,50.0,15.0,2.5,1.0,175.0,2.5,1.8
+142,Coral Trout,3,925,80,40.0,33.96,51.96,49.96,49.96,11,1,6,Spoon;Minnow,0.1,,,Offshore,holds the line,4,32.0,30.0,1.4,1.0,75.0,1.4,1.4
+143,Japanese Huchen,3,1185,80,100.0,84.9,129.89,124.89,124.9,12,2,15,Spoon;Spinner,0.1,quest,,RiverA,two hands,7,50.0,15.0,2.0,1.0,125.0,1.7,1.4
+144,Red Emperor (Adult),2,720,40,60.0,50.94,77.94,74.93,74.94,1,0,11,Minnow,0.1,,,Offshore,holds the line,7,50.0,15.0,1.6,1.0,75.0,1.6,1.2
+145,Red Emperor (Young),1,360,20,25.0,21.22,32.47,31.22,31.22,2,1,0,,0,,,IslandB,holds the line,4,32.0,30.0,1.2,1.0,25.0,1.2,1.0
+146,Pacu,2,380,40,19.99,16.97,25.96,24.96,24.96,3,2,5,,0,,,Jungle,holds the line,4,32.0,30.0,1.4,1.0,75.0,1.1,1.4
+147,Yellowfin Tuna,3,1710,80,200.0,169.8,259.79,249.79,249.8,4,0,16,Minnow,0.1,,,,underwater,8,56.0,12.0,2.5,1.0,175.0,2.0,1.8
+148,Black Marlin,4,7575,300,400.0,339.6,519.59,499.59,499.6,5,1,14,Minnow,0.1,,,,underwater,9,58.0,11.0,3.0,1.0,175.0,2.4,1.8
+149,Halibut,4,7080,300,200.0,169.8,259.79,249.79,249.8,6,2,15,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,,underwater,9,58.0,11.0,3.0,1.0,25.0,2.2,0.4
+150,Tarpon,4,2875,300,200.0,169.8,259.79,249.79,249.8,7,0,16,Spoon;Minnow,0.8,,,IslandB,underwater,8,56.0,12.0,2.0,1.0,125.0,1.9,1.6
+151,Freshwater Prawn,1,100,20,15.0,12.73,19.48,18.73,18.73,8,1,1,,0,,,Beach,holds the line,2,20.0,45.0,1.0,1.0,5.0,0.8,0.2
+152,Goblin Shark,4,2655,300,300.0,254.7,389.7,374.7,374.7,9,2,14,,0,,,Bluecave,underwater,9,58.0,11.0,2.0,1.0,175.0,1.7,1.8
+153,Dunkleosteus,5,18000,1000,600.0,509.4,779.4,749.4,749.4,10,0,15,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,,underwater,9,58.0,11.0,3.5,1.0,125.0,2.6,1.6
+154,Cobia,3,925,80,160.0,135.84,207.84,199.84,199.84,11,1,16,Spoon;Minnow,0.1,,,,underwater,6,44.0,20.0,1.4,1.0,75.0,1.8,1.4
+155,N. Pacific Giant Octopus,4,3105,300,400.0,339.6,519.59,499.59,499.6,12,2,15,,0,,,,underwater,9,58.0,11.0,3.0,1.0,5.0,2.0,0.6
+156,Red Stingray,3,1185,80,160.0,135.84,207.84,199.84,199.84,1,0,15,Spoon,0.8,,,Beach,underwater,6,44.0,20.0,1.6,1.0,25.0,1.6,1.0
+157,Frilled Shark,3,1245,80,200.0,169.8,259.79,249.79,249.8,2,1,16,,0,,,Bluecave,underwater,8,56.0,12.0,1.8,1.0,25.0,1.8,1.0
+158,Wels Catfish,4,2940,300,150.0,127.35,194.85,187.35,187.35,3,2,14,Spoon,0.1,quest,,LakeB,underwater,9,58.0,11.0,2.4,1.0,5.0,2.0,0.4
+159,Red Snapper,2,435,40,70.0,59.43,90.93,87.43,87.43,4,0,12,Minnow,0.1,,,Offshore,holds the line,5,38.0,25.0,1.4,1.0,25.0,1.4,1.0
+160,Cutthroat Trout,3,855,80,25.0,21.22,32.47,31.22,31.22,5,1,7,Spinner,0.1,,,LakeA,holds the line,6,44.0,20.0,1.2,1.0,125.0,1.6,1.2
+161,Alaska Pollock,2,430,40,75.0,63.67,97.42,93.67,93.67,6,2,13,Minnow,0.8,stock password,,Offshore,holds the line,5,38.0,25.0,1.6,1.0,75.0,1.4,1.4
+162,Bighead Carp,4,3330,300,160.0,135.84,207.84,199.84,199.84,7,0,15,Minnow,0.1,quest,,RiverA,underwater,9,58.0,11.0,2.5,1.0,5.0,2.0,1.4
+163,Silver Carp,4,3330,300,120.0,101.88,155.88,149.87,149.88,8,1,16,Minnow,0.1,quest,,RiverA,underwater,9,58.0,11.0,2.5,1.0,5.0,2.0,1.4
+164,Acanthodes,5,10500,1000,30.0,25.47,38.97,37.46,37.47,9,2,8,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeB,holds the line,9,58.0,11.0,2.5,1.0,175.0,2.5,1.8
+165,Climatius,5,9000,1000,10.0,8.49,12.99,12.49,12.49,10,0,6,,0,,,JungleB,palm,9,58.0,11.0,2.5,1.0,175.0,2.5,1.8
+166,Magoi,2,325,40,60.0,50.94,77.94,74.93,74.94,11,1,4,,0,,,RiverA;RiverB,holds the line,7,50.0,15.0,1.6,1.0,125.0,1.6,1.2
+167,Mackerel Tuna,2,405,40,100.0,84.9,129.89,124.89,124.9,12,2,12,Spoon;Minnow,1.0,,,Offshore,two hands,7,50.0,15.0,1.4,1.0,75.0,1.5,1.2
+168,Oilfish,3,945,80,140.0,118.86,181.86,174.86,174.86,1,0,14,,0,,,,underwater,7,50.0,15.0,1.5,1.0,75.0,1.7,1.4
+169,Chicken Grunt,2,390,40,45.0,38.2,58.45,56.19,56.2,2,1,3,Minnow,0.1,,,Offshore,holds the line,6,44.0,20.0,1.4,1.0,125.0,1.2,1.6
+170,Indo-Pacific Blue Marlin,4,7870,300,300.0,254.7,389.7,374.7,374.7,3,2,15,Minnow,0.1,,,,underwater,9,58.0,11.0,3.0,1.0,175.0,2.4,1.8
+171,Coalfish,3,1005,80,70.0,59.43,90.93,87.43,87.43,4,0,16,Minnow,0.1,,,Offshore,holds the line,6,44.0,20.0,1.4,1.0,75.0,1.5,1.4
+172,Electric Eel,4,1630,300,250.0,212.25,324.75,312.25,312.25,5,1,14,,0,stock password,,Jungle,underwater,7,50.0,15.0,2.2,1.0,5.0,1.7,0.6
+173,Betta,2,945,40,8.0,6.79,10.39,9.99,9.99,6,2,4,,0,,,JungleB,palm,4,32.0,30.0,1.0,1.0,5.0,1.0,0.6
+174,Wild Water Weed,0,30,5,60.0,50.94,77.94,74.93,74.94,7,0,5,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Jungle;JungleB;LakeB,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+175,Bushy Water Weed,0,30,5,60.0,50.94,77.94,74.93,74.94,8,1,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,LakeA;RiverA;RiverB,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+176,Pudgy Cuskeel,3,2475,80,200.0,169.8,259.79,249.79,249.8,9,2,15,,0,,,Bluecave,underwater,4,32.0,30.0,2.0,1.0,5.0,1.8,0.4
+177,Octopus,1,570,20,60.0,50.94,77.94,74.93,74.94,10,0,4,Spoon,0.1,,,Offshore,holds the line,6,44.0,20.0,2.0,1.0,5.0,1.5,0.6
+178,Largehead Hairtail,2,660,40,100.0,84.9,129.89,124.89,124.9,11,1,13,,0,stock password,,Offshore,two hands,6,44.0,20.0,1.2,1.0,25.0,1.5,1.0
+179,Barreleye,4,2805,300,15.0,12.73,19.48,18.73,18.73,12,2,7,,0,,,Bluecave,holds the line,5,38.0,25.0,2.4,1.0,5.0,1.4,0.4
+180,Ammonite Fossil,2,3000,40,10.0,8.49,12.99,12.49,12.49,1,0,7,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Bluecave;IslandA;IslandB,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+181,Trilobite Fossil,2,3000,40,10.0,8.49,12.99,12.49,12.49,2,1,8,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Bluecave;IslandA;IslandB,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+182,Flapjack Octopus,2,510,40,20.1,17.06,26.1,25.1,25.1,3,2,4,,0,,,Bluecave,holds the line,3,26.0,35.0,1.0,1.0,5.0,1.4,0.2
+183,Yellow Perch,2,465,40,20.1,17.06,26.1,25.1,25.1,4,0,5,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0,,,LakeB,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.2,1.4
+184,Cheiracanthus,5,9750,1000,30.0,25.47,38.97,37.46,37.47,5,1,8,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,RiverA,holds the line,9,58.0,11.0,2.5,1.0,175.0,2.5,1.8
+185,Pacific Herring,1,165,20,35.0,29.71,45.46,43.71,43.71,6,2,2,Spoon,0.1,,,Offshore,holds the line,3,26.0,35.0,1.2,1.0,25.0,1.2,1.2
+186,Grass Carp,4,3330,300,140.0,118.86,181.86,174.86,174.86,7,0,16,Minnow,0.1,quest,,RiverA,underwater,9,58.0,11.0,2.5,1.0,5.0,2.0,1.4
+187,Apapa,1,315,20,65.0,55.18,84.43,81.18,81.18,8,1,11,,0,,,Jungle,holds the line,7,50.0,15.0,1.6,1.0,125.0,1.7,1.4
+188,Giant Grouper,4,2055,300,200.0,169.8,259.79,249.79,249.8,9,2,14,Minnow,0.1,,,IslandA,underwater,7,50.0,15.0,2.0,1.0,75.0,2.0,1.2
+189,African Pike,2,460,40,45.0,38.2,58.45,56.19,56.2,10,0,3,Spoon,0.1,,,Jungle,holds the line,5,38.0,25.0,1.2,1.0,125.0,1.5,1.4
+190,Hyneria,5,16500,1000,400.0,339.6,519.59,499.59,499.6,11,1,15,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,LakeA,underwater,9,58.0,11.0,3.5,0.8,175.0,2.2,1.8
+191,Permit,3,1065,80,70.0,59.43,90.93,87.43,87.43,12,2,16,Spoon;Minnow,0.8,,,IslandB;Offshore,holds the line,6,44.0,20.0,1.4,1.0,125.0,1.7,1.4
+192,Longfin Yellowtail,3,780,80,100.0,84.9,129.89,124.89,124.9,1,0,14,Minnow,0.1,,,Offshore,two hands,8,56.0,12.0,1.8,1.0,175.0,1.7,1.8
+193,Pink Anemonefish,3,960,80,8.0,6.79,10.39,9.99,9.99,2,1,6,,0,,,IslandA,palm,3,26.0,35.0,1.0,1.0,5.0,1.0,0.4
+194,Purple Queen,4,1455,300,8.0,6.79,10.39,9.99,9.99,3,2,7,,0,,,IslandA,palm,3,26.0,35.0,1.0,1.0,5.0,1.0,0.4
+195,Eastern Blue Devil Fish,3,1095,80,40.0,33.96,51.96,49.96,49.96,4,0,8,,0,,,IslandA,holds the line,4,32.0,30.0,1.2,1.0,5.0,1.6,0.6
+196,Red-bellied Fusilier,3,900,80,35.0,29.71,45.46,43.71,43.71,5,1,6,Spoon,0.1,,,IslandA,holds the line,4,32.0,30.0,1.2,1.0,5.0,1.4,0.6
+197,Mackerel Icefish,1,195,20,60.0,50.94,77.94,74.93,74.94,6,2,5,,0,,,Offshore,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.5,1.2
+198,Giant Trevally,4,2655,300,100.0,84.9,129.89,124.89,124.9,7,0,15,Minnow,0.1,quest,,IslandB;Offshore,two hands,9,58.0,11.0,2.2,1.0,175.0,2.1,1.8
+199,Rolfosteus Canningensis,5,900,1000,15.0,12.73,19.48,18.73,18.73,8,1,7,,0,,,IslandA;IslandB,holds the line,9,58.0,11.0,2.5,1.0,175.0,2.5,1.8
+200,Helicoprion,5,17250,1000,300.0,254.7,389.7,374.7,374.7,9,2,16,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,,underwater,9,58.0,11.0,4.0,1.0,175.0,2.7,1.6
+201,Red Sea Bream,3,855,80,50.0,42.45,64.94,62.44,62.45,10,0,8,Spoon,0.1,,,BeachB;Offshore,holds the line,6,44.0,20.0,1.6,1.0,75.0,1.6,1.4
+202,Black Sea Bream,2,390,40,40.0,33.96,51.96,49.96,49.96,11,1,4,Spoon,0.1,,,BeachB,holds the line,6,44.0,20.0,1.4,1.0,75.0,1.5,1.4
+203,Striped Mullet,1,85,20,15.0,12.73,19.48,18.73,18.73,12,2,0,,0,,,BeachB;RiverA,holds the line,4,32.0,30.0,1.0,1.0,25.0,1.0,1.0
+204,Lenok,2,360,40,50.0,42.45,64.94,62.44,62.45,1,0,5,Spoon,0.1,,,Submap03,holds the line,5,38.0,25.0,1.4,1.0,75.0,1.4,1.2
+205,Showa Koi,3,720,80,60.0,50.94,77.94,74.93,74.94,2,1,7,,0,,,Submap04,holds the line,7,50.0,15.0,2.0,1.0,125.0,1.6,1.0
+206,Blotchy Sillago,1,115,20,25.0,21.22,32.47,31.22,31.22,3,2,1,,0,,,Beach;BeachB,holds the line,3,26.0,35.0,1.0,1.0,25.0,1.0,1.0
+207,Sardine,1,105,20,20.1,17.06,26.1,25.1,25.1,4,0,2,,0,,,Beach,holds the line,4,32.0,30.0,1.2,1.0,25.0,1.0,1.2
+208,Fat Minnow,1,120,20,12.0,10.18,15.58,14.98,14.98,5,1,0,,0,,,RiverB,palm,3,26.0,35.0,1.0,1.0,75.0,0.9,1.2
+209,Amur Pike,2,435,40,80.0,67.92,103.92,99.92,99.92,6,2,13,Minnow,0.1,,,Submap03,holds the line,6,44.0,20.0,1.4,1.0,175.0,1.6,1.6
+210,Multicolorfin Rainbow,2,415,40,30.0,25.47,38.97,37.46,37.47,7,0,3,,0,,,Beach,holds the line,4,32.0,30.0,1.4,1.0,75.0,1.2,1.0
+211,Auxis Rochei,2,520,40,50.0,42.45,64.94,62.44,62.45,8,1,4,Spoon,1.0,,,Offshore,holds the line,7,50.0,15.0,1.6,1.0,175.0,1.6,1.8
+212,Thamnaconus Modestus,1,100,20,25.0,21.22,32.47,31.22,31.22,9,2,1,,0,,,BeachB;IslandA;IslandB,holds the line,4,32.0,30.0,1.0,1.0,25.0,1.1,0.6
+213,Arabesque Greenling,1,130,20,60.0,50.94,77.94,74.93,74.94,10,0,3,Minnow,0.8,,,Offshore,holds the line,4,32.0,30.0,1.2,1.0,75.0,1.5,1.0
+214,Filefish,1,120,20,25.0,21.22,32.47,31.22,31.22,11,1,2,,0,,,Offshore,holds the line,4,32.0,30.0,1.0,1.0,25.0,1.2,0.8
+215,Parrotfish,3,465,80,50.0,42.45,64.94,62.44,62.45,12,2,6,Spoon,0.1,,,Beach,holds the line,5,38.0,25.0,1.4,1.0,25.0,1.6,1.2
+216,Hucho Taimen,4,2355,300,150.0,127.35,194.85,187.35,187.35,1,0,15,Minnow,0.8,,,Submap03,underwater,9,58.0,11.0,2.0,1.0,175.0,2.1,1.8
+217,Grass Puffer,1,75,20,20.1,17.06,26.1,25.1,25.1,2,1,0,,0,,,Beach;BeachB;IslandA,holds the line,3,26.0,35.0,1.0,1.0,5.0,0.9,0.4
+218,Japanese Pufferfish,3,885,80,60.0,50.94,77.94,74.93,74.94,3,2,8,,0,,,Offshore,holds the line,6,44.0,20.0,1.6,1.0,25.0,1.5,0.8
+219,Yellowfin Goby,1,90,20,15.0,12.73,19.48,18.73,18.73,4,0,1,,0,,,BeachB;RiverA,holds the line,4,32.0,30.0,1.0,1.0,5.0,0.8,1.0
+220,Needlefish,2,400,40,90.0,76.41,116.91,112.41,112.41,5,1,12,Minnow,0.1,,,Beach,two hands,6,44.0,20.0,1.4,1.0,75.0,1.6,1.2
+221,Killer Whale,2,15000,40,30.0,25.47,38.97,37.46,37.47,6,2,5,,0,,exhibit only,,holds the line,0,8.0,60.0,1.0,1.0,5.0,1.0,1.0
+222,Fine Driftwood,0,500,5,40.0,33.96,51.96,49.96,49.96,7,0,6,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Beach;BeachB;Bluecave;IslandA;IslandB;Offshore,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+223,Average Driftwood,0,30,5,40.0,33.96,51.96,49.96,49.96,8,1,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Jungle;JungleB;LakeA;LakeB;RiverA;RiverB,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+224,Straight Driftwood,0,500,5,40.0,33.96,51.96,49.96,49.96,9,2,7,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Jungle;JungleB;LakeA;LakeB;RiverA;RiverB,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+225,Average Seaweed,0,30,5,60.0,50.94,77.94,74.93,74.94,10,0,4,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,junk,Beach;BeachB;IslandA;Offshore,holds the line,5,38.0,25.0,1.0,1.0,5.0,0.5,0.2
+226,Arctic Grayling,2,360,40,40.0,33.96,51.96,49.96,49.96,11,1,3,Spoon,0.1,,,Submap01,holds the line,5,38.0,25.0,1.2,1.0,75.0,1.4,1.2
+227,Hikarimuji Koi,3,2820,80,120.0,101.88,155.88,149.87,149.88,12,2,14,,0,,,Submap04,underwater,9,58.0,11.0,4.0,1.0,175.0,2.2,1.8
+228,Tancho Koi,3,780,80,60.0,50.94,77.94,74.93,74.94,1,0,6,,0,,,Submap04,holds the line,7,50.0,15.0,2.0,1.0,125.0,1.7,1.4
+229,Kohaku Koi,3,810,80,60.0,50.94,77.94,74.93,74.94,2,1,7,,0,,,Submap04,holds the line,7,50.0,15.0,2.0,1.0,125.0,1.6,1.0
+230,Akamuji Koi,3,735,80,60.0,50.94,77.94,74.93,74.94,3,2,8,,0,,,Submap04,holds the line,7,50.0,15.0,2.0,1.0,125.0,1.7,0.6
+231,Shiroutsuri Koi,3,765,80,60.0,50.94,77.94,74.93,74.94,4,0,6,,0,,,Submap04,holds the line,7,50.0,15.0,2.0,1.0,125.0,1.6,0.2
+232,Demon Stinger,3,985,80,35.0,29.71,45.46,43.71,43.71,5,1,7,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1,,,Beach,holds the line,5,38.0,25.0,2.0,1.0,75.0,1.4,0.8

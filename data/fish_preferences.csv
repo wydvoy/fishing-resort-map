@@ -1,0 +1,234 @@
+fish_id,name,base_colour,action,lure_types,lure_accept_rate
+0,Horse Mackerel,1,plain,Spoon,0.1
+1,Sea Eel,2,rattle,,0.0
+2,Saury,3,vibration,,0.0
+3,Black Rockfish,4,plain,Spoon,0.1
+4,Mackerel,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0
+5,Japanese Lobster,6,vibration,,0.0
+6,Sea Bass,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0
+7,Halibut,8,rattle,,0.0
+8,Black Porgy,9,vibration,,0.0
+9,Oriental Butterflyfish,10,plain,,0.0
+10,Pennant Coralfish,11,rattle,,0.0
+11,Clownfish,12,vibration,,0.0
+12,Ocellaris Clownfish,1,plain,,0.0
+13,Black Cod,2,rattle,Minnow,0.1
+14,King of Herrings,3,vibration,,0.0
+15,Football Fish,4,plain,,0.0
+16,Coelacanth,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+17,Catfish,6,vibration,Spoon,0.8
+18,Bluegill,7,plain,Spoon;Spinner,1.0
+19,Pirarucu,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+20,Dorado,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+21,Black Ghost Knifefish,10,plain,,0.0
+22,Black Bass,11,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0
+23,King Salmon,12,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+24,Arowana,1,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+25,Piranha,2,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+26,Koi,0,vibration,,0.0
+27,Alligator Gar,4,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+28,Mahi-mahi,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0
+29,Swordfish,6,vibration,Minnow,0.1
+30,Platinum Alligator Gar,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+31,Flounder,8,rattle,,0.0
+32,Armored Catfish,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+33,Normal Driftwood,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+34,Ocean Sunfish,11,rattle,,0.0
+35,Guppy,12,vibration,,0.0
+36,Platinum Guppy,1,plain,,0.0
+37,Cardinal Tetra,2,rattle,,0.0
+38,Porcupine Fish,3,vibration,,0.0
+39,Great White Shark,4,plain,Minnow,0.8
+40,Barramundi,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+41,Japanese Salmon,6,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+42,Rainbow Trout,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+43,Crucian Carp,8,rattle,,0.0
+44,Japanese Whiting,9,vibration,,0.0
+45,Peacock Bass,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+46,Snakehead,11,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+47,Northern Pike,12,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+48,Pacific Bluefin Tuna,1,plain,Minnow,0.1
+49,Trevally,2,rattle,Minnow,0.8
+50,Moray Eel,3,vibration,Spoon,0.1
+51,Sea Robin,4,plain,Spoon,0.1
+52,Redtail Catfish,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+53,Pond Smelt,6,vibration,,0.0
+54,Hammerhead Shark,7,plain,Minnow,0.8
+55,Giant Squid,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+56,Seahorse,9,vibration,,0.0
+57,Longnose Hawkfish,10,plain,,0.0
+58,Flying Fish,11,rattle,,0.0
+59,Marbled Rockfish,12,vibration,Spoon,0.1
+60,Threespot Dascyllus,1,plain,,0.0
+61,Smallscale Blackfish,2,rattle,Spoon,0.1
+62,Bonefish,3,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+63,Yellowtail Amberjack,4,plain,Minnow,0.1
+64,Greater Amberjack,5,rattle,Minnow,0.1
+65,Lionfish,6,vibration,Minnow,0.1
+66,Blue Tang,7,plain,,0.0
+67,Forceps Fish,8,rattle,,0.0
+68,Napoleon Fish,9,vibration,,0.0
+69,Thick Seaweed,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+70,Moorish Idol,11,rattle,,0.0
+71,Bluefin Trevally,12,vibration,Minnow,0.1
+72,Japanese Char,1,plain,Spinner,0.8
+73,Japanese Dace,2,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+74,Steelhead,3,vibration,Spinner,0.1
+75,Dolly Varden,4,plain,Spinner,0.8
+76,Brown Trout,5,rattle,Spinner,0.8
+77,Brook Trout,6,vibration,Spinner,0.8
+78,Bigmouth Buffalo,7,plain,,0.0
+79,Smallmouth Buffalo,8,rattle,,0.0
+80,Nile Perch,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0
+81,White Sturgeon,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+82,Dogtooth Tuna,11,rattle,Minnow,0.1
+83,Clown Triggerfish,12,vibration,,0.0
+84,Blueface Angelfish,1,plain,,0.0
+85,Emperor Angelfish,2,rattle,,0.0
+86,Royal Angelfish,3,vibration,,0.0
+87,Male Sockeye Salmon,4,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+88,Silver Salmon,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+89,Chum Salmon,6,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+90,Pink Salmon,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+91,Black Bullhead,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+92,Brown Bullhead,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+93,Yellow Bullhead,10,plain,Spoon,0.1
+94,Rooster Fish,11,rattle,Minnow,0.1
+95,Papuan Black Bass,12,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+96,Payara,1,plain,Minnow,0.1
+97,Tigerfish,2,rattle,Minnow,0.1
+98,Murray Cod,3,vibration,Minnow,0.1
+99,White Perch,4,plain,Spoon;Minnow,0.8
+100,Rock Bass,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+101,Black Carp,6,vibration,Minnow,0.1
+102,Burbot,7,plain,Spoon,0.8
+103,Muskie,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+104,Chain Pike,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+105,American Pickerel,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+106,Longnose Gar,11,rattle,Minnow,0.8
+107,Shortnose Gar,12,vibration,Minnow,0.8
+108,Elephantnose Fish,1,plain,Minnow,0.1
+109,Bowfin,2,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+110,Sailfish,3,vibration,Spoon;Minnow,0.1
+111,Sockeye Salmon (F),4,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+112,Sockeye Salmon,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+113,Barracuda,6,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+114,Rock Porgy,7,plain,,0.0
+115,Striped Beakfish,8,rattle,,0.0
+116,Whale Shark,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+117,Royal Knife Fish,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+118,Polypterus,11,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+119,Butterfly Fish,12,vibration,,0.0
+120,Manta Ray,1,plain,,0.0
+121,Bottlenose Dolphin,2,rattle,,0.0
+122,Green Sea Turtle,3,vibration,,0.0
+123,Emperor Penguin,4,plain,,0.0
+124,Milkfish,5,rattle,,0.0
+125,Calfornia Corbina,6,vibration,,0.0
+126,Smallmouth Bass,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+127,Lake Trout,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+128,Walleye,9,vibration,Minnow,0.8
+129,Giant Snakehead,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+130,Channa Lucius,11,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+131,Ocellated Snakehead,12,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+132,Rainbow Runner,1,plain,Spoon;Minnow,0.1
+133,Spanish Mackerel,2,rattle,Minnow,0.8
+134,Bonito,3,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.8
+135,Japanese Amberjack,4,plain,Minnow,0.1
+136,Striped Marlin,5,rattle,Minnow,0.1
+137,John Dory,6,vibration,,0.0
+138,Xiphactinus,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+139,Japanese Bullhead Shark,8,rattle,,0.0
+140,Pteraspis,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+141,Bothriolepis,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+142,Coral Trout,11,rattle,Spoon;Minnow,0.1
+143,Japanese Huchen,12,vibration,Spoon;Spinner,0.1
+144,Red Emperor (Adult),1,plain,Minnow,0.1
+145,Red Emperor (Young),2,rattle,,0.0
+146,Pacu,3,vibration,,0.0
+147,Yellowfin Tuna,4,plain,Minnow,0.1
+148,Black Marlin,5,rattle,Minnow,0.1
+149,Halibut,6,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+150,Tarpon,7,plain,Spoon;Minnow,0.8
+151,Freshwater Prawn,8,rattle,,0.0
+152,Goblin Shark,9,vibration,,0.0
+153,Dunkleosteus,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+154,Cobia,11,rattle,Spoon;Minnow,0.1
+155,N. Pacific Giant Octopus,12,vibration,,0.0
+156,Red Stingray,1,plain,Spoon,0.8
+157,Frilled Shark,2,rattle,,0.0
+158,Wels Catfish,3,vibration,Spoon,0.1
+159,Red Snapper,4,plain,Minnow,0.1
+160,Cutthroat Trout,5,rattle,Spinner,0.1
+161,Alaska Pollock,6,vibration,Minnow,0.8
+162,Bighead Carp,7,plain,Minnow,0.1
+163,Silver Carp,8,rattle,Minnow,0.1
+164,Acanthodes,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+165,Climatius,10,plain,,0.0
+166,Magoi,11,rattle,,0.0
+167,Mackerel Tuna,12,vibration,Spoon;Minnow,1.0
+168,Oilfish,1,plain,,0.0
+169,Chicken Grunt,2,rattle,Minnow,0.1
+170,Indo-Pacific Blue Marlin,3,vibration,Minnow,0.1
+171,Coalfish,4,plain,Minnow,0.1
+172,Electric Eel,5,rattle,,0.0
+173,Betta,6,vibration,,0.0
+174,Wild Water Weed,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+175,Bushy Water Weed,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+176,Pudgy Cuskeel,9,vibration,,0.0
+177,Octopus,10,plain,Spoon,0.1
+178,Largehead Hairtail,11,rattle,,0.0
+179,Barreleye,12,vibration,,0.0
+180,Ammonite Fossil,1,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+181,Trilobite Fossil,2,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+182,Flapjack Octopus,3,vibration,,0.0
+183,Yellow Perch,4,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,1.0
+184,Cheiracanthus,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+185,Pacific Herring,6,vibration,Spoon,0.1
+186,Grass Carp,7,plain,Minnow,0.1
+187,Apapa,8,rattle,,0.0
+188,Giant Grouper,9,vibration,Minnow,0.1
+189,African Pike,10,plain,Spoon,0.1
+190,Hyneria,11,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+191,Permit,12,vibration,Spoon;Minnow,0.8
+192,Longfin Yellowtail,1,plain,Minnow,0.1
+193,Pink Anemonefish,2,rattle,,0.0
+194,Purple Queen,3,vibration,,0.0
+195,Eastern Blue Devil Fish,4,plain,,0.0
+196,Red-bellied Fusilier,5,rattle,Spoon,0.1
+197,Mackerel Icefish,6,vibration,,0.0
+198,Giant Trevally,7,plain,Minnow,0.1
+199,Rolfosteus Canningensis,8,rattle,,0.0
+200,Helicoprion,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+201,Red Sea Bream,10,plain,Spoon,0.1
+202,Black Sea Bream,11,rattle,Spoon,0.1
+203,Striped Mullet,12,vibration,,0.0
+204,Lenok,1,plain,Spoon,0.1
+205,Showa Koi,2,rattle,,0.0
+206,Blotchy Sillago,3,vibration,,0.0
+207,Sardine,4,plain,,0.0
+208,Fat Minnow,5,rattle,,0.0
+209,Amur Pike,6,vibration,Minnow,0.1
+210,Multicolorfin Rainbow,7,plain,,0.0
+211,Auxis Rochei,8,rattle,Spoon,1.0
+212,Thamnaconus Modestus,9,vibration,,0.0
+213,Arabesque Greenling,10,plain,Minnow,0.8
+214,Filefish,11,rattle,,0.0
+215,Parrotfish,12,vibration,Spoon,0.1
+216,Hucho Taimen,1,plain,Minnow,0.8
+217,Grass Puffer,2,rattle,,0.0
+218,Japanese Pufferfish,3,vibration,,0.0
+219,Yellowfin Goby,4,plain,,0.0
+220,Needlefish,5,rattle,Minnow,0.1
+221,Killer Whale,6,vibration,,0.0
+222,Fine Driftwood,7,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+223,Average Driftwood,8,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+224,Straight Driftwood,9,vibration,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+225,Average Seaweed,10,plain,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1
+226,Arctic Grayling,11,rattle,Spoon,0.1
+227,Hikarimuji Koi,12,vibration,,0.0
+228,Tancho Koi,1,plain,,0.0
+229,Kohaku Koi,2,rattle,,0.0
+230,Akamuji Koi,3,vibration,,0.0
+231,Shiroutsuri Koi,4,plain,,0.0
+232,Demon Stinger,5,rattle,Spoon;Spinner;Crankbait;Swimming Lure;Minnow,0.1

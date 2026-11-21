@@ -1,0 +1,12 @@
+rod_id,name,stars,size_cm,tension_max,cast_rate,price
+0,LF-101 Journey,1,0-30,380,1.0,0
+1,LF-102 Next,2,0-30,600,1.5,1200
+2,LF-111 Long Drive,3,0-30,1000,2.0,18000
+3,MF-210 Tourist,2,20-70,600,1.5,2800
+4,MF-222 Heroic,3,20-70,1000,2.0,24000
+5,HF-1400 Hamstring,2,50-200,600,1.0,4200
+6,HF-1800 Storm Killer,3,50-200,1000,1.5,28000
+7,X-100 Berserker,2,50-+,600,1.0,26000
+8,X-999 Titan,3,50-+,1000,1.5,0
+9,TM-1000 Marine Buster,3,150-+,1000,,30000
+10,Smelting Rental Rod,1,0-30,100,,0

@@ -1,0 +1,22 @@
+weather,shift,probability
+Clear,0,0.6923
+Clear,1,0.2308
+Clear,2,0.0769
+Sunny,0,0.4375
+Sunny,1,0.3125
+Sunny,2,0.1875
+Sunny,3,0.0625
+Light cloud,0,0.2941
+Light cloud,1,0.1765
+Light cloud,2,0.3529
+Light cloud,3,0.1176
+Light cloud,4,0.0588
+Cloudy,0,0.3125
+Cloudy,1,0.0625
+Cloudy,3,0.1250
+Cloudy,4,0.3750
+Cloudy,5,0.1250
+Overcast,0,0.2000
+Overcast,1,0.0667
+Overcast,5,0.2000
+Overcast,6,0.5333

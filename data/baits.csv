@@ -1,0 +1,15 @@
+bait_id,name,size,appeal_cap_m,appeal_rate_per_sec,price
+0,Free Bait,Regular,8.0,0.3,
+1,Basic Bait,Regular,8.0,0.3,20
+2,Red Bait: Regular,Regular,10.0,0.5,40
+3,Blue Bait: Regular,Regular,10.0,0.5,40
+4,Yellow Bait: Regular,Regular,10.0,0.5,40
+5,Red Bait: Large,Large,10.0,0.5,60
+6,Blue Bait: Large,Large,10.0,0.5,60
+7,Yellow Bait: Large,Large,10.0,0.5,60
+8,Quick Hitter: Regular,Regular,6.0,2.0,160
+9,Quick Hitter: Large,Large,6.0,2.0,240
+10,Wide Range: Regular,Regular,14.0,0.4,160
+11,Wide Range: Large,Large,14.0,0.4,240
+12,Rainbow: Regular,Regular,10.0,1.0,1200
+13,Rainbow: Large,Large,10.0,1.0,1800

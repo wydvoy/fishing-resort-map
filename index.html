@@ -173,6 +173,35 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
 .sheet .close { position: absolute; top: 18px; right: 18px; }
 .sheet .core { position: relative; }
 
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 18px; }
+.facts div { padding: 11px 6px 9px; border-radius: 16px; text-align: center; background: rgba(255, 255, 255, .035); }
+.facts b { display: block; font: 400 18px/1.1 var(--display); letter-spacing: .3px; white-space: nowrap; }
+.facts small { display: block; margin-top: 4px; color: var(--dim); font-size: 11px; font-weight: 600; }
+.wx { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 3px; border-radius: 18px; background: rgba(255, 255, 255, .035); }
+.wx button { border: 0; background: none; padding: 6px 2px; border-radius: 14px; font-size: 11.5px; line-height: 1.25; font-weight: 600; color: var(--soft); transition: background .5s var(--ease), color .5s var(--ease); }
+.wx button:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
+.wx button.on { background: var(--text); color: #0a0a0b; }
+.mk { margin: 18px 0 8px; color: var(--soft); font-size: 12px; font-weight: 700; }
+.pill { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px 5px 8px; border-radius: 999px; background: rgba(255, 255, 255, .045); color: var(--soft); font-size: 12px; }
+.pill b { font-weight: 600; color: var(--text); }
+.pill .rk { color: var(--hot2); }
+.sw { flex: none; display: inline-block; width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25); }
+.sws { display: inline-flex; }
+.sws .sw + .sw { margin-left: -4px; }
+.lrows { display: flex; flex-direction: column; gap: 4px; }
+.lrow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 14px; background: rgba(255, 255, 255, .03); }
+.lrow .ln { min-width: 0; }
+.lrow .ln b { display: block; font-weight: 600; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lrow .ln small { color: var(--dim); font-size: 11.5px; }
+.lrow .lv { color: var(--hot2); font-weight: 700; font-size: 13px; }
+#catch .meta { margin-top: 8px; }
+.more { text-decoration: none; padding: 5px 5px 5px 16px; flex-direction: row-reverse; }
+.more:hover span { transform: translateX(2px); }
+.credit { margin-top: 10px; }
+.credit a, .note a { color: var(--hot2); text-decoration: none; }
+.credit a:hover, .note a:hover { text-decoration: underline; }
+a.ibtn { text-decoration: none; }
+
 @media (max-width: 1280px) {
   #areaspanel { width: 228px; }
   #detailpanel { width: 330px; }
@@ -235,6 +264,7 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
     <div class="sugg" id="sugg" role="listbox"></div>
   </div>
   <button class="ibtn on" id="labels" title="Zone labels"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M2.5 3.5h7l4 4.5-4 4.5h-7z"/><circle cx="5.5" cy="8" r=".8" fill="currentColor"/></svg><span>Labels</span></button>
+  <a class="ibtn" id="mechlink" href="mechanics.html" title="How fishing works"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h7.5l2.5 2.5v8.5H3z"/><path d="M5.5 7h5M5.5 9.5h5M5.5 12h3"/></svg><span>Mechanics</span></a>
   <button class="ibtn" id="helpbtn" title="How to read this"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6.4 6.3a1.7 1.7 0 1 1 2.3 1.6c-.5.2-.7.6-.7 1.1v.3"/><circle cx="8" cy="11.4" r=".5" fill="currentColor"/></svg></button>
 </header>
 
@@ -243,7 +273,8 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
   <div style="padding:0 22px 22px">
     <div class="sub"><span class="k">Rarity</span></div>
     <div class="legend" id="legend"></div>
-    <div class="note">Zone boxes, numbers and fish counts come from <code>Fish/setSightArea.bin</code>. Species and weights come from each area's <code>fishFree</code> table. The map is rendered from the stage models, so small details may be rough.</div>
+    <div class="note">Zone boxes, numbers and fish counts come from <code>Fish/setSightArea.bin</code>. Species and weights come from each area's <code>fishFree</code> table. The map is rendered from the stage models, so small details may be rough.
+      <div class="credit">Lure, bait, size and tackle data: a port of <a href="https://github.com/kyuuri1234/FishingResortData" target="_blank" rel="noopener">kyuuri1234's research</a>, re-checked on the USA disc. Thank you!</div></div>
   </div>
 </div></aside>
 
@@ -260,11 +291,12 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
     <li><i>03</i><span><b>Time bands</b>: Morning 06:00 to 11:59, Day 12:00 to 15:59, Evening 16:00 to 17:59, Night 18:00 to 05:59.</span></li>
     <li><i>04</i><span><b>Fish count</b> is how many fish the zone holds in a band.</span></li>
     <li><i>05</i><span><b>Share</b> is the chance a fish spawned in the zone is that species: its weight divided by the zone's total weight in that band. Weight 0 means it does not spawn there in that band.</span></li>
-    <li><i>06</i><span><b>Search</b> a fish to light up every zone where it can spawn in the chosen band, with its share.</span></li>
+    <li><i>06</i><span><b>Search</b> a fish to light up every zone where it can spawn in the chosen band, with its share, plus its favourite lure colour, best lures and bait for each weather.</span></li>
   </ul>
 </div></div></div>
 
 <script src="data.js"></script>
+<script src="mech.js"></script>
 <script>
 (() => {
   const D = window.FR_DATA;
@@ -276,11 +308,12 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
   ];
   const TIERS = ["Tier 0, common", "Tier 1", "Tier 2", "Tier 3", "Tier 4", "Tier 5, legend"];
   const TIER_COL = [0, 1, 2, 3, 4, 5].map(i => getComputedStyle(document.documentElement).getPropertyValue("--t" + i).trim());
+  const ARROW_R = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M9 4.5 12.5 8 9 11.5"/></svg>';
   const ARROW_L = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 8h-9M7 4.5 3.5 8 7 11.5"/></svg>';
   const $ = id => document.getElementById(id);
   const canvas = $("map"), ctx = canvas.getContext("2d"), wrap = $("mapwrap"), tip = $("tip");
   const mobile = matchMedia("(max-width: 1080px)");
-  const state = { moved: false, area: 0, band: 0, labels: true, species: null, hover: null, sel: null, view: { s: 1, x: 0, y: 0 } };
+  const state = { moved: false, area: 0, band: 0, labels: true, species: null, weather: 0, hover: null, sel: null, view: { s: 1, x: 0, y: 0 } };
   const images = {};
   const SPECIES = Object.keys(D.species).map(Number).sort((a, b) => D.species[a].name.localeCompare(D.species[b].name));
 
@@ -500,10 +533,12 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
       const rows = hits.map(h => `<div class="row" data-a="${h.ai}" data-z="${h.zi}"><span class="nm"><span class="dot" style="background:${h.ai === state.area ? "var(--hot)" : "var(--faint)"}"></span><span>Zone ${h.z.n} <span class="muted" style="font-weight:400">${esc(h.ar.name)}</span></span></span><span class="v num">${(h.sh * 100).toFixed(1)}%<small>${h.z.counts[b]} fish</small></span><span class="track"><i style="width:${Math.max(3, h.sh * 100)}%;background:var(--gold)"></i></span></div>`).join("");
       el.innerHTML = `<span class="k">Fish</span><h2><span class="dot" style="background:${TIER_COL[sp.tier]};margin-right:10px;vertical-align:4px"></span>${esc(sp.name)}</h2>
         <div class="meta">${TIERS[sp.tier]}</div>
+        <div id="catch">${catchHtml(state.species)}</div>
         <div class="sub"><span class="k">Zones per band</span></div>${tiles(counts)}
         <div class="sub"><span class="k">Where &middot; ${BANDS[b].name}</span><span class="meta">${hits.length} zones</span></div>
         ${rows ? `<div class="rows">${rows}</div>` : `<p class="muted">Does not spawn in any zone in this band.</p>`}`;
       el.querySelectorAll("[data-a]").forEach(r => r.onclick = () => focusZone(+r.dataset.a, +r.dataset.z));
+      bindCatch();
       return;
     }
     const totals = BANDS.map((_, i) => a.zones.reduce((s, z) => s + z.counts[i], 0));
@@ -518,6 +553,48 @@ code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6
       <p class="meta" style="margin:-4px 0 10px">Expected share of all fish, each zone weighted by its fish count. Click a zone for its own table.</p>
       ${rows ? `<div class="rows">${rows}</div>` : `<p class="muted">No fish in this band.</p>`}`;
     el.querySelectorAll("[data-sp]").forEach(r => r.onclick = () => setSpecies(+r.dataset.sp));
+  }
+
+  const M = window.FR_MECH;
+  const COLOUR_HEX = ["#232326", "#e0413a", "#f0682e", "#f59a2a", "#c46ad8", "#8a5a35", "#dfe3e8", "#d9b24c", "#f2de4a", "#7f8c3a", "#45b05a", "#3d8ef0"];
+  const swatch = c => c ? `<span class="sw" style="background:${COLOUR_HEX[c - 1]}" title="${M.colours[c - 1]}"></span>` : "";
+  const cm = v => (Math.round(v * 10) / 10).toString();
+  function catchHtml(id) {
+    const f = M && M.fish[id];
+    if (!f) return "";
+    const w = M.weather[state.weather];
+    const wx = M.weather.map((n, i) => `<button data-w="${i}" class="${i === state.weather ? "on" : ""}">${n}</button>`).join("");
+    const fav = f.fav[w].map(([c, p]) => `<span class="pill">${swatch(c)}${M.colours[c - 1]}<b class="num">${p}%</b></span>`).join("");
+    const lures = f.acc === "never" ? `<p class="meta">Does not take lures. Use bait.</p>` : f.lures[w].map(([lid, sc]) => {
+      const [name, type, c1, c2] = M.lures[lid];
+      return `<div class="lrow"><span class="sws">${swatch(c1)}${swatch(c2)}</span><span class="ln"><b>${esc(name)}</b><small>${type}</small></span><span class="num lv">&times;${sc.toFixed(2)}</span></div>`;
+    }).join("");
+    const bait = f.bait[w].map(([bid, m]) => `<span class="pill">${esc(M.baits[bid])}<b class="num">&times;${m}</b></span>`).join("");
+    const types = f.types.map(([t, a, b]) => `${t} ${a}${b == null ? "+" : " to " + b} cm`).join(", ");
+    const ranks = ["S", "A", "B", "C", "D"].map((r, i) => `<span class="pill"><b class="rk">${r}</b><span class="num">${+f.rank[i].toFixed(2)}+ cm</span></span>`).join("");
+    const troll = f.troll.map(([sea, pct, lure]) => `<span class="pill">${esc(sea)}<b class="num">${pct}% of hits &middot; lure ${lure}</b></span>`).join("");
+    return `<div class="facts">
+        <div><b class="num">${cm(f.cm[0])}&ndash;${cm(f.cm[1])}</b><small>cm</small></div>
+        <div><b class="num">${f.g}</b><small>Grade</small></div>
+        <div><b class="num">${f.pts}</b><small>Points</small></div>
+        <div><b class="num">${f.pull}</b><small>Pull class</small></div>
+      </div>
+      <div class="sub"><span class="k">How to catch</span><span class="meta">by weather</span></div>
+      <div class="wx" role="tablist" aria-label="Weather">${wx}</div>
+      ${f.acc === "never" && !f.troll.length ? "" : `<div class="mk">Favourite lure colour</div><div class="chips">${fav}</div>`}
+      <div class="mk">Best lures</div>${lures ? `<div class="lrows">${lures}</div>` : `<p class="meta">No lure fits its size.</p>`}
+      ${f.acc === "never" ? "" : `<p class="meta">Takes ${types}, ${f.acc}. Action: ${f.act}. Score is the colour match with the x1.2 action bonus.</p>`}
+      <div class="mk">Best bait</div><div class="chips">${bait}</div>
+      <div class="mk">Size ranks</div><div class="chips">${ranks}</div>
+      <div class="mk">Tackle</div><p class="meta" style="margin:0">Rod: ${f.rod}. Fish ${f.hold}, stamina ${f.stam}.</p>
+      ${troll ? `<div class="mk">Trolling</div><div class="chips">${troll}</div>` : ""}
+      ${f.unlock ? `<div class="mk">Unlock</div><div class="chips"><span class="pill">${esc(f.unlock)}</span></div>` : ""}
+      <a class="back more" href="mechanics.html#lure-colour"><span>${ARROW_R}</span>How these numbers work</a>`;
+  }
+  function bindCatch() {
+    const box = $("catch");
+    if (!box) return;
+    box.querySelectorAll("[data-w]").forEach(btn => btn.onclick = () => { state.weather = +btn.dataset.w; box.innerHTML = catchHtml(state.species); bindCatch(); });
   }
 
   function focusZone(ai, zi) {

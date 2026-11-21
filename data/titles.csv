@@ -1,0 +1,34 @@
+level,title,exp_required,odds_column
+0,Visitor,0,1
+1,Rookie Rank 10,30,1
+2,Rookie Rank 9,100,1
+3,Rookie Rank 8,180,1
+4,Rookie Rank 7,280,1
+5,Rookie Rank 6,420,1
+6,Rookie Rank 5,600,2
+7,Rookie Rank 4,820,2
+8,Rookie Rank 3,1080,2
+9,Rookie Rank 2,1380,2
+10,Rookie Rank 1,1720,2
+11,Amateur Rank 10,2220,2
+12,Amateur Rank 9,2770,3
+13,Amateur Rank 8,3370,3
+14,Amateur Rank 7,4020,3
+15,Amateur Rank 6,4720,3
+16,Amateur Rank 5,5470,3
+17,Amateur Rank 4,6270,3
+18,Amateur Rank 3,7120,4
+19,Amateur Rank 2,8020,4
+20,Amateur Rank 1,9020,4
+21,Expert Rank 10,10120,4
+22,Expert Rank 9,11320,4
+23,Expert Rank 8,12620,4
+24,Expert Rank 7,14020,5
+25,Expert Rank 6,15520,5
+26,Expert Rank 5,17120,5
+27,Expert Rank 4,18820,5
+28,Expert Rank 3,20820,5
+29,Expert Rank 2,23320,5
+30,Expert Rank 1,26320,5
+31,World Champion,36320,5
+32,Fishing King,51320,5

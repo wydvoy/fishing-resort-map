@@ -1,0 +1,157 @@
+lure_id,name,type,color1,color2,mechanism,size_min_cm,size_max_cm,appeal_base_m,price
+0,Blue Naga Scale,Spoon,7,12,0,0,70,5,
+1,Green Dragon Scale,Spoon,11,8,0,0,70,5,800
+2,Twin Color Gold/Red,Spoon,2,8,0,0,70,5,450
+3,Green Beetle,Spoon,11,9,0,0,70,5,350
+4,Red Beetle,Spoon,2,4,0,0,70,5,350
+5,Olive Beetle,Spoon,10,8,0,0,70,5,350
+6,Brown Beetle,Spoon,10,4,0,0,70,5,350
+7,Purple Beetle,Spoon,12,5,0,0,70,5,350
+8,Black Beetle,Spoon,1,3,0,0,70,5,350
+9,Green Tiger,Spoon,11,9,0,0,70,5,350
+10,Orange Tiger,Spoon,3,9,0,0,70,5,350
+11,Yellow Tiger,Spoon,4,9,0,0,70,5,350
+12,Light Blue Tiger,Spoon,12,10,0,0,70,5,350
+13,Black Tiger,Spoon,1,3,0,0,70,5,350
+14,Red Tiger,Spoon,2,4,0,0,70,5,350
+15,Yellow Naga Scale,Spoon,8,7,0,0,70,5,650
+16,Pink Naga Scale,Spoon,5,7,0,0,70,5,650
+17,Light Blue Goblin Toy,Spoon,12,7,0,50,,10,1270
+18,Red Goblin Toy,Spoon,2,7,0,50,,10,1270
+19,Black Goblin Toy,Spoon,1,7,0,50,,10,1270
+20,Purple Dragon Scale,Spoon,5,3,0,0,70,5,800
+21,Lightning Silver,Spoon,7,9,0,0,70,5,800
+22,Lightning Gold,Spoon,8,6,0,0,70,5,800
+23,Yellow/Blue Dotted SpoonCharacterized by its vivid polka-dot pattern. Designed for fish up to 2.30ft in length.,Spoon,9,12,0,0,70,5,350
+24,Blk/Purple Dotted Spoon,Spoon,1,5,0,0,70,5,350
+25,Twin Color Gold/Blue,Spoon,8,12,0,0,70,5,450
+26,Twin Color Gold/Green,Spoon,8,11,0,0,70,5,450
+27,Twin Color Yellow/Blue,Spoon,9,12,0,0,70,5,450
+28,Twin Color Orange/Blue,Spoon,4,7,0,0,70,5,450
+29,Twin Color Silver/Pink,Spoon,5,7,0,0,70,5,450
+30,Classic Gold,Spinner,1,8,0,0,70,8,380
+31,Light Blue Spinner,Spinner,7,9,0,0,70,8,620
+32,Deep Green McCoy,Spinner,10,8,0,50,,12,1420
+33,Classic Dark Silver,Spinner,1,7,0,0,70,8,380
+34,Classic Dark Gold,Spinner,1,8,0,0,70,8,380
+35,Classic Silver,Spinner,1,7,0,0,70,8,380
+36,Classic Blue,Spinner,1,12,0,0,70,8,380
+37,Classic Green,Spinner,1,11,0,0,70,8,380
+38,Light Green Spinner,Spinner,11,9,0,0,70,8,820
+39,Light Pink Spinner,Spinner,5,3,0,0,70,8,820
+40,Black Spinner,Spinner,1,3,0,0,70,8,820
+41,White Spinner,Spinner,7,9,0,0,70,8,820
+42,Gold Spinner,Spinner,8,6,0,0,70,8,820
+43,Black Gold McCoy,Spinner,10,8,0,50,,12,1420
+44,Blue McCoy,Spinner,7,9,0,50,,12,1420
+45,Silver McCoy,Spinner,7,9,0,50,,12,1420
+46,White McCoy,Spinner,8,6,0,50,,12,1420
+47,Pink McCoy,Spinner,8,6,0,50,,12,1420
+48,Orange/Blue Oriental,Spinner,3,5,0,0,70,8,450
+49,Pink Oriental,Spinner,8,6,0,0,70,8,450
+50,Blue Oriental,Spinner,8,6,0,0,70,8,450
+51,Green/Red Oriental,Spinner,10,8,0,0,70,8,450
+52,Purple/Green Oriental,Spinner,5,3,0,0,70,8,450
+53,Monochrome Oriental,Spinner,7,9,0,0,70,8,450
+54,Black/Red Spotted,Spinner,1,3,0,0,70,8,450
+55,Pink/Blue Spotted,Spinner,5,3,0,0,70,8,450
+56,Blue/Yellow Spotted,Spinner,12,10,0,0,70,8,450
+57,Green/Yellow Spotted,Spinner,11,9,0,0,70,8,450
+58,Purple/Yellow Spotted,Spinner,5,3,0,0,70,8,450
+59,Orange/Yellow Spotted,Spinner,4,2,0,0,70,8,450
+60,Orange Humble,Crankbait,0,5,0,20,70,8,480
+61,Green Humble,Crankbait,11,9,0,20,70,8,480
+62,Candy Pink,Crankbait,5,3,0,20,70,8,480
+63,Brown Camo,Crankbait,10,6,0,20,200,8,1600
+64,Silver Glory,Crankbait,7,9,0,50,,12,1800
+65,Candy Blue,Crankbait,12,10,0,20,70,8,480
+66,Candy Green,Crankbait,11,9,0,20,70,8,480
+67,Candy Yellow,Crankbait,8,6,0,20,70,8,480
+68,Candy Orange,Crankbait,4,2,0,20,70,8,480
+69,Candy Red,Crankbait,2,4,0,20,70,8,480
+70,Black Camo,Crankbait,1,6,0,20,200,8,1600
+71,Green Camo,Crankbait,10,6,0,20,200,8,1600
+72,Blue Camo,Crankbait,12,7,0,20,200,8,1600
+73,Yellow Camo,Crankbait,10,8,0,20,200,8,1600
+74,Orange Camo,Crankbait,3,10,0,20,200,8,1600
+75,Green Glory,Crankbait,7,9,0,50,,12,1800
+76,Pink Glory,Crankbait,5,7,0,50,,12,1800
+77,Brown Glory,Crankbait,6,8,0,50,,12,1800
+78,Dark Glory,Crankbait,7,9,0,50,,12,1800
+79,Gold Glory,Crankbait,8,6,0,50,,12,1800
+80,Green Zebra Crank,Crankbait,11,9,0,50,200,12,1200
+81,Blue Zebra Crank,Crankbait,12,10,0,50,200,12,1200
+82,Pink Zebra Crank,Crankbait,5,3,0,50,200,12,1200
+83,Yellow Zebra Crank,Crankbait,9,7,0,50,200,12,1200
+84,Silver Zebra Crank,Crankbait,7,9,0,50,200,12,1200
+85,Orange Zebra Crank,Crankbait,0,5,0,50,200,12,1200
+86,Pink Crescent,Crankbait,5,3,0,20,200,8,1400
+87,Blue Crescent,Crankbait,12,10,0,20,200,8,1400
+88,Yellow Crescent,Crankbait,9,7,0,20,200,8,1400
+89,Deep Pink Crescent,Crankbait,2,4,0,20,200,8,1400
+90,Green Crescent,Crankbait,11,9,0,20,200,8,1400
+91,Orange Crescent,Crankbait,3,3,0,20,200,8,1400
+92,Light Green Vibe Root,Swimming Lure,11,9,2,20,70,6,720
+93,Light Blue Vibe Root,Swimming Lure,12,10,2,20,70,6,720
+94,Brown Gullible,Swimming Lure,10,8,2,20,200,9,1200
+95,Shining Silver,Swimming Lure,7,9,1,20,70,6,1200
+96,Green Paragon,Swimming Lure,11,9,2,50,200,12,2400
+97,Green Gullible,Swimming Lure,11,9,2,20,200,9,1200
+98,Blue Gullible,Swimming Lure,12,10,2,20,200,9,1200
+99,Silver Gullible,Swimming Lure,7,9,2,20,200,9,1200
+100,White Gullible,Swimming Lure,7,9,2,20,200,9,1200
+101,Black Gullible,Swimming Lure,1,3,2,20,200,9,1200
+102,Yellow Paragon,Swimming Lure,9,7,2,50,200,12,2400
+103,White Paragon,Swimming Lure,7,9,2,50,200,12,2400
+104,Red Paragon,Swimming Lure,2,4,2,50,200,12,2400
+105,Blue Paragon,Swimming Lure,7,9,2,50,200,12,2400
+106,Brown Paragon,Swimming Lure,1,3,2,50,200,12,2400
+107,Shining Gold,Swimming Lure,8,6,1,20,70,6,1200
+108,Shining Green,Swimming Lure,11,9,1,20,70,6,1200
+109,Shining Yellow,Swimming Lure,9,7,1,20,70,6,1200
+110,Shining Blue,Swimming Lure,12,10,1,20,70,6,1200
+111,Shining Pink,Swimming Lure,5,3,1,20,70,6,1200
+112,Big Pink Glow,Swimming Lure,5,3,2,50,,12,1600
+113,Orange Glow,Swimming Lure,4,2,2,20,70,6,620
+114,Yellow Glow,Swimming Lure,9,7,2,20,70,6,620
+115,Sky Blue Glow,Swimming Lure,12,10,2,20,70,6,620
+116,Big Blue Glow,Swimming Lure,12,10,2,50,,12,1600
+117,Big Green Glow,Swimming Lure,11,9,2,50,,12,1600
+118,Silver Fish Gripper,Swimming Lure,1,3,1,150,,12,2200
+119,Gold Fish Gripper,Swimming Lure,10,8,1,150,,12,2200
+120,Green Fish Gripper,Swimming Lure,11,9,1,150,,12,2200
+121,Pink Fish Gripper,Swimming Lure,5,3,1,150,,12,2200
+122,Blue Fish Gripper,Swimming Lure,12,10,1,150,,12,2200
+123,Yellow Fish Gripper,Swimming Lure,9,7,1,150,,12,2200
+124,Cream Plains,Minnow,9,7,0,20,70,13,480
+125,Jam Plains,Minnow,5,3,0,20,70,13,480
+126,Pink Vivitie,Minnow,5,3,2,150,,18,2200
+127,Gold Wild King,Minnow,6,1,2,20,200,13,1200
+128,Gold Water Fang,Minnow,8,6,1,20,70,13,1050
+129,Silver Water Fang,Minnow,7,9,1,20,70,13,1050
+130,Blue Water Fang,Minnow,12,10,1,20,70,13,1050
+131,Green Water Fang,Minnow,10,8,1,20,70,13,1050
+132,Red Water Fang,Minnow,6,8,1,20,70,13,1050
+133,Purple Water Fang,Minnow,12,10,1,20,70,13,1050
+134,Green Wild King,Minnow,10,11,2,20,200,13,1200
+135,Yellow Wild King,Minnow,10,4,2,20,200,13,1200
+136,Red Wild King,Minnow,1,2,2,20,200,13,1200
+137,Silver Wild King,Minnow,1,7,2,20,200,13,1200
+138,Black Wild King,Minnow,1,5,2,20,200,13,1200
+139,Blue Vivitie,Minnow,12,10,2,150,,18,2200
+140,Yellow Vivitie,Minnow,9,7,2,150,,18,2200
+141,Green Vivitie,Minnow,11,9,2,150,,18,2200
+142,Orange Vivitie,Minnow,4,2,2,150,,18,2200
+143,Purple Vivitie,Minnow,5,3,2,150,,18,2200
+144,"Light Blue Trolling DishSinks well, floats well and has realistic coloring. Attracts large fish in the 1.64-6.56ft range.",Minnow,7,9,2,50,200,13,1700
+145,Pink Trolling Dish,Minnow,5,3,2,50,200,13,1700
+146,Green Trolling Dish,Minnow,10,8,2,50,200,13,1700
+147,Blue Trolling Dish,Minnow,12,10,2,50,200,13,1700
+148,Orange Trolling Dish,Minnow,6,8,2,50,200,13,1700
+149,Red Trolling Dish,Minnow,2,8,2,50,200,13,1700
+150,Red Hamstring,Minnow,2,7,0,20,200,13,2400
+151,Orange Hamstring,Minnow,0,7,0,20,200,13,2400
+152,Yellow Hamstring,Minnow,9,7,0,20,200,13,2400
+153,Pink Hamstring,Minnow,5,7,0,20,200,13,2400
+154,Green Zebra Minnow,Minnow,11,9,2,20,70,13,800
+155,Black Zebra Minnow,Minnow,1,3,2,20,70,13,800

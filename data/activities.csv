@@ -1,0 +1,62 @@
+name,area,price,contest,week1,week2,week3,week4
+,Teman Paradise Beach,20,0,every day,every day,every day,every day
+,Teman Paradise Beach,50,0,every day,every day,every day,every day
+Float Fishing School,Teman Paradise Beach,0,0,Mon Tue Wed Thu Fri Sat,Mon Tue Wed Thu Fri Sat,Mon Tue Wed Thu Fri Sat,Mon Tue Wed Thu Fri Sat
+Teman Float Fishing Tournament,Teman Paradise Beach,300,1,-,Sun,-,Sun
+Kayak Race: Normal,Teman Paradise Beach,100,0,every day,-,every day,-
+Fish Counting: Easy,Teman Paradise Beach,100,0,-,every day,-,every day
+Symbol Hunt at the Beach! - Easy,Teman Paradise Beach,100,0,Mon Tue,-,Mon Tue,-
+Symbol Hunt at the Beach! - Normal,Teman Paradise Beach,100,0,Thu Fri,-,Thu Fri,-
+Symbol Hunt at the Beach! - Hard,Teman Paradise Beach,100,0,-,Mon Tue,-,Mon Tue
+Symbol Hunt at the Beach! - Master,Teman Paradise Beach,100,0,-,Thu Fri,-,Thu Fri
+Trolling Tour - South Coast,Teman Paradise Beach,800,0,Sat Sun,Sat Sun,Sat Sun,Sat Sun
+Ferryboat Fishing Tour - South Coast,Teman Paradise Beach,200,0,every day,every day,every day,every day
+Ferryboat Fishing Tour - West Coast,Pacar Beach,200,0,every day,-,every day,-
+Teman Paradise Beach - Submarine Tour,Teman Paradise Beach,100,0,Mon Wed Fri,-,Mon Wed Fri,-
+Penangkapan West Coast - Submarine Tour,Teman Paradise Beach,100,0,Tue Thu Sat,Sun,Tue Thu Sat,Sun
+Penangkapan South Coast - Submarine Tour,Pacar Beach,250,0,Tue Thu Sat Sun,Tue Thu Sat Sun,Tue Thu Sat Sun,Tue Thu Sat Sun
+,Pacar Beach,20,0,every day,every day,every day,every day
+,Pacar Beach,50,0,every day,every day,every day,every day
+Pacar Float Fishing Tournament,Pacar Beach,300,1,Sun,-,Sun,-
+Fish Counting: Hard,Pacar Beach,100,0,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri
+Trolling Tour - West Coast,Pacar Beach,800,0,every day,-,every day,-
+Trolling Tour - North Coast,Pacar Beach,800,0,-,every day,-,every day
+Ferryboat Fishing Tour - North Coast,Pacar Beach,200,0,-,every day,-,every day
+Deserted Island Fishing Tour,Pacar Beach,500,0,Sat Sun,every day,Sat Sun,every day
+Pacar Beach - Submarine Tour,Pacar Beach,100,0,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri
+Penangkapan North Coast - Submarine Tour,Pacar Beach,100,0,Tue Thu Sun,Tue Thu Sat,Tue Thu Sun,Tue Thu Sat
+,Kanan Lake,100,0,every day,every day,every day,every day
+,Kanan Lake,50,0,every day,every day,every day,every day
+Kanan Lure Fishing Tournament,Kanan Lake,300,1,-,Sat,-,Sat
+Fish Counting: Master,Kanan Lake,100,0,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri
+Kayak Race: Hard,Kanan Lake,100,0,every day,-,every day,-
+Kayak Race: Master,Kanan Lake,100,0,-,every day,-,every day
+Kanan Lake Submarine Tour,Kanan Lake,100,0,every day,every day,every day,every day
+,Dua Ribu Lake,50,0,every day,every day,every day,every day
+Lure Fishing School,Dua Ribu Lake,0,0,every day,every day,every day,every day
+Dua Ribu Lure Fishing Tournament,Dua Ribu Lake,300,1,Sat,-,Sat,-
+Oriental Lake Rahaja Tour,Dua Ribu Lake,500,0,every day,every day,every day,every day
+Dua Ribu Lake Submarine Tour,Dua Ribu Lake,100,0,every day,every day,every day,every day
+,Tidur River,20,0,every day,every day,every day,every day
+,Tidur River,50,0,every day,every day,every day,every day
+Tidur Lure Fishing Tournament,Tidur River,300,1,-,Sun,-,Sun
+Ice River Gunan Fishing Tour,Tidur River,500,0,every day,every day,every day,every day
+Tidur River Submarine Tour,Tidur River,100,0,every day,every day,every day,every day
+,Kerikil River,20,0,every day,every day,every day,every day
+Kerikil Lure Fishing Tournament,Kerikil River,300,1,Sun,-,Sun,-
+Ice Lake Remak Smelt Fishing Tour,Kerikil River,500,0,every day,every day,every day,every day
+Kerikil River Submarine Tour,Kerikil River,100,0,every day,every day,every day,every day
+Safir Cave Submarine Tour,Kerikil River,100,0,every day,every day,every day,every day
+,Panas Jungle,50,0,every day,every day,every day,every day
+Panas Float Fishing Tournament,Panas Jungle,300,1,-,Sat,-,Sat
+Fish Counting: Normal,Panas Jungle,100,0,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri,Mon Wed Fri
+Symbol Hunt in the Jungle! - Easy,Panas Jungle,100,0,Mon Wed Fri Sun,Tue Thu Sat,Mon Wed Fri Sun,Tue Thu Sat
+Symbol Hunt in the Jungle! - Normal,Panas Jungle,100,0,Tue Thu Sat,Mon Wed Fri Sun,Tue Thu Sat,Mon Wed Fri Sun
+Symbol Hunt in the Jungle! - Hard,Panas Jungle,100,0,Mon Wed Fri Sun,Tue Thu Sat,Mon Wed Fri Sun,Tue Thu Sat
+Symbol Hunt in the Jungle! - Master,Panas Jungle,100,0,Tue Thu Sat,Mon Wed Fri Sun,Tue Thu Sat,Mon Wed Fri Sun
+Panas Jungle Submarine Tour,Panas Jungle,100,0,every day,every day,every day,every day
+,Malam Jungle,100,0,every day,every day,every day,every day
+Malam Float Fishing Tournament,Malam Jungle,300,1,Sat,-,Sat,-
+Isolated River Patarpa Fishing Tour,Malam Jungle,500,0,every day,every day,every day,every day
+Malam Jungle Submarine Tour,Malam Jungle,100,0,every day,every day,every day,every day
+Dream Aquarium Tour,Teman Paradise Beach,0,0,Wed Sun,Wed Sun,Wed Sun,Wed Sun

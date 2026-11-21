@@ -1,0 +1,32 @@
+area,area_name,kind,x,z
+Beach,Teman Paradise Beach,hotel,117.79,183.03
+Beach,Teman Paradise Beach,warp,118.66,135.19
+Beach,Teman Paradise Beach,warp,5.40,1.00
+Beach,Teman Paradise Beach,warp,117.50,37.00
+Beach,Teman Paradise Beach,warp,326.00,58.00
+Beach,Teman Paradise Beach,warp,445.00,108.90
+Jungle,Panas Jungle,hotel,-211.09,161.18
+Jungle,Panas Jungle,warp,-195.22,171.37
+Jungle,Panas Jungle,warp,-150.12,149.68
+RiverA,Tidur River,hotel,363.98,136.94
+RiverA,Tidur River,warp,380.00,146.50
+RiverA,Tidur River,warp,442.00,224.00
+RiverA,Tidur River,warp,463.30,58.74
+LakeA,Kanan Lake,hotel,-37.00,92.00
+LakeA,Kanan Lake,warp,-20.00,91.00
+LakeA,Kanan Lake,warp,-11.25,40.60
+RiverB,Kerikil River,hotel,530.50,232.73
+RiverB,Kerikil River,warp,540.00,217.00
+RiverB,Kerikil River,warp,410.60,166.60
+RiverB,Kerikil River,warp,334.11,338.61
+RiverB,Kerikil River,warp,257.00,397.00
+LakeB,Dua Ribu Lake,hotel,74.37,277.12
+LakeB,Dua Ribu Lake,warp,61.25,265.60
+LakeB,Dua Ribu Lake,warp,-16.03,181.91
+JungleB,Malam Jungle,hotel,-7.26,18.32
+JungleB,Malam Jungle,warp,7.50,30.00
+JungleB,Malam Jungle,warp,66.00,26.00
+BeachB,Pacar Beach,hotel,-60.70,-157.33
+BeachB,Pacar Beach,warp,-66.80,-128.00
+BeachB,Pacar Beach,warp,-45.00,-9.00
+BeachB,Pacar Beach,warp,115.00,34.50

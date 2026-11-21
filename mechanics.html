@@ -1,0 +1,3529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fishing Resort Mechanics</title>
+<meta name="description" content="How fishing works in Fishing Resort (Wii, USA): spawning, bites, lure colour, bait, size and rank, tackle, trolling, weather and the calendar.">
+<meta name="theme-color" content="#060607">
+<style>
+@font-face { font-family: "Lilita One"; src: url("fonts/lilita-one-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+:root {
+  color-scheme: dark;
+  --display: "Lilita One", "Plus Jakarta Sans", system-ui, sans-serif;
+  --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bg: #060607;
+  --glass: rgba(16, 16, 18, .72);
+  --core: #121214;
+  --core2: #18181b;
+  --hair: rgba(255, 255, 255, .07);
+  --hair2: rgba(255, 255, 255, .13);
+  --text: #f1f1f3;
+  --soft: #bdbdc4;
+  --dim: #85858d;
+  --hot: #ff7d54;
+  --hot2: #ffb08f;
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  --r: 28px;
+  --pad: 6px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+::selection { background: rgba(255, 125, 84, .3); }
+* { scrollbar-width: thin; scrollbar-color: #2c2c31 transparent; }
+.num { font-variant-numeric: tabular-nums; }
+a { color: var(--hot2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.glow { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(40% 35% at 15% 0%, rgba(255, 125, 84, .13), transparent 70%), radial-gradient(35% 30% at 95% 20%, rgba(89, 168, 240, .08), transparent 70%); }
+.k { display: block; color: var(--dim); font-size: 10.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+
+.island { position: fixed; z-index: 3; top: 16px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--hair2); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); box-shadow: 0 24px 60px -28px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .06); white-space: nowrap; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 12px; color: var(--text); }
+.brand:hover { text-decoration: none; }
+.brand svg { width: 22px; height: 22px; }
+.brand b { font: 400 19px/1 var(--display); letter-spacing: .4px; }
+.brand b span { color: var(--hot); }
+.tab { height: 40px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; color: var(--soft); font-weight: 600; font-size: 13px; transition: background .5s var(--ease), color .5s var(--ease); }
+.tab:hover { background: rgba(255, 255, 255, .07); color: var(--text); text-decoration: none; }
+.tab.on { background: var(--text); color: #0a0a0b; }
+.tab svg { width: 16px; height: 16px; }
+
+main { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 150px 24px 120px; }
+.hero { max-width: 760px; }
+.eyebrow { display: inline-block; padding: 5px 12px; border-radius: 999px; background: rgba(255, 125, 84, .1); border: 1px solid rgba(255, 125, 84, .25); color: var(--hot2); font-size: 10.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+h1 { font: 400 clamp(44px, 7vw, 84px)/.98 var(--display); letter-spacing: .5px; margin: 22px 0 18px; }
+h1 span { color: var(--hot); }
+.lede { color: var(--soft); font-size: 17px; max-width: 620px; margin: 0; }
+.thanks { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 6px 18px 6px 6px; border-radius: 999px; background: rgba(255, 255, 255, .04); border: 1px solid var(--hair); color: var(--soft); font-size: 13.5px; }
+.thanks i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--hot); color: #160700; font-style: normal; }
+.thanks i svg { width: 14px; height: 14px; }
+
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 72px 0 110px; }
+.card { display: flex; flex-direction: column; gap: 4px; padding: 22px 22px 20px; border-radius: 24px; background: linear-gradient(180deg, var(--core2), var(--core)); border: 1px solid var(--hair); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .05); color: var(--text); transition: transform .7s var(--ease), border-color .6s var(--ease), background .6s var(--ease); }
+.card:hover { text-decoration: none; transform: translateY(-3px); border-color: rgba(255, 125, 84, .35); }
+.card span { color: var(--hot); font-size: 12px; font-weight: 700; }
+.card b { font: 400 22px/1.15 var(--display); letter-spacing: .3px; margin-top: 18px; }
+.card small { color: var(--dim); font-size: 13px; }
+.card:first-child { grid-row: span 2; grid-column: span 2; justify-content: flex-end; background: radial-gradient(120% 80% at 0% 0%, rgba(255, 125, 84, .16), transparent 60%), linear-gradient(180deg, var(--core2), var(--core)); }
+.card:first-child b { font-size: 34px; }
+
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: start; }
+.toc { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 2px; padding: 10px; border-radius: 24px; background: rgba(255, 255, 255, .025); border: 1px solid var(--hair); }
+.toc a { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 14px; color: var(--soft); font-size: 13.5px; font-weight: 600; transition: background .5s var(--ease), color .5s var(--ease); }
+.toc a span { color: var(--dim); font-size: 11px; transition: color .5s var(--ease); }
+.toc a:hover { text-decoration: none; background: rgba(255, 255, 255, .05); color: var(--text); }
+.toc a.on { background: rgba(255, 255, 255, .08); color: var(--text); }
+.toc a.on span { color: var(--hot); }
+
+.secs { display: flex; flex-direction: column; gap: 56px; }
+.shell { background: rgba(255, 255, 255, .03); border: 1px solid var(--hair); border-radius: var(--r); padding: var(--pad); }
+.core { background: linear-gradient(180deg, var(--core2), var(--core)); border-radius: calc(var(--r) - var(--pad)); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .06); padding: 38px 42px 40px; }
+.sh { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+.sh .no { flex: none; width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; background: rgba(255, 125, 84, .1); color: var(--hot2); font-weight: 700; }
+.sh h2 { font: 400 38px/1.05 var(--display); letter-spacing: .4px; margin: 6px 0 0; }
+
+.md { color: var(--soft); }
+.md > :first-child { margin-top: 0; }
+.md p, .md ul, .md ol { margin: 0 0 16px; }
+.md ul, .md ol { padding-left: 20px; }
+.md li { margin: 4px 0; }
+.md li::marker { color: var(--hot); }
+.md ul.dl { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.md ul.dl li { margin: 0; }
+.md ul.dl a { display: inline-flex; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, .045); border: 1px solid var(--hair); transition: border-color .5s var(--ease), background .5s var(--ease); }
+.md ul.dl a:hover { text-decoration: none; border-color: rgba(255, 125, 84, .4); background: rgba(255, 125, 84, .08); }
+.md ul.dl code { background: none; padding: 0; }
+.md strong { color: var(--text); }
+.md h3 { font: 400 24px/1.15 var(--display); letter-spacing: .3px; color: var(--text); margin: 40px 0 14px; padding-top: 26px; border-top: 1px solid var(--hair); }
+.md h4 { font-size: 15px; color: var(--text); margin: 26px 0 10px; }
+.md code { font-size: 12.5px; background: rgba(255, 255, 255, .06); border-radius: 6px; padding: 1px 6px; color: var(--text); overflow-wrap: anywhere; }
+.tw { overflow-x: auto; margin: 0 0 18px; border-radius: 16px; border: 1px solid var(--hair); background: rgba(0, 0, 0, .18); }
+.md table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+.md th, .md td { padding: 9px 14px; border-bottom: 1px solid var(--hair); text-align: left; vertical-align: top; }
+.md th { color: var(--dim); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255, 255, 255, .025); white-space: nowrap; }
+.md td { font-variant-numeric: tabular-nums; }
+.md tr:last-child td { border-bottom: 0; }
+.md tbody tr { transition: background .4s var(--ease); }
+.md tbody tr:hover { background: rgba(255, 255, 255, .03); }
+
+footer { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; color: var(--dim); font-size: 13px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+.rv { opacity: 0; transform: translateY(28px); filter: blur(6px); transition: opacity .9s var(--ease), transform 1s var(--ease), filter .9s var(--ease); transition-delay: var(--d, 0ms); }
+.rv.in { opacity: 1; transform: none; filter: none; }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .toc { display: none; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .card:first-child { grid-row: auto; }
+}
+@media (max-width: 640px) {
+  .island { left: 12px; right: 12px; transform: none; justify-content: space-between; }
+  .brand b { display: none; }
+  main { padding: 104px 16px 80px; }
+  .cards { grid-template-columns: 1fr; margin: 48px 0 64px; }
+  .card:first-child { grid-column: auto; }
+  .core { padding: 26px 18px 26px; }
+  .sh h2 { font-size: 30px; }
+  .sh .no { width: 44px; height: 44px; border-radius: 14px; }
+  .secs { gap: 28px; }
+  footer { padding: 0 16px 40px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .rv { opacity: 1; transform: none; filter: none; transition: none; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<nav class="island">
+  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="#ff7d54" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3.5-5 9.5-6 14-2l4-3v10l-4-3c-4.5 4-10.5 3-14-2Z"/><circle cx="8.5" cy="11" r=".9" fill="#ff7d54"/></svg><b>Fishing Resort <span>Wiki</span></b></a>
+  <a class="tab" href="index.html"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M1.5 3.5 5.5 2l5 1.5 4-1.5v10.5l-4 1.5-5-1.5-4 1.5z"/><path d="M5.5 2v10.5M10.5 3.5V14"/></svg>Spawn map</a>
+  <a class="tab on" href="#top"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h7.5l2.5 2.5v8.5H3z"/><path d="M5.5 7h5M5.5 9.5h5M5.5 12h3"/></svg>Mechanics</a>
+</nav>
+
+<main id="top">
+  <div class="hero rv in">
+    <span class="eyebrow">USA disc &middot; SFVE</span>
+    <h1>How fishing <span>works</span></h1>
+    <p class="lede">Every rule behind a bite, from where fish spawn to the lure colour they want today, the bait they like and what your rod can hold. All tables were read from the USA game files.</p>
+    <div class="thanks"><i><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 14s-5.5-3.3-5.5-7.2A3 3 0 0 1 8 5a3 3 0 0 1 5.5 1.8C13.5 10.7 8 14 8 14Z"/></svg></i><span>Thanks to <a href="https://github.com/kyuuri1234/FishingResortData" target="_blank" rel="noopener">kyuuri1234</a>, whose Japanese research this page ports.</span></div>
+  </div>
+
+  <div class="cards"><a class="card rv" href="#spawning" style="--d:0ms"><span class="num">01</span><b>Spawning</b><small>Spawn tables, time of day, copy spawns, refill and shadows</small></a><a class="card rv" href="#bite" style="--d:40ms"><span class="num">02</span><b>Bites</b><small>Interest, steps to a bite, reach, peck time and giving up</small></a><a class="card rv" href="#lure-colour" style="--d:80ms"><span class="num">03</span><b>Lure colour</b><small>Colour ring, favourite colour by weather, multipliers</small></a><a class="card rv" href="#bait" style="--d:120ms"><span class="num">04</span><b>Bait</b><small>Bait stats, patterns, weather and affinity</small></a><a class="card rv" href="#size-and-rank" style="--d:160ms"><span class="num">05</span><b>Size and rank</b><small>Size bands, class odds, experience and grades</small></a><a class="card rv" href="#tackle-and-fight" style="--d:200ms"><span class="num">06</span><b>Tackle and fight</b><small>Rods, reels, tension gauge, line breaks, stamina</small></a><a class="card rv" href="#trolling" style="--d:240ms"><span class="num">07</span><b>Trolling</b><small>How trolling hits work, lures, routes and radar</small></a><a class="card rv" href="#weather" style="--d:280ms"><span class="num">08</span><b>Weather</b><small>Weather odds, skies per area and effects</small></a><a class="card rv" href="#calendar-and-npcs" style="--d:320ms"><span class="num">09</span><b>Calendar and NPCs</b><small>Game time, tournaments, activities, quests</small></a></div>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Sections"><a href="#overview"><span class="num">00</span>Overview</a><a href="#spawning"><span class="num">01</span>Spawning</a><a href="#bite"><span class="num">02</span>Bites</a><a href="#lure-colour"><span class="num">03</span>Lure colour</a><a href="#bait"><span class="num">04</span>Bait</a><a href="#size-and-rank"><span class="num">05</span>Size and rank</a><a href="#tackle-and-fight"><span class="num">06</span>Tackle and fight</a><a href="#trolling"><span class="num">07</span>Trolling</a><a href="#weather"><span class="num">08</span>Weather</a><a href="#calendar-and-npcs"><span class="num">09</span>Calendar and NPCs</a></nav>
+    <div class="secs">
+<section class="sec rv" id="overview">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">00</span><div><span class="k">What was ported and what differs on the USA disc</span><h2>Overview</h2></div></header>
+    <div class="md"><h3 id="overview-result">Result</h3>
+<p>31 tables. 29 have identical numbers to the Japanese disc; text differs only by language. Lure data, fish data, spawn tables, spots, rods, reels, baits, bait affinity, size bands, titles, activities, board targets, quests, trolling routes and hit tables are all the same.</p>
+<p><strong>Real version differences (Pacar Beach terrain only):</strong></p>
+<ul>
+<li><a href="data/fishing_points.csv"><code>fishing_points.csv</code></a>: the platform at x -64.37 is 37.87 m deep instead of 43.20 m (centre z -106.18 instead of -107.40).</li>
+<li><a href="data/spot_depth.csv"><code>spot_depth.csv</code></a>: spots 6, 9, 16, 18, 19, 20 and 25 have less land under them on the USA disc; spot 20 median depth 5.16 m (JP 5.17), spot 27 4.49 m (JP 4.41).</li>
+</ul>
+<p><strong>USA text quirk:</strong> the Teman Paradise Beach rental bike and rental kayak activities point at USA texts 2677 and 2678, which are blank.</p>
+<h3 id="overview-usa-addresses">USA addresses</h3>
+<p>Data moved by a different amount in each region because English strings are longer. Every address was confirmed by its values.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Japanese</th>
+<th>USA</th>
+<th style="text-align: right;">Shift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run distance by grade</td>
+<td><code>0x804AF4F8</code></td>
+<td><code>0x804B00D0</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Size band weights</td>
+<td><code>0x804AF5E0</code></td>
+<td><code>0x804B01B8</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Lure type id ranges</td>
+<td><code>0x804B2E78</code></td>
+<td><code>0x804B3A50</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Reel factors</td>
+<td><code>0x804B2EB8</code>, <code>0x804B2EC4</code></td>
+<td><code>0x804B3A90</code>, <code>0x804B3A9C</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Class experience steps</td>
+<td><code>0x804B9AF8</code></td>
+<td><code>0x804BA6D0</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Activities</td>
+<td><code>0x804BB070</code></td>
+<td><code>0x804BBC48</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Peck grade and rank factors</td>
+<td><code>0x804BFCF0</code>, <code>0x804BFD08</code></td>
+<td><code>0x804C08C8</code>, <code>0x804C08E0</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Wait times</td>
+<td><code>0x804BFD20</code>, <code>0x804BFD50</code></td>
+<td><code>0x804C08F8</code>, <code>0x804C0928</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Size gate bands (m)</td>
+<td><code>0x804BFD80</code></td>
+<td><code>0x804C0958</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Reel fit</td>
+<td><code>0x804BFDA0</code></td>
+<td><code>0x804C0978</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Colour step multipliers</td>
+<td><code>0x804C1EBC</code></td>
+<td><code>0x804C2A94</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Action bonus</td>
+<td><code>0x804C1F2C</code></td>
+<td><code>0x804C2B04</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Weather weights, flare</td>
+<td><code>0x804C21D0</code>, <code>0x804C21E4</code></td>
+<td><code>0x804C2DA8</code>, <code>0x804C2DBC</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Free Bait peck seconds</td>
+<td><code>0x804C27D8</code></td>
+<td><code>0x804C33B0</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Bait affinity multipliers</td>
+<td><code>0x804C27C0</code></td>
+<td><code>0x804C3398</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Bait spot adjust</td>
+<td><code>0x804C27F0</code></td>
+<td><code>0x804C33C8</code></td>
+<td style="text-align: right;">+0xBD8</td>
+</tr>
+<tr>
+<td>Rod over-size</td>
+<td><code>0x804C8008</code></td>
+<td><code>0x804C8B78</code></td>
+<td style="text-align: right;">+0xB70</td>
+</tr>
+<tr>
+<td>Pull speeds</td>
+<td><code>0x804C8018</code></td>
+<td><code>0x804C8B88</code></td>
+<td style="text-align: right;">+0xB70</td>
+</tr>
+<tr>
+<td>Line break and slack</td>
+<td><code>0x804C8068</code>, <code>0x804C8078</code></td>
+<td><code>0x804C8BD8</code>, <code>0x804C8BE8</code></td>
+<td style="text-align: right;">+0xB70</td>
+</tr>
+<tr>
+<td>Hotel entrances</td>
+<td><code>0x804D7588</code></td>
+<td><code>0x804D8118</code></td>
+<td style="text-align: right;">+0xB90</td>
+</tr>
+<tr>
+<td>Quest steps</td>
+<td><code>0x804EE3F8</code></td>
+<td><code>0x804EEF88</code></td>
+<td style="text-align: right;">+0xB90</td>
+</tr>
+<tr>
+<td>Quest-locked fish</td>
+<td><code>0x804EE758</code></td>
+<td><code>0x804EF2E8</code></td>
+<td style="text-align: right;">+0xB90</td>
+</tr>
+<tr>
+<td>Radar fake dot times</td>
+<td><code>0x804F0458</code></td>
+<td><code>0x804F0FE8</code></td>
+<td style="text-align: right;">+0xB90</td>
+</tr>
+<tr>
+<td>Stock password fish</td>
+<td><code>0x804F3420</code></td>
+<td><code>0x804F3FB0</code></td>
+<td style="text-align: right;">+0xB90</td>
+</tr>
+<tr>
+<td>Receptionist lines, topics, fish</td>
+<td><code>0x804F7038</code> to <code>0x804F7510</code></td>
+<td><code>0x804F7C00</code> to <code>0x804F80D8</code></td>
+<td style="text-align: right;">+0xBC8</td>
+</tr>
+<tr>
+<td>Trolling hit table</td>
+<td><code>0x804F76C8</code></td>
+<td><code>0x804F8290</code></td>
+<td style="text-align: right;">+0xBC8</td>
+</tr>
+<tr>
+<td>Colour shift, bait pattern</td>
+<td><code>0x80520BCC</code>, <code>0x80520BE0</code></td>
+<td><code>0x8052178C</code>, <code>0x805217A0</code></td>
+<td style="text-align: right;">+0xBC0</td>
+</tr>
+<tr>
+<td>Board targets</td>
+<td><code>0x805266E0</code></td>
+<td><code>0x805272A0</code></td>
+<td style="text-align: right;">+0xBC0</td>
+</tr>
+<tr>
+<td>Map warp lists</td>
+<td><code>0x80529AF8</code></td>
+<td><code>0x8052A6B8</code></td>
+<td style="text-align: right;">+0xBC0</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="overview-what-is-verified-and-what-is-not">What is verified and what is not</h3>
+<ul>
+<li><strong>Verified on the USA disc:</strong> every table value above and every number in <a href="#overview-tables">the tables</a>, by regenerating them from our disc and diffing against theirs. For lure colour, the code paths too (callers, mode 0, action bonus function).</li>
+<li><strong>Taken from their code reading, not re-read in USA code:</strong> behaviour described in prose, such as distances (60 m, 80 m, 30 m), timers, the 320-fish limit, interest thresholds (15, 40, 8, 30), stamina and landing rules, and the radar and cloud-shape rules. The data those rules read is identical, so they very likely hold, but the USA code constants were not each checked. Items they marked unconfirmed are marked the same here.</li>
+<li>Nothing here was tested live in game.</li>
+</ul>
+<h3 id="overview-unused-data">Unused data</h3>
+<ul>
+<li><strong>Fish 26 "Koi"</strong> (Japanese name "unused id (Nishikigoi)") exists in the data but spawns nowhere. Forced in with an external tool it shows no shadow and is recorded as a Horse Mackerel.</li>
+<li><strong>TestStage</strong> is a sealed-off area with spawn tables but no water, so nothing spawns. Forced in, it is a blue and white checkerboard; the rod works but the float falls on the ground.</li>
+<li><strong>Trolling-only fish</strong> have full normal fish parameters and can be caught if spawned. They spawned and caught Mahi-mahi (easy) and Dunkleosteus (as strong as Hyneria, with matching parameters). On the result screen the model's angle breaks and the tail points diagonally up.</li>
+<li><strong>Wholeisland</strong> (the open-sea map) has its own spawn table besides the Tropical, Temperate and Frigid ones, but it is never read. It mixes freshwater, saltwater and trolling fish (Pond Smelt, Catfish, Great White Shark and more) and has per-time-of-day size factors (White Sturgeon 0.98, 0.94 by day, and so on). Everywhere else the size factor is 1.0 at all times.</li>
+<li>The colour function has three unused multiplier tables (<a href="#lure-colour-colour-multiplier">lure colour</a>); this one is our finding, not theirs.</li>
+</ul><h3 id="overview-tables">Tables</h3><p>Every table behind this page, in English, as CSV:</p><ul class="dl"><li><a href="data/activities.csv" download><code>activities.csv</code></a></li><li><a href="data/bait_affinity.csv" download><code>bait_affinity.csv</code></a></li><li><a href="data/bait_by_weather.csv" download><code>bait_by_weather.csv</code></a></li><li><a href="data/baits.csv" download><code>baits.csv</code></a></li><li><a href="data/best_colour_pairs.csv" download><code>best_colour_pairs.csv</code></a></li><li><a href="data/board_targets.csv" download><code>board_targets.csv</code></a></li><li><a href="data/color_shift.csv" download><code>color_shift.csv</code></a></li><li><a href="data/colour_pair_scores.csv" download><code>colour_pair_scores.csv</code></a></li><li><a href="data/colour_shift.csv" download><code>colour_shift.csv</code></a></li><li><a href="data/colour_step_multiplier.csv" download><code>colour_step_multiplier.csv</code></a></li><li><a href="data/fish.csv" download><code>fish.csv</code></a></li><li><a href="data/fish_lure_types.csv" download><code>fish_lure_types.csv</code></a></li><li><a href="data/fish_preferences.csv" download><code>fish_preferences.csv</code></a></li><li><a href="data/fishing_points.csv" download><code>fishing_points.csv</code></a></li><li><a href="data/lure_color_scores.csv" download><code>lure_color_scores.csv</code></a></li><li><a href="data/lures.csv" download><code>lures.csv</code></a></li><li><a href="data/map_frames.csv" download><code>map_frames.csv</code></a></li><li><a href="data/map_marks.csv" download><code>map_marks.csv</code></a></li><li><a href="data/nibble_bait_seconds.csv" download><code>nibble_bait_seconds.csv</code></a></li><li><a href="data/nibble_grades.csv" download><code>nibble_grades.csv</code></a></li><li><a href="data/nibble_ranks.csv" download><code>nibble_ranks.csv</code></a></li><li><a href="data/quest_unlocks.csv" download><code>quest_unlocks.csv</code></a></li><li><a href="data/reels.csv" download><code>reels.csv</code></a></li><li><a href="data/rods.csv" download><code>rods.csv</code></a></li><li><a href="data/s_only_lures.csv" download><code>s_only_lures.csv</code></a></li><li><a href="data/size_band_odds.csv" download><code>size_band_odds.csv</code></a></li><li><a href="data/size_ranks.csv" download><code>size_ranks.csv</code></a></li><li><a href="data/spawn_rates.csv" download><code>spawn_rates.csv</code></a></li><li><a href="data/spot_depth.csv" download><code>spot_depth.csv</code></a></li><li><a href="data/spots.csv" download><code>spots.csv</code></a></li><li><a href="data/titles.csv" download><code>titles.csv</code></a></li><li><a href="data/trolling_lure_color.csv" download><code>trolling_lure_color.csv</code></a></li><li><a href="data/trolling_lure_colour.csv" download><code>trolling_lure_colour.csv</code></a></li><li><a href="data/trolling_route_fish.csv" download><code>trolling_route_fish.csv</code></a></li><li><a href="data/trolling_route_summary.csv" download><code>trolling_route_summary.csv</code></a></li><li><a href="data/trolling_routes.csv" download><code>trolling_routes.csv</code></a></li><li><a href="data/weather_next.csv" download><code>weather_next.csv</code></a></li></ul></div>
+  </div></div>
+</section>
+<section class="sec rv" id="spawning">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">01</span><div><span class="k">Spawn tables, time of day, copy spawns, refill and shadows</span><h2>Spawning</h2></div></header>
+    <div class="md"><h3 id="spawning-reading-the-odds">Reading the odds</h3>
+<p>Each fishing area's water is split into rectangles called spots, and each spot has its own spawn table. Every time a fish spawns, its species is drawn from that spot's table. The chance is weight ÷ the table's total weight; a weight-2 fish is picked exactly twice as often as a weight-1 fish. Spot size plays no part.</p>
+<p><a href="data/spawn_rates.csv"><code>spawn_rates.csv</code></a> has three columns of odds: <code>pct_early</code> (no quest fish and no stocked fish yet), <code>pct_standard</code> (quest fish unlocked) and <code>pct_all_unlocked</code> (stock passwords entered too).</p>
+<h3 id="spawning-time-of-day">Time of day</h3>
+<p>Spawn tables carry morning, day, evening and night columns, but in every table that is used all four are equal: time of day never changes which species spawn or how often.</p>
+<p>What time does change is the cap on how many fish a spot can hold at once. 205 of 468 spots change their cap; 204 of those peak in the morning and 203 are lowest in the day. Example: Panas Jungle spot 9 holds 20 in the morning, 12 by day, 14 in the evening, 16 at night. For these spots the morning cap is 1.33x the day cap (median), up to 2.5x.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Game clock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Morning</td>
+<td>6:00 to 11:59</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>12:00 to 15:59</td>
+</tr>
+<tr>
+<td>Evening</td>
+<td>16:00 to 17:59</td>
+</tr>
+<tr>
+<td>Night</td>
+<td>18:00 to 5:59</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="spawning-when-the-odds-lie">When the odds lie</h3>
+<ul>
+<li><strong>Shallow water.</strong> A fish never spawns where the water is shallower than a quarter of its length. The check happens after the species is drawn, so shallow spots get fewer big fish than the table says. The effect is small: of 4,012 spot and fish pairs, 11 move by 1 point or more, at most 3.8 points. Depth per spot is in <a href="data/spot_depth.csv"><code>spot_depth.csv</code></a>.</li>
+<li><strong>Copy spawns</strong> pick from fish already nearby, so you can hook a species the spot's table doesn't list (below).</li>
+</ul>
+<h3 id="spawning-spawn-types">Spawn types</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>How the species is picked</th>
+<th>Where</th>
+<th>Invisible</th>
+<th>Bait spot adjust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td>Spot table draw</td>
+<td>Inside the spot rectangle</td>
+<td>30%</td>
+<td>Spot's value</td>
+</tr>
+<tr>
+<td>Copy</td>
+<td>Evenly from species nearby</td>
+<td>At the float</td>
+<td>100%</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Open sea</td>
+<td>Spot table draw</td>
+<td>Within ±30 m of the cruiser</td>
+<td>100%</td>
+<td>Spot's value</td>
+</tr>
+<tr>
+<td>Trolling</td>
+<td>Route table draw</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Pond Smelt</td>
+<td>Smelt only</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Result pair</td>
+<td>Same as the catch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<p>Size is decided the same way for every type (<a href="#size-and-rank">size and rank</a>).</p>
+<h4 id="spawning-normal-spawns">Normal spawns</h4>
+<ol>
+<li>A spot spawns nothing unless the player is within 60 m of its rectangle.</li>
+<li>On entering that range, two thirds of the cap spawn at once.</li>
+<li>The rest trickle in, one fish per frame across all spots together.</li>
+</ol>
+<p>One spawn:</p>
+<ol>
+<li>Draw the species from the spot table. If it lands on a locked fish, redraw up to 17 times.</li>
+<li>Decide the length.</li>
+<li>Pick a random point in the rectangle.</li>
+<li>Set the depth to 20% of the water depth.</li>
+<li>Cancel if the point is out of water, shallower than a quarter of the fish's length (0.5 m for a 2 m fish), more than 80 m from the player, or, while waiting for a bite, more than 30 m away inside the 120° cone behind the player.</li>
+<li>Create the fish and roll whether it is invisible (<a href="#spawning-shadows">shadows</a>).</li>
+</ol>
+<p>Spot data also lists depth weights (20%, 50%, 80%, random 20 to 80%), but the way the draw is written always picks the first, so fish only ever spawn at 20% depth. Leaving range and coming back refills two thirds of the cap again.</p>
+<h4 id="spawning-refill-speed">Refill speed</h4>
+<p>Below the cap a spot refills continuously. Once one of its fish starts pecking a float, refills slow down for 60 seconds: one fish per <code>refill_sec</code> (in <a href="data/spots.csv"><code>spots.csv</code></a>). Another fish starting to peck resets the 60 seconds.</p>
+<p>When a spot is full, the oldest fish fades out every 2x <code>refill_sec</code> and is replaced at once.</p>
+<p>Typical <code>refill_sec</code>: Teman Paradise Beach 6 s, Panas Jungle 42 s, Dua Ribu Lake and Tidur River 36 s, Safir Cave 120 s. At most 320 fish exist at once.</p>
+<h4 id="spawning-copy-spawns">Copy spawns</h4>
+<p>If nothing is biting 18 to 22 seconds after the float settles, one fish spawns at the float (unconfirmed). No more spawn until you recast (unconfirmed).</p>
+<p>The species is picked from fish within 80 m of the player, excluding grade 3 and above, LL-size fish and locked fish. Each species has the same chance however many of it are around. With no candidates it takes the lowest-grade, smallest fish nearby; with no fish around it is a Horse Mackerel.</p>
+<p>These fish are always invisible, get no bait spot adjust and don't count toward any spot's cap. They swim around normally before biting. This is why you can catch species a spot's table doesn't list.</p>
+<p><strong>Piranha in Emerald Marsh.</strong> Piranha, Pacu and African Pike caught in Emerald Marsh come from copy spawns. The winding river north-east of the marsh passes within about 60 m of it (call it point A). Point A is within 80 m of the marsh's landing and stays within 80 m on the way in, so its fish never despawn. Shaking off shadows in the marsh keeps spawning random nearby fish at the float, and point A's Piranha, Pacu or Average Driftwood can be chosen. The landing is over 90 m from the marsh's east bank, so it doesn't work the other way.</p>
+<h4 id="spawning-open-sea">Open sea</h4>
+<p>Fish spawn within ±30 m of the cruiser, 3 to 5 m below it, by the cruiser's position. Fish more than 30 m from the cruiser vanish. Open-sea fish are always invisible, which is why you see nothing from the deck even though fish are there. Some of them show on the radar (<a href="#trolling-radar">trolling</a>).</p>
+<h4 id="spawning-the-result-pair">The result pair</h4>
+<p>When a fish is landed it disappears and two fish of the same species are made for the result scene. One copies the catch's length, rank and experience and is the one you see; the fish you fought and the one flapping on screen are different objects. The other is a base-size fish you never see.</p>
+<p>The landing animation is built for the base size, so the base fish runs it to measure body position and the visible fish is placed to match. Its drawn size shrinks the gap to base size by its hold style:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Hold (<a href="data/fish.csv"><code>fish.csv</code></a> <code>hold</code>)</th>
+<th style="text-align: right;">Share of the size gap shown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>holds the line</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>palm</td>
+<td style="text-align: right;">50%</td>
+</tr>
+<tr>
+<td>two hands</td>
+<td style="text-align: right;">50% (Largehead Hairtail 25%)</td>
+</tr>
+<tr>
+<td>underwater</td>
+<td style="text-align: right;">20%</td>
+</tr>
+</tbody>
+</table></div>
+<p>A two-hand King Salmon with base 100 cm caught at 120 cm looks 110 cm.</p>
+<h3 id="spawning-shadows">Shadows</h3>
+<p>A fish rolls invisibility when it spawns and shows no shadow until the fight starts:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Fish</th>
+<th style="text-align: right;">Chance to be invisible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal spawns</td>
+<td style="text-align: right;">30%</td>
+</tr>
+<tr>
+<td>The 10 junk items</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>Copy spawns</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>Open sea</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>Pond Smelt, result pair</td>
+<td style="text-align: right;">0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Junk: Normal Driftwood, Thick Seaweed, Wild Water Weed, Bushy Water Weed, Ammonite Fossil, Trilobite Fossil, Fine Driftwood, Average Driftwood, Straight Driftwood, Average Seaweed. They swim internally; you just never see them. Invisibility is fixed for the fish's life.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Horizontal distance from player</th>
+<th>Shadow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Up to 20 m</td>
+<td>fades in</td>
+</tr>
+<tr>
+<td>Over 20 m</td>
+<td>fades out</td>
+</tr>
+<tr>
+<td>Over 80 m</td>
+<td>the fish is removed</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Jumping.</strong> A fish jumps when it is under 100 cm, its shadow shows, it is over 15 m away and fewer than 2 fish are jumping. Each fish rolls about once a second at 10%. After a jump it needs 25 to 33 more successful rolls before jumping again. A jumping fish shows from any distance, and jumping resets its stored <a href="#bite-interest">interest</a>.</p>
+<h3 id="spawning-areas-and-maps">Areas and maps</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th style="text-align: right;">Spots</th>
+<th style="text-align: right;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr>
+<td>Panas Jungle</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>Tidur River</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr>
+<td>Kanan Lake</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr>
+<td>Kerikil River</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>Safir Cave</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr>
+<td>Dua Ribu Lake</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr>
+<td>Malam Jungle</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr>
+<td>Pacar Beach</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr>
+<td>Sembilan Island</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr>
+<td>Sepuluh Island</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>Gunan Es River</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Patarpa River</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Rahaja Lake</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table></div>
+<p>Remak Es Lake uses the smelt-only spawn and is not listed.</p>
+<p><a href="data/map_frames.csv"><code>map_frames.csv</code></a> converts game coordinates to image pixels. Fishing platforms (<a href="data/fishing_points.csv"><code>fishing_points.csv</code></a>) have a centre, horizontal axes and a casting direction.</p>
+<p>Not drawn: Teman Paradise Beach spot 50 (spawn table and caps exist, but position and size are empty); Tidur River spot 39 and Kerikil River spot 20 (rectangle but no spawn table).</p>
+<p><strong>USA difference.</strong> Pacar Beach terrain differs from the Japanese disc: one fishing platform at x -64.37 is 5.3 m shorter (37.87 m deep instead of 43.20 m, centre z -106.18 instead of -107.40), and spots 6, 9, 16, 18, 19, 20 and 25 have less land under them (for example spot 18: 0.3% not water instead of 22.1%; spot 25: 0.0% instead of 19.0%). Spot 27's median depth is 4.49 m instead of 4.41 m. All other areas match.</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="bite">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">02</span><div><span class="k">Interest, steps to a bite, reach, peck time and giving up</span><h2>Bites</h2></div></header>
+    <div class="md"><h3 id="bite-the-steps">The steps</h3>
+<p>Every fish has a value for how drawn it is to your rig; this page calls it <strong>interest</strong>. With a float, once the float's appeal reaches a fish it goes through:</p>
+<ol>
+<li><strong>Build interest.</strong> It keeps swimming around where it spawned while interest builds. At 15 it becomes a candidate for that float.</li>
+<li><strong>Wait.</strong> Interest stays put.</li>
+<li><strong>Head for the float.</strong> It swims to just below the float. Interest keeps building and moves on at 40. With a reel that suits the fish, 40 comes almost at once.</li>
+<li><strong>Wait to peck.</strong> It keeps swimming and stops when it arrives. After a set time it moves on.</li>
+<li><strong>Peck.</strong> If it is under the float, its mouth touches the rig and the float dips.</li>
+</ol>
+<p>Steps 4 and 5 start whether or not the fish has arrived (<a href="#bite-giving-up">giving up</a>), so a fish can finish step 5 without touching the float and swim off.</p>
+<p>With a lure, a fish heads in as soon as it is a candidate and pecks as soon as interest hits 40.</p>
+<p>Each fish has a lure <strong>accept rate</strong> (<a href="#lure-colour-other-lure-gates">lure colour</a>). With lures it is rolled when the fish becomes a candidate; a miss resets interest to 0.</p>
+<p>The times for step 2, step 4 and step 5 come from the fish's <a href="#size-and-rank-grade">grade</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Grade</th>
+<th style="text-align: center;">Step 2 (s)</th>
+<th style="text-align: center;">Step 4 (s)</th>
+<th style="text-align: center;">Step 5 peck time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: center;">1-4</td>
+<td style="text-align: center;">2-5</td>
+<td style="text-align: center;">5-15</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">1-5</td>
+<td style="text-align: center;">2-6</td>
+<td style="text-align: center;">5-15</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">2-6</td>
+<td style="text-align: center;">3-7</td>
+<td style="text-align: center;">4.5-13.5</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">2-7</td>
+<td style="text-align: center;">3-8</td>
+<td style="text-align: center;">3.75-11.25</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;">3-8</td>
+<td style="text-align: center;">4-9</td>
+<td style="text-align: center;">2.75-8.25</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">4-9</td>
+<td style="text-align: center;">5-10</td>
+<td style="text-align: center;">2-6</td>
+</tr>
+</tbody>
+</table></div>
+<p>Steps 2 and 4 pick a whole number of seconds evenly from the range. Peck time here excludes the rank and bait parts (<a href="#bite-peck-time">peck time</a>).</p>
+<h3 id="bite-interest">Interest</h3>
+<p>Interest runs 0 to 100 and only builds in steps 1 and 3. Each frame the rig's appeal reaches the fish, it adds the product of:</p>
+<ul>
+<li>reel factor (<a href="#tackle-and-fight-reels-and-fish-size">tackle</a>)</li>
+<li>bait affinity factor (float, step 1 only) (<a href="#bait">bait</a>)</li>
+<li>lure colour factor (lure) (<a href="#lure-colour">lure colour</a>)</li>
+<li>action match, x1.2 (lure)</li>
+<li>x2 for fish with accept rate 1.0</li>
+<li>facing factor (lure) (<a href="#bite-lure-reach">lure reach</a>)</li>
+</ul>
+<p>In step 5 interest rises 1 per frame while the appeal reaches the fish. Out of reach it falls 0.15 per frame in step 3, and 0.1 per frame in step 5 unless the mouth is on the rig. A still float keeps reaching a fish that is heading for it, so interest only really drops with lures that move away.</p>
+<p>The game's own tutorial does say fish peck because they are "interested".</p>
+<h3 id="bite-reach">Reach</h3>
+<p>How far the rig's appeal reaches. A fish that leaves the reach on its way keeps coming, but its interest drains.</p>
+<p><strong>Bait.</strong> Horizontal distance between float and fish. Reach starts at 0.05 m after the cast, grows at the bait's rate up to its cap while the float is still (<a href="#bait-bait-stats">bait</a>), and drops back to 0.05 m if the float moves for more than 0.2 s (reeling, for example).</p>
+<h4 id="bite-lure-reach">Lure reach</h4>
+<p>Straight-line distance including depth. Reach is the lure's base value plus a bonus from how you work it: the more you vary the speed, the wider it gets.</p>
+<p>A lure whose action type matches the fish's reaches it from any direction. Otherwise it depends on where the lure is along the fish's length:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Lure position</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>More than 0.71 m behind the fish</td>
+<td>no appeal</td>
+</tr>
+<tr>
+<td>From 0.71 m behind to 0.5 m in front</td>
+<td>interest x1.2</td>
+</tr>
+<tr>
+<td>More than 0.5 m in front</td>
+<td>interest x1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="bite-several-candidates">Several candidates</h3>
+<p>Of the candidates, the one nearest the rig is chosen and may head for it. Once chosen it keeps that right even if another fish gets closer.</p>
+<p>With a lure the chosen fish comes straight in and stays nearest, so no other fish comes until it leaves.</p>
+<p>With a float the chosen fish loiters a while first. Meanwhile another fish can become nearest and be chosen too, and then both head for the float. Loitering lasts longer at higher grade, and every ancient fish is grade 5, so junk and common fish often join them.</p>
+<p>With several fish under the float, the hook takes whichever fish's mouth touched first; if it lets go, the next one to touch takes its place.</p>
+<h3 id="bite-peck-time">Peck time</h3>
+<p>Peck time = random 5 to 15 s × grade factor × rank factor + a Free Bait bonus.</p>
+<p>Grade factors are in <a href="#size-and-rank-grade">size and rank</a>. Rank factors:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rank</th>
+<th style="text-align: right;">S</th>
+<th style="text-align: right;">A</th>
+<th style="text-align: right;">B</th>
+<th style="text-align: right;">C</th>
+<th style="text-align: right;">D</th>
+<th style="text-align: right;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Factor</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>With a float, a bonus is added from the fish's <strong>Free Bait</strong> affinity, whatever bait you use, after the spawn spot's <a href="#bait-spot-adjust">bait adjust</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Adjusted affinity</th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seconds added</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Free Bait affinity</th>
+<th style="text-align: right;">adjust +1</th>
+<th style="text-align: right;">adjust 0</th>
+<th style="text-align: right;">adjust -1, -2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table></div>
+<p>Copy-spawned fish get no spot adjust, so they use the adjust-0 column. L and LL fish have no Free Bait value and get nothing.</p>
+<p>Peck time starts counting when step 5 begins and keeps counting whether or not the mouth is on the rig, including while the fish is still swimming in or another fish is pecking. Real contact time is shorter.</p>
+<h3 id="bite-giving-up">Giving up</h3>
+<p>A candidate gives up when the float moves, peck time runs out, interest falls under 8 in step 3, or interest falls under 30 in step 5. A still float keeps interest up, so interest give-ups are mostly a lure thing. A full spot also replaces its oldest fish, which can remove a fish that is heading in or pecking (<a href="#spawning-refill-speed">refill</a>).</p>
+<p>A fish can go through the pecking motion and leave without dipping the float even if you never moved it: peck time ran out before its mouth reached the rig. The mouth counts as on the rig within 0.2 m horizontally of the float. A fish swims fast until 20% of its starting distance is left, then slows so the gap shrinks only about 20% per second, while steps 4 and 5 run on interest and time alone. Closing that last 20% to 0.2 m takes:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Starting distance</th>
+<th style="text-align: right;">3 m</th>
+<th style="text-align: right;">6 m</th>
+<th style="text-align: right;">10 m</th>
+<th style="text-align: right;">14 m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time</td>
+<td style="text-align: right;">~4.9 s</td>
+<td style="text-align: right;">~8.0 s</td>
+<td style="text-align: right;">~10.2 s</td>
+<td style="text-align: right;">~11.7 s</td>
+</tr>
+</tbody>
+</table></div>
+<p>High-grade fish have short peck times and wide-reach bait pulls fish from further away, so rare fish like ancient fish most often come close and leave without pecking. It looks like they peck slightly off the float.</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="lure-colour">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">03</span><div><span class="k">Colour ring, favourite colour by weather, multipliers</span><h2>Lure colour</h2></div></header>
+    <div class="md"><p>How a lure's colours change how fast a fish gets interested, read from the USA disc (SFVE). Tables: <a href="#overview-tables">download</a>.</p>
+<p>The model and most table locations come from kyuuri1234's Japanese research (<code>https://github.com/kyuuri1234/FishingResortData</code>, CC0, built from the Japanese disc S22JAF). Every value was re-read from the USA files and <code>main.dol</code>. Running the script with <code>--compare &lt;their checkout&gt;</code> shows 0 differences in lure colours, lure action, size range, appeal, price, fish base colour, fish action, lure-type gate, colour shift odds, trolling hit table and all 9,360 colour scores. Scores agree to the third decimal; a few Cloudy values round the other way at a tie (gap at most 0.0005).</p>
+<h3 id="lure-colour-the-colour-ring">The colour ring</h3>
+<p>Colours are numbers 1 to 12 on a ring (12 is next to 1). No game text names them; the names below come from lure names.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Colour</th>
+<th>Example lures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Black</td>
+<td>Black Beetle, Black Tiger, Classic Gold</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Red</td>
+<td>Red Beetle, Red Tiger, Candy Red</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Red-orange</td>
+<td>Orange Tiger, Orange Camo, Orange Crescent</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Orange</td>
+<td>Yellow Tiger, Candy Orange, Orange Glow</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Pink/purple</td>
+<td>Pink Naga Scale, Purple Dragon Scale, Light Pink Spinner</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Brown</td>
+<td>Brown Glory, Gold Wild King, Red Water Fang</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Silver/white</td>
+<td>Blue Naga Scale, Lightning Silver, White Spinner</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Gold</td>
+<td>Yellow Naga Scale, Lightning Gold, Gold Spinner</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Yellow</td>
+<td>Yellow Zebra Crank, Yellow Crescent, Yellow Paragon</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Olive</td>
+<td>Olive Beetle, Brown Beetle, Deep Green McCoy</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Green</td>
+<td>Green Dragon Scale, Green Beetle, Light Green Spinner</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Blue</td>
+<td>Purple Beetle, Light Blue Tiger, Candy Blue</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every lure has two colours (<code>LureData.bin</code> +0x14, +0x18). Three lures have only one (second colour 0): Orange Humble, Orange Zebra Crank, Orange Hamstring.</p>
+<h3 id="lure-colour-how-a-fish-picks-its-favourite">How a fish picks its favourite</h3>
+<p>Each fish species has a base colour (<code>fishData.bin</code> word 21). When a fish spawns, its favourite is the base plus a random 0 to 6, never minus, wrapping past 12. The odds depend on the weather (pointer table <code>0x8052178C</code>, four identical time-of-day rows each; read by <code>0x8005EE78</code>). The draw is <code>int((total+1) * rand)</code>, so the first option gets one extra ticket.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Weather</th>
+<th style="text-align: right;">+0</th>
+<th style="text-align: right;">+1</th>
+<th style="text-align: right;">+2</th>
+<th style="text-align: right;">+3</th>
+<th style="text-align: right;">+4</th>
+<th style="text-align: right;">+5</th>
+<th style="text-align: right;">+6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear</td>
+<td style="text-align: right;">69.2%</td>
+<td style="text-align: right;">23.1%</td>
+<td style="text-align: right;">7.7%</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>Sunny</td>
+<td style="text-align: right;">43.8%</td>
+<td style="text-align: right;">31.2%</td>
+<td style="text-align: right;">18.8%</td>
+<td style="text-align: right;">6.2%</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>Light cloud</td>
+<td style="text-align: right;">29.4%</td>
+<td style="text-align: right;">17.6%</td>
+<td style="text-align: right;">35.3%</td>
+<td style="text-align: right;">11.8%</td>
+<td style="text-align: right;">5.9%</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>Cloudy</td>
+<td style="text-align: right;">31.2%</td>
+<td style="text-align: right;">6.2%</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">12.5%</td>
+<td style="text-align: right;">37.5%</td>
+<td style="text-align: right;">12.5%</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>Overcast</td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">6.7%</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">53.3%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Weather names are translations of the Japanese labels for weather index 0 to 4.</p>
+<h3 id="lure-colour-colour-multiplier">Colour multiplier</h3>
+<p>Function <code>0x80134734</code>: take the ring distance from each lure colour to the favourite (0 to 6), keep the smaller, add 1 for a two-colour lure, cap at 6, and look up <code>0x804C2A94</code>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Distance</th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two-colour lure</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>One-colour lure</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>At 0 the fish gains no interest at all. While another fish is pecking the same lure, the spot's bait adjust (table <code>0x804C2A60</code>, -6..+6) is subtracted from the distance.</p>
+<p>The function can select three more 7-value tables (<code>0x804C2AB0</code>, <code>0x804C2ACC</code>, <code>0x804C2AE8</code>), but both callers (<code>0x8011D2B8</code>, <code>0x8011DC90</code>) pass mode 0, so they are unused. The Japanese research does not mention them.</p>
+<h3 id="lure-colour-other-lure-gates">Other lure gates</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Value</th>
+<th>Anchor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lure action matches the fish's (plain, rattle, vibration)</td>
+<td>x1.2</td>
+<td><code>0x80134A08</code>, table <code>0x804C2B04</code> index 1</td>
+</tr>
+<tr>
+<td>Lure type accept rate by fish gate class 0..3</td>
+<td>1.0, 0.8, 0.1, never (-1)</td>
+<td><code>0x804B0230</code>, <code>fishData</code> word 19</td>
+</tr>
+<tr>
+<td>Lure type the fish takes</td>
+<td>bit mask Spoon, Spinner, Crankbait, Swimming Lure, Minnow</td>
+<td><code>fishData</code> word 20, id ranges <code>0x804B3A50</code></td>
+</tr>
+<tr>
+<td>Fish size a lure works on</td>
+<td>mask bits: 0-30, 20-70, 50-200, 150+ cm</td>
+<td><code>0x804B39F4</code>, <code>LureData</code> +0x20</td>
+</tr>
+</tbody>
+</table></div>
+<p>Action names (plain, rattle, vibration) are the Japanese research's labels; the game has no text for them. The Japanese research also says a fish with accept rate 1.0 gains interest twice as fast; that was not re-checked here.</p>
+<h3 id="lure-colour-best-colours-per-base-colour">Best colours per base colour</h3>
+<p>Expected multiplier over the favourite-colour odds. "5 only" is a one-colour lure.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Clear</th>
+<th>Sunny</th>
+<th>Light cloud</th>
+<th>Cloudy</th>
+<th>Overcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Black</td>
+<td>1+2 (0.78)</td>
+<td>1+2 (0.74)</td>
+<td>1+3 (0.72)</td>
+<td>1+5 (0.74)</td>
+<td>1+7 (0.75)</td>
+</tr>
+<tr>
+<td>2 Red</td>
+<td>2+4 (0.75)</td>
+<td>2+4 (0.73)</td>
+<td>2+4 (0.72)</td>
+<td>5 only / 1+6 / 2+7 (0.66)</td>
+<td>2+8 (0.75)</td>
+</tr>
+<tr>
+<td>3 Red-orange</td>
+<td>3+5 (0.75)</td>
+<td>5 only (0.75)</td>
+<td>5 only (0.80)</td>
+<td>4+7 (0.69)</td>
+<td>3+9 (0.75)</td>
+</tr>
+<tr>
+<td>4 Orange</td>
+<td>5 only (0.85)</td>
+<td>5 only (0.85)</td>
+<td>5 only (0.79)</td>
+<td>7 only / 4+7 / 4+9 (0.66)</td>
+<td>4+10 (0.75)</td>
+</tr>
+<tr>
+<td>5 Pink/purple</td>
+<td>5 only (0.92)</td>
+<td>5 only (0.83)</td>
+<td>7 only (0.80)</td>
+<td>4+9 (0.66)</td>
+<td>6+10 (0.65)</td>
+</tr>
+<tr>
+<td>6 Brown</td>
+<td>7 only (0.85)</td>
+<td>7 only (0.85)</td>
+<td>7 only (0.79)</td>
+<td>6+10 (0.74)</td>
+<td>7+12 (0.72)</td>
+</tr>
+<tr>
+<td>7 Silver/white</td>
+<td>7 only (0.92)</td>
+<td>7 only (0.83)</td>
+<td>7+9 (0.72)</td>
+<td>8+11 (0.69)</td>
+<td>1+7 (0.75)</td>
+</tr>
+<tr>
+<td>8 Gold</td>
+<td>8+10 (0.75)</td>
+<td>8+10 (0.73)</td>
+<td>8+10 (0.72)</td>
+<td>8+12 (0.74)</td>
+<td>2+8 (0.75)</td>
+</tr>
+<tr>
+<td>9 Yellow</td>
+<td>9+11 (0.75)</td>
+<td>9+11 (0.73)</td>
+<td>9+11 (0.72)</td>
+<td>1+8 / 9+12 (0.66)</td>
+<td>3+9 (0.75)</td>
+</tr>
+<tr>
+<td>10 Olive</td>
+<td>10+11 (0.78)</td>
+<td>10+11 (0.74)</td>
+<td>10+12 (0.72)</td>
+<td>3+10 (0.66)</td>
+<td>4+10 (0.75)</td>
+</tr>
+<tr>
+<td>11 Green</td>
+<td>1+11 (0.75)</td>
+<td>1+11 (0.73)</td>
+<td>1+11 (0.72)</td>
+<td>3+10 (0.66)</td>
+<td>5+12 (0.72)</td>
+</tr>
+<tr>
+<td>12 Blue</td>
+<td>1+12 (0.78)</td>
+<td>1+12 (0.74)</td>
+<td>1+2 (0.69)</td>
+<td>5+12 (0.66)</td>
+<td>1+6 (0.72)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Colour only; the lure must also match the fish's lure type and size. Each fish's base colour: <a href="data/fish_preferences.csv"><code>fish_preferences.csv</code></a>. Every colour pair: <a href="data/colour_pair_scores.csv"><code>colour_pair_scores.csv</code></a>.</p>
+<h3 id="lure-colour-trolling">Trolling</h3>
+<p>Hit chance per check by trolling lure and the fish's base colour (<code>0x804F8290</code>, 5 rows of 13 floats; read by <code>0x802880EC</code>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Lure</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">8</th>
+<th style="text-align: right;">9</th>
+<th style="text-align: right;">10</th>
+<th style="text-align: right;">11</th>
+<th style="text-align: right;">12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 red-orange</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>40</strong></td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>2 purple</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>3 yellow</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;"><strong>40</strong></td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>4 silver-grey</td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>5 light blue</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Values are percent. Looks are the Japanese research's descriptions.</p>
+<h3 id="lure-colour-not-verified-here">Not verified here</h3>
+<p>Nothing was checked live in game. The interest gain formula around these multipliers, the reach of a lure's appeal, and per-route trolling odds are in the Japanese research (<code>docs/bite.md</code>, <code>docs/trolling.md</code>) but were not ported.</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="bait">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">04</span><div><span class="k">Bait stats, patterns, weather and affinity</span><h2>Bait</h2></div></header>
+    <div class="md"><p>Fish fall into <strong>bait groups</strong> by taste (<a href="data/fish.csv"><code>fish.csv</code></a> <code>bait_group</code>).</p>
+<h3 id="bait-bait-stats">Bait stats</h3>
+<p>A float's appeal reaches fish within r m horizontally. r starts at 0.05 m and grows while the float is still (<a href="#bite-reach">reach</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Bait</th>
+<th>For</th>
+<th style="text-align: right;">Max reach (m)</th>
+<th style="text-align: right;">Growth (m/s)</th>
+<th style="text-align: right;">Seconds to max</th>
+<th style="text-align: right;">Price (pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free Bait</td>
+<td>S, M</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">26.7</td>
+<td style="text-align: right;">not sold</td>
+</tr>
+<tr>
+<td>Basic Bait</td>
+<td>S, M</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">26.7</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>Red Bait: Regular</td>
+<td>S, M</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>Blue Bait: Regular</td>
+<td>S, M</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>Yellow Bait: Regular</td>
+<td>S, M</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>Red Bait: Large</td>
+<td>L, LL</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr>
+<td>Blue Bait: Large</td>
+<td>L, LL</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr>
+<td>Yellow Bait: Large</td>
+<td>L, LL</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr>
+<td>Quick Hitter: Regular</td>
+<td>S, M</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">160</td>
+</tr>
+<tr>
+<td>Quick Hitter: Large</td>
+<td>L, LL</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">240</td>
+</tr>
+<tr>
+<td>Wide Range: Regular</td>
+<td>S, M</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">35.0</td>
+<td style="text-align: right;">160</td>
+</tr>
+<tr>
+<td>Wide Range: Large</td>
+<td>L, LL</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">35.0</td>
+<td style="text-align: right;">240</td>
+</tr>
+<tr>
+<td>Rainbow: Regular</td>
+<td>S, M</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">1,200</td>
+</tr>
+<tr>
+<td>Rainbow: Large</td>
+<td>L, LL</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">1,800</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="bait-patterns-and-weather">Patterns and weather</h3>
+<p>Each bait group has three patterns. They differ in which colour bait (red, blue or yellow) the fish prefers. Each fish rolls its pattern at spawn and keeps it. Weather sets the odds (USA table <code>0x805217A0</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Weather</th>
+<th style="text-align: right;">Pattern 0</th>
+<th style="text-align: right;">Pattern 1</th>
+<th style="text-align: right;">Pattern 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear</td>
+<td style="text-align: right;">75.0%</td>
+<td style="text-align: right;">16.7%</td>
+<td style="text-align: right;">8.3%</td>
+</tr>
+<tr>
+<td>Sunny</td>
+<td style="text-align: right;">54.5%</td>
+<td style="text-align: right;">27.3%</td>
+<td style="text-align: right;">18.2%</td>
+</tr>
+<tr>
+<td>Light cloud</td>
+<td style="text-align: right;">58.3%</td>
+<td style="text-align: right;">33.3%</td>
+<td style="text-align: right;">8.3%</td>
+</tr>
+<tr>
+<td>Cloudy</td>
+<td style="text-align: right;">54.5%</td>
+<td style="text-align: right;">18.2%</td>
+<td style="text-align: right;">27.3%</td>
+</tr>
+<tr>
+<td>Overcast</td>
+<td style="text-align: right;">50.0%</td>
+<td style="text-align: right;">10.0%</td>
+<td style="text-align: right;">40.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Example, the Horse Mackerel group (multipliers):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Bait</th>
+<th style="text-align: right;">Pattern 0</th>
+<th style="text-align: right;">Pattern 1</th>
+<th style="text-align: right;">Pattern 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free Bait</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+</tr>
+<tr>
+<td>Basic Bait</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Red Bait: Regular</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+<tr>
+<td>Blue Bait: Regular</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+<tr>
+<td>Yellow Bait: Regular</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Quick Hitter: Regular</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+</tr>
+<tr>
+<td>Wide Range: Regular</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+</tr>
+<tr>
+<td>Rainbow: Regular</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+</tbody>
+</table></div>
+<p>On a Clear day 75% of Horse Mackerel are pattern 0 and take Red Bait best. Every group: <a href="data/bait_affinity.csv"><code>bait_affinity.csv</code></a>; weather-averaged: <a href="data/bait_by_weather.csv"><code>bait_by_weather.csv</code></a>.</p>
+<h3 id="bait-affinity-value-and-multiplier">Affinity value and multiplier</h3>
+<p>Affinity (0 to 5, <code>Fish/fishBattleItem.bin</code>) affects <a href="#bite-interest">interest</a> and <a href="#bite-peck-time">peck time</a>. Interest gain is multiplied by (USA table <code>0x804C3398</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Affinity</th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multiplier</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="bait-spot-adjust">Spot adjust</h3>
+<p>Some spots shift affinity: +1 adds 1, -1 and -2 subtract 1. Copy-spawned fish and trolling fish get no adjust.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Adjust (by spot number where it varies)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teman Paradise Beach</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Panas Jungle</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Tidur River</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Kanan Lake</td>
+<td>-1: 53, 56; 0: 0-52, 54-55, 57-77</td>
+</tr>
+<tr>
+<td>Kerikil River</td>
+<td>-2: 30-39; -1: 21-26; 0: 0-15</td>
+</tr>
+<tr>
+<td>Safir Cave</td>
+<td>-2: 0-9; 0: 20</td>
+</tr>
+<tr>
+<td>Dua Ribu Lake</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Malam Jungle</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Pacar Beach</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Sembilan Island</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Sepuluh Island</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Gunan Es River</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>Patarpa River</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>Rahaja Lake</td>
+<td>-2</td>
+</tr>
+</tbody>
+</table></div></div>
+  </div></div>
+</section>
+<section class="sec rv" id="size-and-rank">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">05</span><div><span class="k">Size bands, class odds, experience and grades</span><h2>Size and rank</h2></div></header>
+    <div class="md"><p>All lengths are the game's internal centimetres. The USA game shows feet (1 ft = 30.48 cm), but every comparison happens in cm.</p>
+<h3 id="size-and-rank-how-length-is-decided">How length is decided</h3>
+<p>Length is set once, when the fish spawns:</p>
+<ol>
+<li>Draw one of six size bands.</li>
+<li>Pick a value evenly in 0.01 cm steps inside that band.</li>
+</ol>
+<p>Bands are the species' base size times:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Band</th>
+<th style="text-align: right;">× base size</th>
+<th style="text-align: center;">Rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align: right;">1.25-1.30</td>
+<td style="text-align: center;">S</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align: right;">1.20-1.25</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">1.10-1.20</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">1.00-1.10</td>
+<td style="text-align: center;">C</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;">0.90-1.00</td>
+<td style="text-align: center;">D</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: right;">0.85-0.90</td>
+<td style="text-align: center;">E</td>
+</tr>
+</tbody>
+</table></div>
+<p>Real limits are a hair under these. A 20 cm Horse Mackerel spans 16.98 to 25.98 cm. After truncating to 0.01 cm, the maximum is base × 1.299 truncated: Japanese Amberjack (base 100 cm) tops out at 129.89 cm, Sea Eel (base 50 cm) at 64.94 cm. Black Bass and Peacock Bass use their own adjusted multipliers.</p>
+<h3 id="size-and-rank-band-odds-by-class">Band odds by class</h3>
+<p>Odds move one column to the right every six class levels and stop at Expert Rank 7 (USA table <code>0x804B01B8</code>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Band</th>
+<th style="text-align: right;">Visitor to Rookie Rank 6</th>
+<th style="text-align: right;">Rookie Rank 5 to Amateur Rank 10</th>
+<th style="text-align: right;">Amateur Rank 9 to 4</th>
+<th style="text-align: right;">Amateur Rank 3 to Expert Rank 8</th>
+<th style="text-align: right;">Expert Rank 7 and up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.25-1.30 (S)</td>
+<td style="text-align: right;">4.0%</td>
+<td style="text-align: right;">5.0%</td>
+<td style="text-align: right;">6.1%</td>
+<td style="text-align: right;">7.1%</td>
+<td style="text-align: right;">8.1%</td>
+</tr>
+<tr>
+<td>1.20-1.25 (A)</td>
+<td style="text-align: right;">10.1%</td>
+<td style="text-align: right;">12.1%</td>
+<td style="text-align: right;">14.1%</td>
+<td style="text-align: right;">16.2%</td>
+<td style="text-align: right;">18.2%</td>
+</tr>
+<tr>
+<td>1.10-1.20 (B)</td>
+<td style="text-align: right;">20.2%</td>
+<td style="text-align: right;">21.2%</td>
+<td style="text-align: right;">22.2%</td>
+<td style="text-align: right;">23.2%</td>
+<td style="text-align: right;">24.2%</td>
+</tr>
+<tr>
+<td>1.00-1.10 (C)</td>
+<td style="text-align: right;">26.3%</td>
+<td style="text-align: right;">25.3%</td>
+<td style="text-align: right;">24.2%</td>
+<td style="text-align: right;">23.2%</td>
+<td style="text-align: right;">22.2%</td>
+</tr>
+<tr>
+<td>0.90-1.00 (D)</td>
+<td style="text-align: right;">20.2%</td>
+<td style="text-align: right;">19.2%</td>
+<td style="text-align: right;">18.2%</td>
+<td style="text-align: right;">17.2%</td>
+<td style="text-align: right;">16.2%</td>
+</tr>
+<tr>
+<td>0.85-0.90 (E)</td>
+<td style="text-align: right;">19.2%</td>
+<td style="text-align: right;">17.2%</td>
+<td style="text-align: right;">15.2%</td>
+<td style="text-align: right;">13.1%</td>
+<td style="text-align: right;">11.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rank odds are almost the same; per-fish values are in <a href="data/size_ranks.csv"><code>size_ranks.csv</code></a> (<code>s_pct_first_column</code> and <code>s_pct_last_column</code> are the S chance in the first and last columns).</p>
+<h3 id="size-and-rank-class-and-experience">Class and experience</h3>
+<p>Each catch gives experience by the fish's <a href="#size-and-rank-grade">grade</a>; enough experience raises your class (USA table <code>0x804BA6D0</code>, steps between levels).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Level</th>
+<th>Class</th>
+<th style="text-align: right;">Total exp</th>
+<th style="text-align: right;">Odds column</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>Visitor</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Rookie Rank 10</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Rookie Rank 9</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Rookie Rank 8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Rookie Rank 7</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Rookie Rank 6</td>
+<td style="text-align: right;">420</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Rookie Rank 5</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Rookie Rank 4</td>
+<td style="text-align: right;">820</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Rookie Rank 3</td>
+<td style="text-align: right;">1,080</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Rookie Rank 2</td>
+<td style="text-align: right;">1,380</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Rookie Rank 1</td>
+<td style="text-align: right;">1,720</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Amateur Rank 10</td>
+<td style="text-align: right;">2,220</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Amateur Rank 9</td>
+<td style="text-align: right;">2,770</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>Amateur Rank 8</td>
+<td style="text-align: right;">3,370</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>Amateur Rank 7</td>
+<td style="text-align: right;">4,020</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>Amateur Rank 6</td>
+<td style="text-align: right;">4,720</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>Amateur Rank 5</td>
+<td style="text-align: right;">5,470</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Amateur Rank 4</td>
+<td style="text-align: right;">6,270</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>Amateur Rank 3</td>
+<td style="text-align: right;">7,120</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>Amateur Rank 2</td>
+<td style="text-align: right;">8,020</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>Amateur Rank 1</td>
+<td style="text-align: right;">9,020</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>Expert Rank 10</td>
+<td style="text-align: right;">10,120</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>Expert Rank 9</td>
+<td style="text-align: right;">11,320</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>Expert Rank 8</td>
+<td style="text-align: right;">12,620</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>Expert Rank 7</td>
+<td style="text-align: right;">14,020</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>Expert Rank 6</td>
+<td style="text-align: right;">15,520</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">26</td>
+<td>Expert Rank 5</td>
+<td style="text-align: right;">17,120</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">27</td>
+<td>Expert Rank 4</td>
+<td style="text-align: right;">18,820</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">28</td>
+<td>Expert Rank 3</td>
+<td style="text-align: right;">20,820</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">29</td>
+<td>Expert Rank 2</td>
+<td style="text-align: right;">23,320</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td>Expert Rank 1</td>
+<td style="text-align: right;">26,320</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">31</td>
+<td>World Champion</td>
+<td style="text-align: right;">36,320</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">32</td>
+<td>Fishing King</td>
+<td style="text-align: right;">51,320</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="size-and-rank-rank-borders">Rank borders</h3>
+<p>The game judges rank twice:</p>
+<ul>
+<li><strong>Result screen:</strong> length and border are both multiplied by 100 and truncated to integers, then compared.</li>
+<li><strong>Encyclopedia:</strong> length and border are compared as they are.</li>
+</ul>
+<p>Float rounding can make the result-screen border 0.01 cm lower. Landing exactly on that length shows S on the result screen but records A in the encyclopedia (unconfirmed). Longnose Gar, for example, is S from 149.87 cm on the result screen and from 149.88 cm in the encyclopedia.</p>
+<p>96 of 216 species have this shifted S border. The shifted length is the very top of band A, so its chance is roughly band A's chance divided by the number of 0.01 cm steps in band A: lower for big fish, higher at high class.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Shifted length</th>
+<th style="text-align: right;">Species</th>
+<th>Examples</th>
+<th style="text-align: right;">Visitor to Rookie 6</th>
+<th style="text-align: right;">Expert 7 and up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">37.46 cm</td>
+<td style="text-align: right;">19</td>
+<td>Black Rockfish, Mackerel, Piranha</td>
+<td style="text-align: right;">1/1,495</td>
+<td style="text-align: right;">1/831</td>
+</tr>
+<tr>
+<td style="text-align: right;">56.19 cm</td>
+<td style="text-align: right;">2</td>
+<td>Chicken Grunt, African Pike</td>
+<td style="text-align: right;">1/2,237</td>
+<td style="text-align: right;">1/1,243</td>
+</tr>
+<tr>
+<td style="text-align: right;">62.44 cm</td>
+<td style="text-align: right;">17</td>
+<td>Red Sea Bream, Bonito, Catfish</td>
+<td style="text-align: right;">1/2,476</td>
+<td style="text-align: right;">1/1,376</td>
+</tr>
+<tr>
+<td style="text-align: right;">74.93 cm</td>
+<td style="text-align: right;">19</td>
+<td>Sea Bass, Magoi, Kohaku Koi</td>
+<td style="text-align: right;">1/2,976</td>
+<td style="text-align: right;">1/1,653</td>
+</tr>
+<tr>
+<td style="text-align: right;">124.89 cm</td>
+<td style="text-align: right;">23</td>
+<td>Japanese Amberjack, King Salmon, Japanese Huchen</td>
+<td style="text-align: right;">1/4,991</td>
+<td style="text-align: right;">1/2,773</td>
+</tr>
+<tr>
+<td style="text-align: right;">149.87 cm</td>
+<td style="text-align: right;">4</td>
+<td>Longnose Gar, Silver Carp</td>
+<td style="text-align: right;">1/5,898</td>
+<td style="text-align: right;">1/3,277</td>
+</tr>
+<tr>
+<td style="text-align: right;">249.79 cm</td>
+<td style="text-align: right;">7</td>
+<td>Yellowfin Tuna, Frilled Shark</td>
+<td style="text-align: right;">1/9,830</td>
+<td style="text-align: right;">1/5,461</td>
+</tr>
+<tr>
+<td style="text-align: right;">299.75 cm</td>
+<td style="text-align: right;">2</td>
+<td>Alligator Gar, Platinum Alligator Gar</td>
+<td style="text-align: right;">1/12,015</td>
+<td style="text-align: right;">1/6,675</td>
+</tr>
+<tr>
+<td style="text-align: right;">499.59 cm</td>
+<td style="text-align: right;">3</td>
+<td>Black Marlin, N. Pacific Giant Octopus</td>
+<td style="text-align: right;">1/20,275</td>
+<td style="text-align: right;">1/11,264</td>
+</tr>
+</tbody>
+</table></div>
+<p>Per-fish borders for both judgements: <a href="data/size_ranks.csv"><code>size_ranks.csv</code></a> (<code>result_*_cm</code>, <code>dex_*_cm</code>).</p>
+<h3 id="size-and-rank-grade">Grade</h3>
+<p>Each species has a hidden whole number 0 to 5, called <strong>grade</strong> here (<a href="data/fish.csv"><code>fish.csv</code></a> <code>grade</code>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Grade</th>
+<th style="text-align: right;">Species</th>
+<th style="text-align: right;">Exp</th>
+<th style="text-align: center;">Step 2 (s)</th>
+<th style="text-align: center;">Step 4 (s)</th>
+<th style="text-align: right;">Peck factor</th>
+<th style="text-align: center;">Peck time (s)</th>
+<th style="text-align: right;">Run distance (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">1-4</td>
+<td style="text-align: center;">2-5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">5-15</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: center;">1-5</td>
+<td style="text-align: center;">2-6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">5-15</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: center;">2-6</td>
+<td style="text-align: center;">3-7</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: center;">4.5-13.5</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">80 or 100</td>
+<td style="text-align: center;">2-7</td>
+<td style="text-align: center;">3-8</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: center;">3.75-11.25</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: center;">3-8</td>
+<td style="text-align: center;">4-9</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: center;">2.75-8.25</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: center;">4-9</td>
+<td style="text-align: center;">5-10</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: center;">2-6</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table></div>
+<p>Steps and peck time: <a href="#bite">bite</a>. Run distance: <a href="#tackle-and-fight-first-run">fight</a>. Driftwood, water weed and seaweed are grade 0; the two fossils are grade 2. Experience is stored per fish but always follows grade; the only exception is Polypterus at 100.</p>
+<p>Grade is also used for: copy spawns (grade 2 and below only, <a href="#spawning-copy-spawns">spawning</a>); the result jingle (always the special one at grade 4 and up, <a href="#tackle-and-fight-after-landing">fight</a>); and the receptionist (grade 4+ catches outrank count and rank topics, <a href="#calendar-and-npcs-receptionist">receptionist</a>).</p>
+<h3 id="size-and-rank-lure-types-per-fish">Lure types per fish</h3>
+<p>A fish only reacts to lures whose type and size range both fit (<a href="#lure-colour-other-lure-gates">lure colour</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Types taken</th>
+<th style="text-align: right;">Species</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All five</td>
+<td style="text-align: right;">52</td>
+<td>Hyneria, Bothriolepis, Pteraspis, Acanthodes</td>
+</tr>
+<tr>
+<td>Minnow only</td>
+<td style="text-align: right;">33</td>
+<td>Black Carp, Bighead Carp, Silver Carp, Grass Carp</td>
+</tr>
+<tr>
+<td>Spoon only</td>
+<td style="text-align: right;">21</td>
+<td>Wels Catfish, Burbot, Red Stingray, Smallscale Blackfish</td>
+</tr>
+<tr>
+<td>Spinner only</td>
+<td style="text-align: right;">6</td>
+<td>Dolly Varden, Cutthroat Trout, Japanese Char, Steelhead</td>
+</tr>
+<tr>
+<td>Spoon and Minnow</td>
+<td style="text-align: right;">6</td>
+<td>Tarpon, Permit, Coral Trout, Mackerel Tuna</td>
+</tr>
+<tr>
+<td>Spoon and Spinner</td>
+<td style="text-align: right;">2</td>
+<td>Japanese Huchen, Bluegill</td>
+</tr>
+</tbody>
+</table></div>
+<p>Fish not listed never take lures. Every fish and type with its size coverage: <a href="data/fish_lure_types.csv"><code>fish_lure_types.csv</code></a>.</p>
+<h4 id="size-and-rank-s-only-pairs">S-only pairs</h4>
+<p>If a lure's minimum length is above a fish's S border, every fish that reacts to it is S rank. That happens for base-40 cm fish with 50 cm+ lures and base-120 cm fish with 150 cm+ lures. S fish between the S border and 49.99 / 149.99 cm fall outside and never react (about 2% of S fish). All pairs: <a href="data/s_only_lures.csv"><code>s_only_lures.csv</code></a>.</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="tackle-and-fight">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">06</span><div><span class="k">Rods, reels, tension gauge, line breaks, stamina</span><h2>Tackle and fight</h2></div></header>
+    <div class="md"><h3 id="tackle-and-fight-rods">Rods</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rod</th>
+<th style="text-align: right;">Stars</th>
+<th style="text-align: center;">Fish (cm)</th>
+<th style="text-align: right;">Gauge max</th>
+<th style="text-align: right;">Cast multiplier</th>
+<th style="text-align: right;">Price (pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LF-101 Journey</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">0-30</td>
+<td style="text-align: right;">380</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">starter</td>
+</tr>
+<tr>
+<td>LF-102 Next</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">0-30</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1,200</td>
+</tr>
+<tr>
+<td>LF-111 Long Drive</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">0-30</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">18,000</td>
+</tr>
+<tr>
+<td>MF-210 Tourist</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">20-70</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2,800</td>
+</tr>
+<tr>
+<td>MF-222 Heroic</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">20-70</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">24,000</td>
+</tr>
+<tr>
+<td>HF-1400 Hamstring</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">50-200</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4,200</td>
+</tr>
+<tr>
+<td>HF-1800 Storm Killer</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">50-200</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">28,000</td>
+</tr>
+<tr>
+<td>X-100 Berserker</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">50+</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">26,000</td>
+</tr>
+<tr>
+<td>X-999 Titan</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">50+</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">not sold</td>
+</tr>
+</tbody>
+</table></div>
+<p>A 3-star rod's gauge moves about 2.6x as fast as a 1-star's. Cast speed is swing speed × the multiplier, capped, so a hard swing that hits the cap casts the same with any rod; the multiplier only matters for gentle swings.</p>
+<h3 id="tackle-and-fight-reels">Reels</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Reel</th>
+<th style="text-align: right;">Stars</th>
+<th style="text-align: center;">Fish (cm)</th>
+<th style="text-align: right;">Back toward 50%</th>
+<th style="text-align: right;">Away from 50%</th>
+<th style="text-align: right;">Price (pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-01 Journey</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;">0-30</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">starter</td>
+</tr>
+<tr>
+<td>FR-02 Stage</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">0-70</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">1,200</td>
+</tr>
+<tr>
+<td>FR-03 Omega</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">0-70</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">22,000</td>
+</tr>
+<tr>
+<td>M-05 Hunter</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">20-200</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">2,600</td>
+</tr>
+<tr>
+<td>M-11 Lunker Keeper</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">20-200</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">26,000</td>
+</tr>
+<tr>
+<td>X-001 Elephant</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;">50+</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">24,000</td>
+</tr>
+<tr>
+<td>X-009 Infinity</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">50+</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">not sold</td>
+</tr>
+</tbody>
+</table></div>
+<p>Stars alone set fight behaviour (USA tables <code>0x804B3A90</code>, <code>0x804B3A9C</code>). "Back toward 50%" scales the rise when reeling below 50% and the fall when you stop above 50%; "away from 50%" scales the rise when reeling above 50% and the fall when you stop below 50%. More stars keep the gauge near 50%. A fish bigger than the reel's range does not weaken the reel.</p>
+<p><strong>So Lunker Keeper and Infinity fight exactly the same.</strong></p>
+<h4 id="tackle-and-fight-reels-and-fish-size">Reels and fish size</h4>
+<p>The reel's minimum size and the fish's actual length multiply <a href="#bite-interest">interest</a> gain (USA table <code>0x804C0978</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Reel</th>
+<th style="text-align: right;">up to 30 cm</th>
+<th style="text-align: right;">30-70 cm</th>
+<th style="text-align: right;">70-200 cm</th>
+<th style="text-align: right;">over 200 cm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR (Journey, Stage, Omega)</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1.5x</td>
+<td style="text-align: right;">1.5x</td>
+<td style="text-align: right;">1.5x</td>
+</tr>
+<tr>
+<td>M (Hunter, Lunker Keeper)</td>
+<td style="text-align: right;">0.5x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1.5x</td>
+<td style="text-align: right;">1.5x</td>
+</tr>
+<tr>
+<td>X (Elephant, Infinity)</td>
+<td style="text-align: right;">0.1x</td>
+<td style="text-align: right;">0.5x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1.5x</td>
+</tr>
+</tbody>
+</table></div>
+<p>Lunker Keeper beats Infinity on every fish up to 200 cm and ties above. Unless you use 150 cm+ only lures, Lunker Keeper builds interest faster.</p>
+<h4 id="tackle-and-fight-rod-over-size">Rod over-size</h4>
+<p>When the fish is larger than the rod's range, "reeling above 50%" and "stopping below 50%" are multiplied (USA table <code>0x804C8B78</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rod</th>
+<th style="text-align: right;">up to 30 cm</th>
+<th style="text-align: right;">30-70 cm</th>
+<th style="text-align: right;">70-200 cm</th>
+<th style="text-align: right;">over 200 cm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LF</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">8x</td>
+<td style="text-align: right;">16x</td>
+<td style="text-align: right;">24x</td>
+</tr>
+<tr>
+<td>MF</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">8x</td>
+<td style="text-align: right;">16x</td>
+</tr>
+<tr>
+<td>HF</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">8x</td>
+</tr>
+<tr>
+<td>X</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">1x</td>
+<td style="text-align: right;">8x</td>
+</tr>
+</tbody>
+</table></div>
+<p>The length used is the smaller of the fish's length and its species base size, so it is almost fixed per species: a base-200 cm Tarpon at 250 cm is still 1x on HF or X.</p>
+<p>X rods say "50 cm+", but the check uses a 200 cm ceiling, so species with base over 200 cm get 8x on X exactly like HF. In normal fishing those are King of Herrings, Pirarucu, Alligator Gar, Platinum Alligator Gar, Electric Eel, White Sturgeon, Goblin Shark and Hyneria.</p>
+<p><strong>So Berserker equals Hamstring and Titan equals Storm Killer</strong> in gauge movement and cast multiplier. Rod length is the same for all rods. The only differences: X rods accept LL lures, and on fish under 150 cm an X rod bends less (an HF rod starts bending above 50% gauge on a 50-150 cm fish, an X rod above 75%). Bending is visual only.</p>
+<p><strong>Their check:</strong> they measured gauge speed by reading memory while fighting Alligator Gar with Titan + Infinity and Storm Killer + Lunker Keeper, and fought Hyneria with both. Gauge speed was identical and Hyneria was catchable with Storm Killer + Lunker Keeper with no felt difference. Fish under 150 cm were not measured, but rod bend is not part of the gauge maths.</p>
+<p>The trolling rod has gauge max 1000 and Journey-reel factors.</p>
+<h3 id="tackle-and-fight-tension-gauge">Tension gauge</h3>
+<p>Reeling raises the gauge, not reeling lowers it. Per second:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Change per second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reeling at 50% or above</td>
+<td>+ speed A × reel strength × reel-hold factor × miss factor × reel value × rod over-size</td>
+</tr>
+<tr>
+<td>Reeling below 50%</td>
+<td>+ speed B × match factor × reel value</td>
+</tr>
+<tr>
+<td>Not reeling at 50% or above</td>
+<td>− speed B × match factor × reel value</td>
+</tr>
+<tr>
+<td>Not reeling below 50%</td>
+<td>− speed A × miss factor × reel value × rod over-size</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reel-hold factor goes from 0 to 1 over 2 s of continuous reeling. Miss and match factors come from rod tilt (below).</p>
+<h4 id="tackle-and-fight-pull-class">Pull class</h4>
+<p>Every fish is in pull class 0 to 9 (USA table <code>0x804C8B88</code>). Higher classes jump fast above 50% when reeled and barely drop when you stop.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Class</th>
+<th style="text-align: right;">Speed A</th>
+<th style="text-align: right;">Speed B</th>
+<th style="text-align: right;">Species</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">1</td>
+<td>Clownfish</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">6</td>
+<td>Blueface Angelfish, Royal Angelfish, Emperor Angelfish, Seahorse</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">7</td>
+<td>Blue Tang, Cardinal Tetra, Pond Smelt, Guppy</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">22</td>
+<td>Ocellaris Clownfish, Pink Anemonefish, Purple Queen, Platinum Guppy</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">23</td>
+<td>Eastern Blue Devil Fish, Black Ghost Knifefish, Pudgy Cuskeel, Ocean Sunfish</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">37</td>
+<td>Demon Stinger, Shortnose Gar, Milkfish, Barreleye</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">38</td>
+<td>Pirarucu, Longnose Gar, Napoleon Fish, Coelacanth</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">32</td>
+<td>Electric Eel, Giant Grouper, Barracuda, Bothriolepis</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">16</td>
+<td>Giant Snakehead, Hammerhead Shark, Tarpon, Platinum Alligator Gar</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">34</td>
+<td>Xiphactinus, Hyneria, Helicoprion, Dunkleosteus</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="tackle-and-fight-rod-tilt">Rod tilt</h4>
+<p>From d, the angle in degrees between your rod tilt and the target angle set by the fish's left-right position (the arrow when you tilt the Wii Remote):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>d</th>
+<th>Miss factor</th>
+<th>Match factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>under 20°</td>
+<td>d ÷ 20 (min 0.3)</td>
+<td>2 × (1 − d ÷ 20)</td>
+</tr>
+<tr>
+<td>20° and over</td>
+<td>1 + 3 × (d − 20) ÷ 70 (d capped at 90, max 4)</td>
+<td>1 − (d − 20) ÷ 40 (min 0.2)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="tackle-and-fight-line-breaks-and-slack">Line breaks and slack</h3>
+<p>USA tables <code>0x804C8BD8</code>, <code>0x804C8BE8</code>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Gauge</th>
+<th>Effect</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>over 94%</td>
+<td>line durability −40/s</td>
+<td>snaps in ~2.5 s</td>
+</tr>
+<tr>
+<td>over 84%</td>
+<td>line durability −10/s</td>
+<td>snaps in ~10 s (unconfirmed)</td>
+</tr>
+<tr>
+<td>under 16%</td>
+<td>slack margin −0.1/s</td>
+<td>fish escapes in ~10 s</td>
+</tr>
+<tr>
+<td>under 6%</td>
+<td>slack margin −0.4/s</td>
+<td>fish escapes in ~2.5 s</td>
+</tr>
+</tbody>
+</table></div>
+<p>Durability starts at 100 and never recovers. Slack margin starts at up to 1 depending on the hook rating (Excellent to Fish On) and never recovers.</p>
+<p>The fight also fails if the fish gets too far away front-to-back. The limit is set at the hook: fish hooked far away can go further. The on-screen distance is front-to-back only.</p>
+<h3 id="tackle-and-fight-bringing-the-fish-in">Bringing the fish in</h3>
+<p>How fast a reeled fish approaches scales with the gauge (faster closer to 50%, maximum from 50% up) and with size (smaller is faster; fish 200 cm and over barely come in until their stamina drops).</p>
+<p><strong>Landing.</strong> While stamina is above 40%, the fish must be near the surface: within 0.75x its body height. At 40% or below, staying under 2 m from the rod tip for 8 s also lands it.</p>
+<p><strong>Stamina</strong> starts at 100% and bottoms out at 10%. It drains 1% ÷ stamina value per second; reeling adds 3% × reel strength ÷ stamina value. Within 0.5 m of the landing point it drains 10x as fast. Arowana drains at 0.75x and Peacock Bass at 1.5x; why only these two is unknown.</p>
+<p>Highest stamina values: Xiphactinus 4, Helicoprion 4, Hikarimuji Koi 4, Dunkleosteus 3.5, Hyneria 3.5, Swordfish 3, Giant Squid 3, Striped Marlin 3, Black Marlin 3, Halibut 3, N. Pacific Giant Octopus 3, Indo-Pacific Blue Marlin 3.</p>
+<h3 id="tackle-and-fight-first-run">First run</h3>
+<p>A hooked fish swims away from the rod, angled 10 to 45° to one side, switching sides now and then. A fish hooked closer to the rod tip than its grade's run distance (<a href="#size-and-rank-grade">grade</a>) first swims straight away for that distance ±1 m, at most 4 s (unconfirmed).</p>
+<p>Top speed depends on length, size relative to base, and a per-species factor; bigger fish of the same species are faster.</p>
+<h3 id="tackle-and-fight-after-landing">After landing</h3>
+<p>Grade 4+ fish and LL fish always get the special jingle. Others get it at S rank or better (exactly: a length the encyclopedia records as S).</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="trolling">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">07</span><div><span class="k">How trolling hits work, lures, routes and radar</span><h2>Trolling</h2></div></header>
+    <div class="md"><h3 id="trolling-how-a-fish-gets-hooked">How a fish gets hooked</h3>
+<p>While trolling, each rod repeats on its own:</p>
+<ol>
+<li>Wait 5 to 10 s (7.5 s on average).</li>
+<li>Pick one species from the current route's table.</li>
+<li>Roll a hit with the chance for your lure and that species' base colour. On a miss, go back to 1.</li>
+<li>On a hit the rod bends; pick that rod within 2 to 5 s to start the fight.</li>
+</ol>
+<p>The species is chosen first, so the lure changes both how often you get hits and which fish they are. Normal lure colour and size checks are not used, and weather doesn't matter. For the first 3 minutes after the rods go out, the hit chance is multiplied by elapsed time ÷ 3 minutes. Fish swimming in the sea play no part.</p>
+<h3 id="trolling-lure-versus-base-colour">Lure versus base colour</h3>
+<p>Lures are numbered left to right on the setup screen. Percent; 30% and up in bold (USA table <code>0x804F8290</code>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Lure</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">8</th>
+<th style="text-align: right;">9</th>
+<th style="text-align: right;">10</th>
+<th style="text-align: right;">11</th>
+<th style="text-align: right;">12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 red-orange</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>40</strong></td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>2 purple</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>3 yellow</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;"><strong>40</strong></td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>4 silver-grey</td>
+<td style="text-align: right;"><strong>50</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr>
+<td>5 light blue</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every pair is at least 5%, so any lure can catch every fish on a route. Base colours: <a href="data/fish.csv"><code>fish.csv</code></a> <code>base_color</code>.</p>
+<h3 id="trolling-routes">Routes</h3>
+<p>A route is a loop of waypoints at sea. Starting to troll picks the route with the waypoint nearest the cruiser; the cruiser joins at that waypoint and then loops the route. Route numbers are the Japanese research's labels. <code>images/trolling/routes.png</code> draws them, and <code>start-zones.png</code> colours the sea by which route you get when starting there.</p>
+<p>A route's fish never change with time or weather; the only change is that stocking adds Sailfish.</p>
+<p>Per route and lure, <a href="data/trolling_route_summary.csv"><code>trolling_route_summary.csv</code></a> has the hit chance per check (after the 3-minute ramp) and the average wait. Average wait for one rod = 7.5 s ÷ chance: 50% means 15 s, 5% means 150 s; five rods divide that by 5. <a href="data/trolling_route_fish.csv"><code>trolling_route_fish.csv</code></a> breaks it down per species (<code>pick_rate</code>, <code>hit_rate</code>, <code>per_check</code>, <code>share_of_hits</code>, with and without the stock password).</p>
+<h3 id="trolling-radar">Radar</h3>
+<p>The open-sea radar shows real fish dots and fake ones. They look the same, but fake dots move fast.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Dot</th>
+<th style="text-align: right;">Count</th>
+<th>Position</th>
+<th>Disappears when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real fish</td>
+<td style="text-align: right;">up to 16</td>
+<td>the fish</td>
+<td>the fish despawns or is hooked</td>
+</tr>
+<tr>
+<td>Fake fish</td>
+<td style="text-align: right;">up to 3</td>
+<td>moves straight at 5-10 m/s</td>
+<td>100 m from the cruiser, or its display time ends</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Real dots</strong> cover fish whose object index is a multiple of 3, about one in three. Open-sea fish have no shadows, so this is the only hint of where they are, but the dot doesn't say which species.</p>
+<p><strong>Fake dots</strong> appear 25 to 75 m from the cruiser heading in a random direction. The game picks a species evenly (ignoring weights) from the last route sailed (route 0 if none yet); that species' grade sets the display time (USA table <code>0x804F0FE8</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Grade</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display time (s)</td>
+<td style="text-align: center;">60-120</td>
+<td style="text-align: center;">90-180</td>
+<td style="text-align: center;">120-240</td>
+<td style="text-align: center;">120-240</td>
+</tr>
+</tbody>
+</table></div>
+<p>With the cruiser stopped, a fake dot leaves the 100 m range first: 13 s on average, 35 s at most.</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="weather">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">08</span><div><span class="k">Weather odds, skies per area and effects</span><h2>Weather</h2></div></header>
+    <div class="md"><p>There are five weather states. The game never names them, so these names describe the sky:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Weather</th>
+<th>Sky</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear</td>
+<td>fewest clouds; sun, moon and stars show</td>
+</tr>
+<tr>
+<td>Sunny</td>
+<td>blue sky with clouds</td>
+</tr>
+<tr>
+<td>Light cloud</td>
+<td>thicker cloud layer, sun still visible</td>
+</tr>
+<tr>
+<td>Cloudy</td>
+<td>the whole sky is cloud; in most areas sun and moon are hidden</td>
+</tr>
+<tr>
+<td>Overcast</td>
+<td>only cloud; no sun, moon or stars</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="weather-effect-on-fish">Effect on fish</h3>
+<p>Weather changes each spawned fish's <a href="#lure-colour-how-a-fish-picks-its-favourite">favourite lure colour</a> and <a href="#bait-patterns-and-weather">bait pattern</a>. It does not change which species spawn and does not affect trolling hits.</p>
+<h3 id="weather-odds">Odds</h3>
+<p>Days count from the day a new game starts. Day 1 is always Sunny. Days 2 and 3 never roll Cloudy or Overcast:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Clear</th>
+<th style="text-align: right;">Sunny</th>
+<th style="text-align: right;">Light cloud</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">36.6%</td>
+<td style="text-align: right;">35.2%</td>
+<td style="text-align: right;">28.2%</td>
+</tr>
+</tbody>
+</table></div>
+<p>From day 4 the base odds are (USA table <code>0x804C2DA8</code>, weights 25/25/25/15/10 drawn with the extra first ticket):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Clear</th>
+<th style="text-align: right;">Sunny</th>
+<th style="text-align: right;">Light cloud</th>
+<th style="text-align: right;">Cloudy</th>
+<th style="text-align: right;">Overcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">25.7%</td>
+<td style="text-align: right;">24.8%</td>
+<td style="text-align: right;">24.8%</td>
+<td style="text-align: right;">14.9%</td>
+<td style="text-align: right;">9.9%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rolling the same weather as yesterday redraws, so the weather always changes. Next day by previous day:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Previous \ next</th>
+<th style="text-align: right;">Clear</th>
+<th style="text-align: right;">Sunny</th>
+<th style="text-align: right;">Light cloud</th>
+<th style="text-align: right;">Cloudy</th>
+<th style="text-align: right;">Overcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">33.3%</td>
+<td style="text-align: right;">33.3%</td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">13.3%</td>
+</tr>
+<tr>
+<td>Sunny</td>
+<td style="text-align: right;">34.2%</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">32.9%</td>
+<td style="text-align: right;">19.7%</td>
+<td style="text-align: right;">13.2%</td>
+</tr>
+<tr>
+<td>Light cloud</td>
+<td style="text-align: right;">34.2%</td>
+<td style="text-align: right;">32.9%</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">19.7%</td>
+<td style="text-align: right;">13.2%</td>
+</tr>
+<tr>
+<td>Cloudy</td>
+<td style="text-align: right;">30.2%</td>
+<td style="text-align: right;">29.1%</td>
+<td style="text-align: right;">29.1%</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">11.6%</td>
+</tr>
+<tr>
+<td>Overcast</td>
+<td style="text-align: right;">28.6%</td>
+<td style="text-align: right;">27.5%</td>
+<td style="text-align: right;">27.5%</td>
+<td style="text-align: right;">16.5%</td>
+<td style="text-align: right;">-</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="weather-skies-per-area">Skies per area</h3>
+<p>Some areas have fewer skies, so weather can't be told apart by eye:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Sky</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teman Paradise Beach, Sembilan Island</td>
+<td>Overcast looks like Cloudy</td>
+</tr>
+<tr>
+<td>Pacar Beach</td>
+<td>Cloudy and Overcast look like Light cloud</td>
+</tr>
+<tr>
+<td>Malam Jungle, Patarpa River, Rahaja Lake</td>
+<td>Clear to Light cloud share one sky; Cloudy and Overcast share another</td>
+</tr>
+<tr>
+<td>Kerikil River</td>
+<td>same sky in all weather</td>
+</tr>
+<tr>
+<td>Everywhere else</td>
+<td>five skies</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="weather-visual-effects">Visual effects</h3>
+<p>Sun lens flare and glare strength (USA table <code>0x804C2DBC</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Clear</th>
+<th style="text-align: right;">Sunny</th>
+<th style="text-align: right;">Light cloud</th>
+<th style="text-align: right;">Cloudy</th>
+<th style="text-align: right;">Overcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;">70%</td>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Lure glints in the morning and day (6:00 to 15:59) are off only when Overcast.</p>
+<p><strong>Cloud shapes.</strong> Lying on a sunbed at Teman Paradise Beach or Sepuluh Island on a Light cloud, Cloudy or Overcast day, shaped clouds drift by: one every 20 to 80 s, gone after 2 minutes. Shapes are elephant, cat and UFO at odds 5:3:2.</p></div>
+  </div></div>
+</section>
+<section class="sec rv" id="calendar-and-npcs">
+  <div class="shell"><div class="core">
+    <header class="sh"><span class="no num">09</span><div><span class="k">Game time, tournaments, activities, quests</span><h2>Calendar and NPCs</h2></div></header>
+    <div class="md"><h3 id="calendar-and-npcs-game-time">Game time</h3>
+<p>One game day is 30 real minutes; one game hour is 75 s. During a fight after 14:00 the clock runs at one tenth speed. Talking, menus, scene changes and minigames stop the clock.</p>
+<h3 id="calendar-and-npcs-the-28-day-cycle">The 28-day cycle</h3>
+<p>Tours and tournaments repeat every four weeks starting on a Monday. Week 1 is the week the save was created; its weekday comes from the Wii's clock at that moment.</p>
+<h3 id="calendar-and-npcs-tournaments">Tournaments</h3>
+<p>Eight tournaments, each held every 14 days on a Saturday or Sunday, posted on the board from 7 days to 1 day before (USA activity table <code>0x804BBC48</code>, rows of 0x70 bytes, schedule bits at +0x30).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>Tournament</th>
+<th>Style</th>
+<th>Rule</th>
+<th style="text-align: right;">Prize (pts)</th>
+<th style="text-align: right;">Entry (pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sat, weeks 1 and 3</td>
+<td>Dua Ribu Lure Fishing Tournament</td>
+<td>Lure Fishing</td>
+<td>Biggest Fish Wins</td>
+<td style="text-align: right;">8,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sat, weeks 1 and 3</td>
+<td>Malam Float Fishing Tournament</td>
+<td>Float Fishing</td>
+<td>Most Catches Wins</td>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sun, weeks 1 and 3</td>
+<td>Kerikil Lure Fishing Tournament</td>
+<td>Lure Fishing</td>
+<td>Most Catches Wins</td>
+<td style="text-align: right;">12,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sun, weeks 1 and 3</td>
+<td>Pacar Float Fishing Tournament</td>
+<td>Float Fishing</td>
+<td>Biggest Fish Wins</td>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sat, weeks 2 and 4</td>
+<td>Kanan Lure Fishing Tournament</td>
+<td>Lure Fishing</td>
+<td>Most Catches Wins</td>
+<td style="text-align: right;">8,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sat, weeks 2 and 4</td>
+<td>Panas Float Fishing Tournament</td>
+<td>Float Fishing</td>
+<td>Biggest Fish Wins</td>
+<td style="text-align: right;">6,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sun, weeks 2 and 4</td>
+<td>Teman Float Fishing Tournament</td>
+<td>Float Fishing</td>
+<td>Most Catches Wins</td>
+<td style="text-align: right;">6,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>Sun, weeks 2 and 4</td>
+<td>Tidur Lure Fishing Tournament</td>
+<td>Lure Fishing</td>
+<td>Biggest Fish Wins</td>
+<td style="text-align: right;">12,000</td>
+<td style="text-align: right;">300</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="calendar-and-npcs-trolling-tours">Trolling tours</h3>
+<p>South Coast is posted every Saturday and Sunday; West Coast every day in weeks 1 and 3; North Coast every day in weeks 2 and 4.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tour</th>
+<th>Sea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>South Coast</td>
+<td>Tropical Ocean</td>
+</tr>
+<tr>
+<td>West Coast</td>
+<td>Temperate Ocean</td>
+</tr>
+<tr>
+<td>North Coast</td>
+<td>Frigid Ocean</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="calendar-and-npcs-activities-on-set-days">Activities on set days</h3>
+<p>Activities not listed run every day.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Area</th>
+<th style="text-align: right;">Price (pts)</th>
+<th>Week 1</th>
+<th>Week 2</th>
+<th>Week 3</th>
+<th>Week 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Float Fishing School</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">0</td>
+<td>Mon-Sat</td>
+<td>Mon-Sat</td>
+<td>Mon-Sat</td>
+<td>Mon-Sat</td>
+</tr>
+<tr>
+<td>Kayak Race: Normal</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Fish Counting: Easy</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+</tr>
+<tr>
+<td>Symbol Hunt at the Beach! - Easy</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>Mon Tue</td>
+<td>-</td>
+<td>Mon Tue</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Symbol Hunt at the Beach! - Normal</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>Thu Fri</td>
+<td>-</td>
+<td>Thu Fri</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Symbol Hunt at the Beach! - Hard</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>-</td>
+<td>Mon Tue</td>
+<td>-</td>
+<td>Mon Tue</td>
+</tr>
+<tr>
+<td>Symbol Hunt at the Beach! - Master</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>-</td>
+<td>Thu Fri</td>
+<td>-</td>
+<td>Thu Fri</td>
+</tr>
+<tr>
+<td>Trolling Tour - South Coast</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">800</td>
+<td>Sat Sun</td>
+<td>Sat Sun</td>
+<td>Sat Sun</td>
+<td>Sat Sun</td>
+</tr>
+<tr>
+<td>Ferryboat Fishing Tour - West Coast</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">200</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Teman Paradise Beach - Submarine Tour</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri</td>
+<td>-</td>
+<td>Mon Wed Fri</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Penangkapan West Coast - Submarine Tour</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">100</td>
+<td>Tue Thu Sat</td>
+<td>Sun</td>
+<td>Tue Thu Sat</td>
+<td>Sun</td>
+</tr>
+<tr>
+<td>Penangkapan South Coast - Submarine Tour</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">250</td>
+<td>Tue Thu Sat Sun</td>
+<td>Tue Thu Sat Sun</td>
+<td>Tue Thu Sat Sun</td>
+<td>Tue Thu Sat Sun</td>
+</tr>
+<tr>
+<td>Fish Counting: Hard</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+</tr>
+<tr>
+<td>Trolling Tour - West Coast</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">800</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Trolling Tour - North Coast</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">800</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+</tr>
+<tr>
+<td>Ferryboat Fishing Tour - North Coast</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">200</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+</tr>
+<tr>
+<td>Deserted Island Fishing Tour</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">500</td>
+<td>Sat Sun</td>
+<td>every day</td>
+<td>Sat Sun</td>
+<td>every day</td>
+</tr>
+<tr>
+<td>Pacar Beach - Submarine Tour</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+</tr>
+<tr>
+<td>Penangkapan North Coast - Submarine Tour</td>
+<td>Pacar Beach</td>
+<td style="text-align: right;">100</td>
+<td>Tue Thu Sun</td>
+<td>Tue Thu Sat</td>
+<td>Tue Thu Sun</td>
+<td>Tue Thu Sat</td>
+</tr>
+<tr>
+<td>Fish Counting: Master</td>
+<td>Kanan Lake</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+</tr>
+<tr>
+<td>Kayak Race: Hard</td>
+<td>Kanan Lake</td>
+<td style="text-align: right;">100</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Kayak Race: Master</td>
+<td>Kanan Lake</td>
+<td style="text-align: right;">100</td>
+<td>-</td>
+<td>every day</td>
+<td>-</td>
+<td>every day</td>
+</tr>
+<tr>
+<td>Fish Counting: Normal</td>
+<td>Panas Jungle</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+<td>Mon Wed Fri</td>
+</tr>
+<tr>
+<td>Symbol Hunt in the Jungle! - Easy</td>
+<td>Panas Jungle</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri Sun</td>
+<td>Tue Thu Sat</td>
+<td>Mon Wed Fri Sun</td>
+<td>Tue Thu Sat</td>
+</tr>
+<tr>
+<td>Symbol Hunt in the Jungle! - Normal</td>
+<td>Panas Jungle</td>
+<td style="text-align: right;">100</td>
+<td>Tue Thu Sat</td>
+<td>Mon Wed Fri Sun</td>
+<td>Tue Thu Sat</td>
+<td>Mon Wed Fri Sun</td>
+</tr>
+<tr>
+<td>Symbol Hunt in the Jungle! - Hard</td>
+<td>Panas Jungle</td>
+<td style="text-align: right;">100</td>
+<td>Mon Wed Fri Sun</td>
+<td>Tue Thu Sat</td>
+<td>Mon Wed Fri Sun</td>
+<td>Tue Thu Sat</td>
+</tr>
+<tr>
+<td>Symbol Hunt in the Jungle! - Master</td>
+<td>Panas Jungle</td>
+<td style="text-align: right;">100</td>
+<td>Tue Thu Sat</td>
+<td>Mon Wed Fri Sun</td>
+<td>Tue Thu Sat</td>
+<td>Mon Wed Fri Sun</td>
+</tr>
+<tr>
+<td>Dream Aquarium Tour</td>
+<td>Teman Paradise Beach</td>
+<td style="text-align: right;">0</td>
+<td>Wed Sun</td>
+<td>Wed Sun</td>
+<td>Wed Sun</td>
+<td>Wed Sun</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>USA quirk.</strong> The first two activity rows (Teman Paradise Beach rental bike, 20 pts, and rental kayak, 50 pts, in the Japanese text) point at text 2677 and 2678, which are blank in the USA text table. Their names in <a href="data/activities.csv"><code>activities.csv</code></a> are empty for that reason.</p>
+<h3 id="calendar-and-npcs-board-targets-and-quests">Board targets and quests</h3>
+<p><a href="data/board_targets.csv"><code>board_targets.csv</code></a> lists the 197 daily-target rows: area, place and fish (USA table <code>0x805272A0</code>). <a href="data/quest_unlocks.csv"><code>quest_unlocks.csv</code></a> lists which quest step unlocks each of the 19 quest fish (quest table <code>0x804EEF88</code>, locked list <code>0x804EF2E8</code>).</p>
+<h3 id="calendar-and-npcs-receptionist">Receptionist</h3>
+<p>The receptionist talks about what you caught since your last conversion to points. Topics are checked top to bottom and the first match wins (USA tables <code>0x804F7C00</code> onward):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Condition</th>
+<th>Fish mentioned</th>
+<th style="text-align: right;">Lines</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>a board target fish</td>
+<td>the target fish</td>
+<td style="text-align: right;">5</td>
+<td>Isn't that a rare ○○? Very nice!</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>a grade 4+ fish (not junk)</td>
+<td>highest grade, latest on a tie</td>
+<td style="text-align: right;">5</td>
+<td>Wow! Where did you catch that</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>10 or more catches (junk counts)</td>
+<td>-</td>
+<td style="text-align: right;">5</td>
+<td>My, you caught a lot!</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>an S-rank fish (not junk)</td>
+<td>the latest S fish</td>
+<td style="text-align: right;">8</td>
+<td>Wow! What a huge ○○!</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>an E-rank fish (not junk)</td>
+<td>the latest E fish</td>
+<td style="text-align: right;">3</td>
+<td>Oh, look! A small ○○.</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>a pretty fish</td>
+<td>the latest pretty fish</td>
+<td style="text-align: right;">5</td>
+<td>What a pretty ○○!</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>a cute fish</td>
+<td>the latest cute fish</td>
+<td style="text-align: right;">5</td>
+<td>Awww...</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>3 or fewer catches</td>
+<td>-</td>
+<td style="text-align: right;">3</td>
+<td>Hmm...not much luck today?</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>anything else</td>
+<td>-</td>
+<td style="text-align: right;">5</td>
+<td>I'll go ahead and convert your catch to points.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Within a topic, the game starts at a random line and takes the first one not used yet.</p>
+<p><strong>Pretty and cute fish</strong> are fixed by species only (USA tables <code>0x804F7F70</code>, <code>0x804F7FC8</code>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Fish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pretty</td>
+<td>Apapa, Blueface Angelfish, Arowana, Eastern Blue Devil Fish, Parrotfish, Yellowfin Tuna, Multicolorfin Rainbow, Coral Trout, Tarpon, Dorado, Showa Koi, Hikarimuji Koi, Tancho Koi, Kohaku Koi, Akamuji Koi, Shiroutsuri Koi, Betta, Bonefish, Red-bellied Fusilier, Red Emperor (Adult), Red Emperor (Young)</td>
+</tr>
+<tr>
+<td>Cute</td>
+<td>Chicken Grunt, Cardinal Tetra, Ocellaris Clownfish, Guppy, Clownfish, Fat Minnow, Seahorse, Emperor Angelfish, Oriental Butterflyfish, Moorish Idol, Blue Tang, Royal Angelfish, Purple Queen, Pennant Coralfish, Butterfly Fish, Pink Anemonefish, Forceps Fish, Platinum Guppy, Ocean Sunfish, Flapjack Octopus</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tarpon, Dorado, Purple Queen and Ocean Sunfish are on these lists but are grade 4+, so topic 2 always catches them first.</p></div>
+  </div></div>
+</section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>Research by <a href="https://github.com/kyuuri1234/FishingResortData" target="_blank" rel="noopener">kyuuri1234</a> (CC0), ported to the USA disc and re-checked. Thank you!</span>
+  <a href="index.html">Back to the spawn map</a>
+</footer>
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+  const links = new Map([...document.querySelectorAll(".toc a")].map(a => [a.getAttribute("href").slice(1), a]));
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(a => a.classList.remove("on"));
+    const a = links.get(e.target.id);
+    if (a) a.classList.add("on");
+  }), { rootMargin: "-30% 0px -60% 0px" });
+  document.querySelectorAll(".sec").forEach(s => spy.observe(s));
+  const open = () => {
+    const id = location.hash.slice(1);
+    const el = id && document.getElementById(id);
+    if (!el) return;
+    const sec = el.closest(".sec");
+    if (sec) sec.classList.add("in");
+  };
+  addEventListener("hashchange", open);
+  open();
+})();
+</script>
+</body>
+</html>
