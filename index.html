@@ -2,141 +2,268 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fishing Resort Spawn Map</title>
+<meta name="description" content="Interactive spawn map for Fishing Resort (Wii): every fishing zone, its fish count by time of day and the chance of each species.">
+<meta name="theme-color" content="#060607">
 <style>
 @font-face { font-family: "Lilita One"; src: url("fonts/lilita-one-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Plus Jakarta Sans"; src: url("fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 :root {
+  color-scheme: dark;
   --display: "Lilita One", "Plus Jakarta Sans", system-ui, sans-serif;
   --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bg: #060607;
+  --glass: rgba(16, 16, 18, .72);
+  --core: #121214;
+  --core2: #18181b;
+  --hair: rgba(255, 255, 255, .07);
+  --hair2: rgba(255, 255, 255, .13);
+  --text: #f1f1f3;
+  --soft: #bdbdc4;
+  --dim: #85858d;
+  --faint: #4a4a51;
   --hot: #ff7d54;
-  color-scheme: dark;
-  --bg: #0b0b0c;
-  --panel: #131314;
-  --panel2: #1c1c1e;
-  --line: #2a2a2d;
-  --text: #ececee;
-  --dim: #8b8b92;
-  --accent: #f2f2f3;
-  --t0: #b8c0c8;
-  --t1: #6fcf7a;
-  --t2: #59a8f0;
-  --t3: #b77cf2;
-  --t4: #f2a33a;
-  --t5: #f25a6e;
+  --hot2: #ffb08f;
+  --gold: #ffd65a;
+  --t0: #b8c0c8; --t1: #6fcf7a; --t2: #59a8f0; --t3: #b77cf2; --t4: #f2a33a; --t5: #f25a6e;
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  --r: 26px;
+  --pad: 5px;
+  --edge: 16px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }
-body { display: flex; flex-direction: column; background: var(--bg); color: var(--text); font: 14px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--text); font: 14px/1.5 var(--sans); -webkit-font-smoothing: antialiased; overflow: hidden; }
 button, input { font: inherit; color: inherit; }
-header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--panel); }
-header h1 { font: 400 24px/1 var(--display); margin: 0 12px 0 0; letter-spacing: .6px; white-space: nowrap; }
-header h1 span { color: var(--hot); }
-.group { display: flex; align-items: center; gap: 6px; }
-.group > span { color: var(--dim); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-.seg button { background: transparent; border: 0; padding: 6px 12px; font-weight: 600; transition: background .18s ease, color .18s ease; cursor: pointer; color: var(--dim); border-right: 1px solid var(--line); }
-.seg button:last-child { border-right: 0; }
-.seg button:hover { background: var(--panel2); color: var(--text); }
-.seg button.on { background: var(--accent); color: #0b0b0c; font-weight: 600; }
-.btn { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; cursor: pointer; font-weight: 600; transition: border-color .18s ease, color .18s ease; }
-.btn:hover { border-color: #55555b; }
-.btn.on { border-color: var(--accent); color: var(--accent); }
-#search { width: 220px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; }
-#search:focus { outline: none; border-color: var(--hot); }
-#search::placeholder { color: #6a6a71; }
-main { flex: 1; display: grid; grid-template-columns: 220px 1fr 340px; min-height: 0; }
-nav { border-right: 1px solid var(--line); overflow: auto; padding: 8px; background: var(--panel); }
-nav button { display: block; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 10px; padding: 8px 12px; margin-bottom: 2px; cursor: pointer; color: var(--dim); font-weight: 600; transition: background .18s ease, color .18s ease; }
-nav button small { display: block; font-size: 11px; font-weight: 400; color: var(--dim); opacity: .8; }
-nav button:hover { background: var(--panel2); color: var(--text); }
-nav button.on { background: var(--panel2); color: var(--text); box-shadow: inset 3px 0 0 var(--hot); }
-nav button.hit { color: var(--text); }
-nav button .hitc { float: right; font-size: 11px; font-weight: 700; color: #0b0b0c; background: var(--hot); border-radius: 9px; padding: 0 7px; }
-#mapwrap { position: relative; overflow: hidden; background: #070708; min-height: 300px; }
+button { cursor: pointer; }
+::selection { background: rgba(255, 125, 84, .3); }
+* { scrollbar-width: thin; scrollbar-color: #2c2c31 transparent; }
+.num { font-variant-numeric: tabular-nums; }
+
+#mapwrap { position: fixed; inset: 0; background: radial-gradient(120% 90% at 50% 40%, #0d0d10 0%, #050506 70%); }
 canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
 canvas.drag { cursor: grabbing; }
-#tip { position: absolute; pointer-events: none; background: rgba(11,11,12,.95); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; font-size: 12.5px; display: none; max-width: 260px; }
-#tip b { font: 400 15px var(--display); color: var(--hot); letter-spacing: .3px; }
-.mapbar { position: absolute; right: 10px; top: 10px; display: flex; gap: 6px; }
-.mapbar .btn { background: rgba(19,19,20,.92); }
-#areatitle { position: absolute; left: 12px; top: 10px; background: rgba(11,11,12,.88); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font: 400 17px/1.2 var(--display); letter-spacing: .4px; }
-#areatitle small { color: var(--dim); font: 500 12px var(--sans); letter-spacing: 0; margin-left: 8px; }
-aside { border-left: 1px solid var(--line); overflow: auto; background: var(--panel); padding: 14px; }
-aside h2 { font: 400 22px/1.15 var(--display); letter-spacing: .4px; margin: 0 0 6px; }
-aside h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--dim); margin: 20px 0 8px; }
+.vignette { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(140% 100% at 50% 50%, transparent 55%, rgba(0, 0, 0, .55) 100%); }
+
+.island { position: fixed; z-index: 3; top: var(--edge); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--hair2); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); box-shadow: 0 24px 60px -28px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .06); max-width: calc(100vw - 2 * var(--edge)); }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 10px 0 12px; white-space: nowrap; }
+.brand svg { width: 22px; height: 22px; flex: none; }
+.brand b { font: 400 19px/1 var(--display); letter-spacing: .4px; }
+.brand b span { color: var(--hot); }
+
+.seg { position: relative; display: flex; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, .045); }
+.seg i { position: absolute; top: 3px; bottom: 3px; left: 0; border-radius: 999px; background: var(--text); box-shadow: 0 4px 16px -6px rgba(255, 255, 255, .5); transition: transform .65s var(--ease), width .65s var(--ease); }
+.seg button { position: relative; border: 0; background: none; padding: 7px 14px; border-radius: 999px; font-weight: 600; font-size: 13px; color: var(--soft); transition: color .5s var(--ease); white-space: nowrap; }
+.seg button.on { color: #0a0a0b; }
+.seg button:not(.on):hover { color: var(--text); }
+
+.search { position: relative; display: flex; align-items: center; gap: 8px; padding: 0 6px 0 14px; height: 40px; width: 280px; border-radius: 999px; background: rgba(255, 255, 255, .045); border: 1px solid transparent; transition: border-color .5s var(--ease), background .5s var(--ease); }
+.search:focus-within { border-color: rgba(255, 125, 84, .45); background: rgba(255, 125, 84, .05); }
+.search svg { width: 16px; height: 16px; flex: none; color: var(--dim); }
+.search input { flex: 1; min-width: 0; background: none; border: 0; outline: none; font-size: 13.5px; }
+.search input::placeholder { color: var(--dim); }
+.x { width: 28px; height: 28px; border: 0; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .06); opacity: 0; transform: scale(.7); transition: opacity .4s var(--ease), transform .5s var(--ease), background .4s var(--ease); pointer-events: none; }
+.x svg { width: 12px; height: 12px; color: var(--soft); }
+.search.has .x { opacity: 1; transform: none; pointer-events: auto; }
+.x:hover { background: rgba(255, 255, 255, .14); }
+.sugg { position: absolute; top: calc(100% + 10px); left: -6px; right: -6px; padding: 6px; border-radius: 22px; background: rgba(16, 16, 18, .94); border: 1px solid var(--hair2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .9); max-height: 340px; overflow: auto; opacity: 0; transform: translateY(-6px) scale(.98); pointer-events: none; transition: opacity .35s var(--ease), transform .5s var(--ease); }
+.sugg.show { opacity: 1; transform: none; pointer-events: auto; }
+.sugg button { display: flex; align-items: center; gap: 10px; width: 100%; border: 0; background: none; text-align: left; padding: 9px 12px; border-radius: 14px; font-size: 13.5px; color: var(--soft); }
+.sugg button mark { background: none; color: var(--hot2); }
+.sugg button.act, .sugg button:hover { background: rgba(255, 255, 255, .07); color: var(--text); }
+.sugg small { margin-left: auto; color: var(--dim); font-size: 11.5px; }
+
+.ibtn { height: 40px; min-width: 40px; padding: 0 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .045); color: var(--soft); font-weight: 600; font-size: 13px; white-space: nowrap; transition: background .5s var(--ease), color .5s var(--ease), transform .4s var(--ease); }
+.ibtn svg { width: 16px; height: 16px; flex: none; }
+.ibtn:hover { background: rgba(255, 255, 255, .09); color: var(--text); }
+.ibtn:active { transform: scale(.96); }
+.ibtn.on { background: rgba(255, 125, 84, .14); color: var(--hot2); }
+
+.shell { background: rgba(255, 255, 255, .03); border: 1px solid var(--hair); border-radius: var(--r); padding: var(--pad); }
+.core { background: linear-gradient(180deg, var(--core2), var(--core)); border-radius: calc(var(--r) - var(--pad)); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .06); }
+.panel { position: fixed; z-index: 2; top: 86px; bottom: var(--edge); background: rgba(14, 14, 16, .7); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .9); display: flex; transition: transform .8s var(--ease), opacity .6s var(--ease); }
+.panel > .core { flex: 1; min-height: 0; overflow: auto; background: linear-gradient(180deg, rgba(24, 24, 27, .85), rgba(16, 16, 18, .85)); }
+#areaspanel { left: var(--edge); width: 264px; }
+#detailpanel { right: var(--edge); width: 380px; }
+.k { display: block; color: var(--dim); font-size: 10.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+
+#areas { padding: 14px 10px; }
+#areas .k { padding: 4px 12px 10px; }
+#areas button { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; border: 0; background: none; padding: 9px 12px; margin-bottom: 2px; border-radius: 16px; color: var(--soft); transition: background .5s var(--ease), color .5s var(--ease); }
+#areas button:hover { background: rgba(255, 255, 255, .05); color: var(--text); }
+#areas button.on { background: rgba(255, 255, 255, .08); color: var(--text); }
+#areas button .ix { flex: none; width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: rgba(255, 255, 255, .05); color: var(--dim); font-size: 11.5px; font-weight: 700; transition: background .5s var(--ease), color .5s var(--ease); }
+#areas button.on .ix { background: var(--hot); color: #160700; }
+#areas button .tx { min-width: 0; flex: 1; }
+#areas button .tx b { display: block; font-weight: 600; font-size: 13.5px; line-height: 1.25; }
+#areas button .tx small { display: block; color: var(--dim); font-size: 11.5px; }
+#areas button .hitc { flex: none; min-width: 24px; height: 22px; padding: 0 7px; border-radius: 999px; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #1a1300; background: var(--gold); }
+#areas button:not(.hit).dimmed { opacity: .45; }
+
+#detail { padding: 24px 22px 18px; }
+#detail h2 { font: 400 28px/1.05 var(--display); letter-spacing: .4px; margin: 10px 0 6px; }
+#detail h2 .muted { font: 600 14px var(--sans); letter-spacing: 0; }
+.meta { color: var(--dim); font-size: 12.5px; }
+.sub { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 26px 0 12px; }
+.sub .k { margin: 0; }
 .muted { color: var(--dim); }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th { text-align: left; color: var(--dim); font-weight: 500; font-size: 12px; border-bottom: 1px solid var(--line); padding: 4px 4px; }
-td { padding: 4px 4px; border-bottom: 1px solid rgba(255,255,255,.06); vertical-align: middle; }
-td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-tr.click { cursor: pointer; }
-tr.click:hover td { background: var(--panel2); }
-tr.found td { background: rgba(255,255,255,.08); }
-.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
-.bar { height: 4px; background: var(--accent); border-radius: 2px; margin-top: 3px; opacity: .7; }
-.bands { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.bands div { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 6px; text-align: center; }
-.bands div.on { border-color: var(--hot); }
-.bands b { display: block; font: 400 22px/1.1 var(--display); }
-.bands small { color: var(--dim); font-size: 11px; }
-.legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; font-size: 12.5px; }
-.chip { display: inline-block; padding: 1px 7px; border-radius: 10px; background: var(--panel2); border: 1px solid var(--line); font-size: 12px; margin: 2px 3px 2px 0; }
-#help { display: none; }
-#help.show { display: block; }
-#help p, #help li { color: #c4c4ca; }
-code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 1px 5px; }
-#help ul { padding-left: 18px; margin: 6px 0; }
-.note { font-size: 12px; color: var(--dim); border-top: 1px solid var(--line); margin-top: 16px; padding-top: 10px; }
-@media (max-width: 900px) {
-  body { height: auto; display: block; }
-  main { grid-template-columns: 1fr; grid-template-rows: auto 60vh auto; }
-  nav { display: flex; overflow-x: auto; gap: 4px; border-right: 0; border-bottom: 1px solid var(--line); }
-  nav button { white-space: nowrap; width: auto; }
-  nav button small { display: none; }
-  aside { border-left: 0; border-top: 1px solid var(--line); }
-  #search { width: 100%; }
-  header .group.grow { flex: 1 1 100%; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.tiles div { padding: 12px 6px 10px; border-radius: 16px; text-align: center; background: rgba(255, 255, 255, .035); border: 1px solid transparent; transition: background .5s var(--ease), border-color .5s var(--ease); }
+.tiles div.on { background: rgba(255, 125, 84, .09); border-color: rgba(255, 125, 84, .35); }
+.tiles b { display: block; font: 400 24px/1 var(--display); letter-spacing: .3px; }
+.tiles div.on b { color: var(--hot2); }
+.tiles small { display: block; margin-top: 5px; color: var(--dim); font-size: 11px; font-weight: 600; }
+.rows { display: flex; flex-direction: column; gap: 2px; }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; padding: 10px 12px; border-radius: 14px; cursor: pointer; transition: background .45s var(--ease); }
+.row:hover { background: rgba(255, 255, 255, .05); }
+.row.found { background: rgba(255, 214, 90, .08); }
+.row .nm { display: flex; align-items: center; gap: 10px; min-width: 0; font-weight: 600; font-size: 13.5px; }
+.row .nm span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .v { text-align: right; font-size: 13px; color: var(--soft); white-space: nowrap; }
+.row .v small { color: var(--dim); margin-left: 8px; }
+.row .track { grid-column: 1 / -1; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, .05); overflow: hidden; }
+.row .track i { display: block; height: 100%; border-radius: 3px; transform-origin: left; animation: grow .9s var(--ease) both; }
+@keyframes grow { from { transform: scaleX(0); } }
+.dot { flex: none; display: inline-block; width: 9px; height: 9px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255, 255, 255, .04); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 5px 11px; border-radius: 999px; background: rgba(255, 255, 255, .045); color: var(--soft); font-size: 12px; }
+.back { margin-top: 20px; display: inline-flex; align-items: center; gap: 10px; padding: 5px 16px 5px 5px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .05); color: var(--soft); font-weight: 600; font-size: 13px; transition: background .5s var(--ease), color .5s var(--ease), transform .4s var(--ease); }
+.back span { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .07); transition: transform .6s var(--ease), background .5s var(--ease); }
+.back span svg { width: 13px; height: 13px; }
+.back:hover { background: rgba(255, 255, 255, .08); color: var(--text); }
+.back:hover span { transform: translateX(-2px); background: var(--hot); color: #160700; }
+.back:active { transform: scale(.97); }
+.legend { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; font-size: 12.5px; color: var(--soft); }
+.legend div { display: flex; align-items: center; gap: 9px; }
+.note { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--hair); color: var(--dim); font-size: 12px; }
+code { font-size: 11.5px; background: rgba(255, 255, 255, .06); border-radius: 6px; padding: 1px 6px; }
+.fade { animation: fade .6s var(--ease) both; }
+@keyframes fade { from { opacity: 0; transform: translateY(10px); } }
+
+.dock { position: absolute; z-index: 2; bottom: var(--edge); display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 999px; background: var(--glass); border: 1px solid var(--hair2); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 20px 50px -24px rgba(0, 0, 0, .9); }
+#zoomdock { right: calc(var(--edge) + 380px + 14px); }
+#titledock { left: calc(var(--edge) + 264px + 14px); padding: 6px 18px 6px 8px; gap: 12px; }
+#titledock .ix { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--hot); color: #160700; font-size: 12px; font-weight: 700; }
+#titledock b { font: 400 17px/1 var(--display); letter-spacing: .35px; }
+#titledock small { display: block; color: var(--dim); font-size: 11.5px; margin-top: 3px; }
+.dock .ibtn { height: 36px; min-width: 36px; padding: 0 12px; background: none; }
+.dock .ibtn:hover { background: rgba(255, 255, 255, .08); }
+
+#tip { position: fixed; z-index: 4; pointer-events: none; max-width: 270px; padding: 11px 14px; border-radius: 16px; background: rgba(12, 12, 14, .9); border: 1px solid var(--hair2); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 20px 40px -16px rgba(0, 0, 0, .9); font-size: 12.5px; opacity: 0; transform: translateY(4px) scale(.98); transition: opacity .25s var(--ease), transform .35s var(--ease); }
+#tip.show { opacity: 1; transform: none; }
+#tip b { font: 400 16px var(--display); letter-spacing: .3px; color: var(--hot2); }
+#tip .muted { display: block; margin-top: 3px; }
+
+.sheet { position: fixed; inset: 0; z-index: 5; display: grid; place-items: center; padding: 24px; background: rgba(4, 4, 5, .72); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); opacity: 0; pointer-events: none; transition: opacity .6s var(--ease); }
+.sheet.show { opacity: 1; pointer-events: auto; }
+.sheet .shell { width: min(620px, 100%); max-height: calc(100dvh - 48px); display: flex; transform: translateY(40px) scale(.97); transition: transform .9s var(--ease); }
+.sheet.show .shell { transform: none; }
+.sheet .core { flex: 1; overflow: auto; padding: 30px 32px 28px; }
+.sheet h2 { font: 400 34px/1.05 var(--display); letter-spacing: .4px; margin: 12px 0 10px; }
+.sheet p { color: var(--soft); margin: 0 0 18px; }
+.sheet ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.sheet li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; padding: 12px 14px; border-radius: 16px; background: rgba(255, 255, 255, .03); color: var(--soft); opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .8s var(--ease); }
+.sheet li i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 125, 84, .12); color: var(--hot2); font-style: normal; font-size: 11.5px; font-weight: 700; }
+.sheet li b { color: var(--text); }
+.sheet.show li { opacity: 1; transform: none; }
+.sheet li:nth-child(2) { transition-delay: .05s; } .sheet li:nth-child(3) { transition-delay: .1s; } .sheet li:nth-child(4) { transition-delay: .15s; } .sheet li:nth-child(5) { transition-delay: .2s; } .sheet li:nth-child(6) { transition-delay: .25s; }
+.sheet .close { position: absolute; top: 18px; right: 18px; }
+.sheet .core { position: relative; }
+
+@media (max-width: 1280px) {
+  #areaspanel { width: 228px; }
+  #detailpanel { width: 330px; }
+  #zoomdock { right: calc(var(--edge) + 330px + 14px); }
+  #titledock { left: calc(var(--edge) + 228px + 14px); }
+  #titledock small { display: none; }
+  .search { width: 210px; }
+  .brand b { display: none; }
 }
+@media (max-width: 1080px) {
+  body { overflow: auto; display: flex; flex-direction: column; min-height: 100dvh; }
+  :root { --edge: 12px; --r: 22px; }
+  .island { order: 0; position: relative; top: auto; left: auto; transform: none; margin: 12px; flex-wrap: wrap; justify-content: space-between; border-radius: 26px; max-width: none; }
+  .brand b { display: inline; }
+  .island .brand { margin-right: auto; }
+  .island .seg { order: 3; width: 100%; }
+  .island .seg button { flex: 1; padding: 8px 6px; }
+  .search { order: 4; width: 100%; }
+  #areaspanel { order: 1; }
+  #mapwrap { order: 2; position: relative; inset: auto; flex: none; height: 62dvh; margin: 0 12px; border-radius: 22px; overflow: hidden; border: 1px solid var(--hair); }
+  #detailpanel { order: 3; }
+  .vignette { display: none; }
+  .panel { position: static; width: auto !important; backdrop-filter: none; -webkit-backdrop-filter: none; margin: 12px; }
+  #areaspanel { margin-top: 0; }
+  #areaspanel .core { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+  #areas { display: flex; gap: 6px; padding: 8px; }
+  #areas .k { display: none; }
+  #areas button { width: auto; flex: none; margin: 0; padding: 7px 12px 7px 7px; }
+  #areas button .tx small { display: none; }
+  #areas button .tx b { white-space: nowrap; }
+  .dock { bottom: 10px; }
+  #titledock { left: 10px; padding: 5px 14px 5px 5px; }
+  #titledock .ix { width: 28px; height: 28px; }
+  #titledock b { font-size: 15px; }
+  #zoomdock { right: 10px; }
+  #detail { padding: 20px 18px 16px; }
+}
+@media (max-width: 520px) { #titledock { display: none; } .brand b { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
-<header>
-  <h1>Fishing Resort <span>Spawn Map</span></h1>
-  <div class="group"><span>Time</span><div class="seg" id="bands"></div></div>
-  <div class="group grow"><span>Species</span><input id="search" list="specieslist" placeholder="Type a fish name" autocomplete="off"><datalist id="specieslist"></datalist><button class="btn" id="clear" title="Clear search">Clear</button></div>
-  <div class="group"><button class="btn on" id="labels">Zone labels</button><button class="btn" id="helpbtn">How to read this</button></div>
-</header>
-<main>
-  <nav id="areas"></nav>
-  <div id="mapwrap">
-    <canvas id="map"></canvas>
-    <div id="areatitle"></div>
-    <div class="mapbar"><button class="btn" id="zin" title="Zoom in">+</button><button class="btn" id="zout" title="Zoom out">-</button><button class="btn" id="fit">Fit</button></div>
-    <div id="tip"></div>
+<div id="mapwrap"><canvas id="map" aria-label="Spawn map"></canvas>
+<div class="dock" id="titledock"><span class="ix num" id="titleix"></span><div><b id="titlename"></b><small id="titleband"></small></div></div>
+<div class="dock" id="zoomdock">
+  <button class="ibtn" id="zout" title="Zoom out" aria-label="Zoom out"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3.5 8h9"/></svg></button>
+  <button class="ibtn" id="zin" title="Zoom in" aria-label="Zoom in"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3.5 8h9M8 3.5v9"/></svg></button>
+  <button class="ibtn" id="fit" title="Fit the area">Fit</button>
+</div>
+</div>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="island">
+  <span class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="#ff7d54" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3.5-5 9.5-6 14-2l4-3v10l-4-3c-4.5 4-10.5 3-14-2Z"/><circle cx="8.5" cy="11" r=".9" fill="#ff7d54"/></svg><b>Fishing Resort <span>Spawn Map</span></b></span>
+  <div class="seg" id="bands" role="tablist" aria-label="Time of day"><i></i></div>
+  <div class="search" id="searchbox">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="4.6"/><path d="m10.5 10.5 3 3"/></svg>
+    <input id="search" placeholder="Find a fish" autocomplete="off" spellcheck="false" aria-label="Find a fish">
+    <button class="x" id="clear" aria-label="Clear search"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="m3 3 6 6M9 3 3 9"/></svg></button>
+    <div class="sugg" id="sugg" role="listbox"></div>
   </div>
-  <aside>
-    <div id="help">
-      <h2>How to read this</h2>
-      <p>Each area is drawn from above, with the game x axis to the right and z axis up. Water is blue (darker is deeper), land is green, rock is grey, sand is beige, piers and buildings are brown, and tree cover is a darker green tint.</p>
-      <ul>
-        <li><b>Zones</b> are the coloured boxes. Fish of a zone only spawn inside its box.</li>
-        <li><b>Zone numbers</b> are the same as the SPOT numbers in the in-game debug overlay.</li>
-        <li><b>Time bands</b>: the game uses four bands. Morning 06:00 to 11:59, Day 12:00 to 15:59, Evening 16:00 to 17:59, Night 18:00 to 05:59.</li>
-        <li><b>Fish count</b> is how many fish the zone holds in a band.</li>
-        <li><b>Share</b> is the chance that a fish spawned in the zone is that species: its weight divided by the sum of all weights of the zone in that band. A species with weight 0 does not spawn there in that band.</li>
-        <li><b>Search</b> a species to light up every zone where it can spawn in the chosen band, with its share.</li>
-      </ul>
-    </div>
-    <div id="detail"></div>
-    <h3>Rarity</h3>
+  <button class="ibtn on" id="labels" title="Zone labels"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M2.5 3.5h7l4 4.5-4 4.5h-7z"/><circle cx="5.5" cy="8" r=".8" fill="currentColor"/></svg><span>Labels</span></button>
+  <button class="ibtn" id="helpbtn" title="How to read this"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M6.4 6.3a1.7 1.7 0 1 1 2.3 1.6c-.5.2-.7.6-.7 1.1v.3"/><circle cx="8" cy="11.4" r=".5" fill="currentColor"/></svg></button>
+</header>
+
+<aside class="panel shell" id="areaspanel"><div class="core"><nav id="areas"></nav></div></aside>
+<aside class="panel shell" id="detailpanel"><div class="core"><div id="detail"></div>
+  <div style="padding:0 22px 22px">
+    <div class="sub"><span class="k">Rarity</span></div>
     <div class="legend" id="legend"></div>
-    <div class="note">Zone boxes, numbers and fish counts come from <code>Fish/setSightArea.bin</code>. Species and weights come from the <code>fishFree</code> tables of each area. The map image is rendered from the stage models, so small details may be rough.</div>
-  </aside>
-</main>
+    <div class="note">Zone boxes, numbers and fish counts come from <code>Fish/setSightArea.bin</code>. Species and weights come from each area's <code>fishFree</code> table. The map is rendered from the stage models, so small details may be rough.</div>
+  </div>
+</div></aside>
+
+<div id="tip"></div>
+
+<div class="sheet" id="help" role="dialog" aria-modal="true" aria-labelledby="helptitle"><div class="shell"><div class="core">
+  <button class="ibtn close" id="helpclose" aria-label="Close"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="m3 3 6 6M9 3 3 9"/></svg></button>
+  <span class="k">Guide</span>
+  <h2 id="helptitle">How to read this map</h2>
+  <p>Each area is drawn from above, with the game x axis to the right and z axis up. Water is blue (darker is deeper), land is green, rock is grey, sand is beige, piers and buildings are brown, and tree cover is a darker green tint.</p>
+  <ul>
+    <li><i>01</i><span><b>Zones</b> are the coloured boxes. Fish of a zone only spawn inside its box.</span></li>
+    <li><i>02</i><span><b>Zone numbers</b> match the SPOT numbers in the in-game debug overlay.</span></li>
+    <li><i>03</i><span><b>Time bands</b>: Morning 06:00 to 11:59, Day 12:00 to 15:59, Evening 16:00 to 17:59, Night 18:00 to 05:59.</span></li>
+    <li><i>04</i><span><b>Fish count</b> is how many fish the zone holds in a band.</span></li>
+    <li><i>05</i><span><b>Share</b> is the chance a fish spawned in the zone is that species: its weight divided by the zone's total weight in that band. Weight 0 means it does not spawn there in that band.</span></li>
+    <li><i>06</i><span><b>Search</b> a fish to light up every zone where it can spawn in the chosen band, with its share.</span></li>
+  </ul>
+</div></div></div>
+
 <script src="data.js"></script>
 <script>
 (() => {
@@ -149,15 +276,19 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
   ];
   const TIERS = ["Tier 0, common", "Tier 1", "Tier 2", "Tier 3", "Tier 4", "Tier 5, legend"];
   const TIER_COL = [0, 1, 2, 3, 4, 5].map(i => getComputedStyle(document.documentElement).getPropertyValue("--t" + i).trim());
+  const ARROW_L = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 8h-9M7 4.5 3.5 8 7 11.5"/></svg>';
   const $ = id => document.getElementById(id);
   const canvas = $("map"), ctx = canvas.getContext("2d"), wrap = $("mapwrap"), tip = $("tip");
+  const mobile = matchMedia("(max-width: 1080px)");
   const state = { moved: false, area: 0, band: 0, labels: true, species: null, hover: null, sel: null, view: { s: 1, x: 0, y: 0 } };
   const images = {};
+  const SPECIES = Object.keys(D.species).map(Number).sort((a, b) => D.species[a].name.localeCompare(D.species[b].name));
 
-  const zoneColor = n => `hsl(${(n * 137.508) % 360}, 85%, 62%)`;
+  const zoneColor = n => `hsl(${(n * 137.508) % 360}, 85%, 64%)`;
   const zoneFill = (n, a) => `hsla(${(n * 137.508) % 360}, 85%, 62%, ${a})`;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const area = () => D.areas[state.area];
+  const pct = s => (s * 100).toFixed(s < 0.1 ? 1 : 0) + "%";
 
   function shares(z, band) {
     const tot = z.fish.reduce((s, f) => s + f[1 + band], 0);
@@ -171,31 +302,36 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
   }
 
   function buildBands() {
-    $("bands").innerHTML = BANDS.map((b, i) => `<button data-b="${i}" title="${b.time}">${b.name}</button>`).join("");
-    $("bands").onclick = e => { const b = e.target.dataset.b; if (b != null) { state.band = +b; refresh(); } };
+    $("bands").insertAdjacentHTML("beforeend", BANDS.map((b, i) => `<button role="tab" data-b="${i}" title="${b.time}">${b.name}</button>`).join(""));
+    $("bands").onclick = e => { const b = e.target.closest("button"); if (b) { state.band = +b.dataset.b; refresh(); } };
+  }
+  function moveIndicator() {
+    const on = $("bands").querySelector("button.on"), ind = $("bands").querySelector("i");
+    if (!on) return;
+    ind.style.width = on.offsetWidth + "px";
+    ind.style.transform = `translateX(${on.offsetLeft}px)`;
   }
   function buildLegend() {
     $("legend").innerHTML = TIERS.map((t, i) => `<div><span class="dot" style="background:${TIER_COL[i]}"></span>${t}</div>`).join("");
   }
-  function buildSpecies() {
-    const ids = Object.keys(D.species).sort((a, b) => D.species[a].name.localeCompare(D.species[b].name));
-    $("specieslist").innerHTML = ids.map(id => `<option value="${esc(D.species[id].name)}">`).join("");
-  }
   function buildAreas() {
-    $("areas").innerHTML = D.areas.map((a, i) => {
-      let hit = "";
+    $("areas").innerHTML = `<span class="k">Areas</span>` + D.areas.map((a, i) => {
+      let hit = "", cls = "";
       if (state.species != null) {
         const n = a.zones.filter(z => speciesShare(z, state.species, state.band) > 0).length;
-        if (n) hit = `<span class="hitc">${n}</span>`;
+        if (n) { hit = `<span class="hitc num">${n}</span>`; cls = "hit"; } else cls = "dimmed";
       }
-      return `<button data-i="${i}" class="${i === state.area ? "on" : ""} ${hit ? "hit" : ""}">${hit}${esc(a.name)}<small>${a.zones.length} zones, ${a.stages[0]}</small></button>`;
+      return `<button data-i="${i}" class="${i === state.area ? "on" : ""} ${cls}"><span class="ix num">${String(i + 1).padStart(2, "0")}</span><span class="tx"><b>${esc(a.name)}</b><small>${a.zones.length} zones &middot; ${a.stages[0]}</small></span>${hit}</button>`;
     }).join("");
+    const on = $("areas").querySelector("button.on");
+    if (on && mobile.matches) on.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   }
   $("areas").onclick = e => { const b = e.target.closest("button"); if (b) selectArea(+b.dataset.i); };
 
   function selectArea(i) {
     state.area = i; state.sel = null; state.hover = null; state.moved = false;
-    location.hash = "area=" + D.areas[i].key;
+    history.replaceState(null, "", "#area=" + D.areas[i].key);
+    sizeWrap();
     loadImage(area()).then(() => { fit(); draw(); });
     refresh();
   }
@@ -204,29 +340,49 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
     return new Promise(res => { const im = new Image(); im.onload = () => { images[a.img] = im; res(im); }; im.onerror = () => res(null); im.src = a.img; });
   }
 
+  function safe() {
+    const r = wrap.getBoundingClientRect();
+    if (mobile.matches) return { l: 12, t: 12, r: r.width - 12, b: r.height - 60 };
+    const L = $("areaspanel").getBoundingClientRect(), R = $("detailpanel").getBoundingClientRect(), T = document.querySelector(".island").getBoundingClientRect();
+    return { l: L.right - r.left + 16, t: T.bottom - r.top + 14, r: R.left - r.left - 16, b: r.height - 72 };
+  }
+  function sizeWrap() {
+    const a = area();
+    const h = mobile.matches ? Math.round(Math.min(innerHeight * 0.62, Math.max(280, wrap.clientWidth * a.h / a.w + 84))) + "px" : "";
+    if (wrap.style.height !== h) wrap.style.height = h;
+  }
   function resize() {
+    sizeWrap();
     const r = wrap.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
     canvas.width = Math.max(1, r.width * dpr); canvas.height = Math.max(1, r.height * dpr);
     if (!state.moved) fit();
+    moveIndicator();
     draw();
   }
   function fit() {
-    const a = area(), r = wrap.getBoundingClientRect();
-    const s = Math.min(r.width / a.w, r.height / a.h) * 0.96;
-    state.view = { s, x: (r.width - a.w * s) / 2, y: (r.height - a.h * s) / 2 };
+    const a = area(), b = safe(), w = Math.max(50, b.r - b.l), h = Math.max(50, b.b - b.t);
+    const s = Math.min(w / a.w, h / a.h) * 0.96;
+    state.view = { s, x: b.l + (w - a.w * s) / 2, y: b.t + (h - a.h * s) / 2 };
   }
   const toPx = (a, x, z) => [(x - a.x0) * a.scale, (a.z1 - z) * a.scale];
-  const toScreen = (p) => [p[0] * state.view.s + state.view.x, p[1] * state.view.s + state.view.y];
+  const toScreen = p => [p[0] * state.view.s + state.view.x, p[1] * state.view.s + state.view.y];
 
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
   function draw() {
     const a = area(), dpr = window.devicePixelRatio || 1;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.fillStyle = "#070708"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const im = images[a.img];
     if (im) {
+      ctx.save();
+      ctx.shadowColor = "rgba(0,0,0,.6)"; ctx.shadowBlur = 50;
       ctx.imageSmoothingEnabled = state.view.s < 2;
       ctx.drawImage(im, state.view.x, state.view.y, a.w * state.view.s, a.h * state.view.s);
+      ctx.restore();
     }
     const sp = state.species;
     const order = a.zones.map((z, i) => i).sort((i, j) => area2(a.zones[j]) - area2(a.zones[i]));
@@ -234,35 +390,35 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
       const z = a.zones[i];
       const pts = z.c.map(c => toScreen(toPx(a, c[0], c[1])));
       const hot = state.hover === i || state.sel === i;
-      let fillA = hot ? 0.32 : 0.12, strokeW = hot ? 2.5 : 1.3, col = zoneColor(z.n), dim = false;
+      let fillA = hot ? 0.3 : 0.11, strokeW = hot ? 2.4 : 1.2, col = zoneColor(z.n), dim = false;
       if (sp != null) {
         const sh = speciesShare(z, sp, state.band);
-        if (sh > 0) { fillA = 0.15 + 0.35 * Math.min(1, sh * 2); strokeW = hot ? 3 : 2; col = "#ffffff"; }
-        else { dim = true; fillA = 0.04; strokeW = 1; }
+        if (sh > 0) { fillA = 0.16 + 0.36 * Math.min(1, sh * 2); strokeW = hot ? 3 : 2; col = "#ffe08a"; }
+        else { dim = true; fillA = 0.03; strokeW = 1; }
       }
       ctx.beginPath(); pts.forEach((p, k) => k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath();
       ctx.fillStyle = sp != null && !dim ? `rgba(255,214,90,${fillA})` : zoneFill(z.n, fillA);
       ctx.fill();
-      ctx.globalAlpha = dim ? 0.35 : 1;
+      ctx.globalAlpha = dim ? 0.3 : 1;
+      if (hot) { ctx.shadowColor = col; ctx.shadowBlur = 14; }
       ctx.lineWidth = strokeW; ctx.strokeStyle = col; ctx.stroke();
-      ctx.globalAlpha = 1;
+      ctx.shadowBlur = 0; ctx.globalAlpha = 1;
     }
     if (state.labels || sp != null) {
-      ctx.font = "700 12px 'Plus Jakarta Sans', system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.font = "700 11.5px 'Plus Jakarta Sans', system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
       for (const i of order) {
         const z = a.zones[i];
         let label = String(z.n);
         const sz = Math.sqrt(area2(z)) * a.scale * state.view.s;
-        const hit = sp != null && speciesShare(z, sp, state.band) > 0;
-        if (sz < 16 && !hit && state.hover !== i && state.sel !== i) continue;
-        if (sp != null) {
-          const sh = speciesShare(z, sp, state.band);
-          if (!sh) { if (!state.labels) continue; } else label += "  " + (sh * 100).toFixed(sh < 0.1 ? 1 : 0) + "%";
-        }
+        const sh = sp != null ? speciesShare(z, sp, state.band) : 0;
+        if (sz < 16 && !sh && state.hover !== i && state.sel !== i) continue;
+        if (sp != null) { if (!sh) { if (!state.labels) continue; } else label += "  " + pct(sh); }
         const [x, y] = toScreen(toPx(a, z.cx, z.cz));
-        const w = ctx.measureText(label).width + 8;
-        ctx.fillStyle = "rgba(7,7,8,.8)"; ctx.fillRect(x - w / 2, y - 8, w, 16);
-        ctx.fillStyle = sp != null && speciesShare(z, sp, state.band) ? "#ffd65a" : zoneColor(z.n);
+        const w = ctx.measureText(label).width + 14;
+        roundRect(x - w / 2, y - 10, w, 20, 10);
+        ctx.fillStyle = "rgba(8,8,10,.82)"; ctx.fill();
+        ctx.lineWidth = 1; ctx.strokeStyle = "rgba(255,255,255,.08)"; ctx.stroke();
+        ctx.fillStyle = sh ? "#ffd65a" : zoneColor(z.n);
         ctx.fillText(label, x, y + 0.5);
       }
     }
@@ -278,9 +434,7 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
     const px = (mx - state.view.x) / state.view.s, py = (my - state.view.y) / state.view.s;
     const x = px / a.scale + a.x0, z = a.z1 - py / a.scale;
     let best = null, bestA = Infinity;
-    a.zones.forEach((zn, i) => {
-      if (inPoly(zn.c, x, z)) { const ar = area2(zn); if (ar < bestA) { bestA = ar; best = i; } }
-    });
+    a.zones.forEach((zn, i) => { if (inPoly(zn.c, x, z)) { const ar = area2(zn); if (ar < bestA) { bestA = ar; best = i; } } });
     return best;
   }
   function inPoly(c, x, z) {
@@ -292,101 +446,93 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
     return ins;
   }
 
-  function showTip(i, mx, my) {
-    if (i == null) { tip.style.display = "none"; return; }
+  function showTip(i, cx, cy) {
+    if (i == null) { tip.classList.remove("show"); return; }
     const z = area().zones[i], b = state.band;
-    let html = `<b>Zone ${z.n}</b> &middot; ${esc(area().name)}<br>${BANDS[b].name}: ${z.counts[b]} fish`;
+    let html = `<b>Zone ${z.n}</b> <span class="muted" style="display:inline">&middot; ${BANDS[b].name}, ${z.counts[b]} fish</span>`;
     if (state.species != null) {
       const sh = speciesShare(z, state.species, b);
-      html += `<br>${esc(D.species[state.species].name)}: ${sh ? (sh * 100).toFixed(1) + "%" : "not here"}`;
+      html += `<span class="muted">${esc(D.species[state.species].name)}: ${sh ? (sh * 100).toFixed(1) + "%" : "not here"}</span>`;
     } else {
       const top = shares(z, b).slice(0, 3).map(s => esc(D.species[s.id].name) + " " + (s.share * 100).toFixed(0) + "%");
-      if (top.length) html += `<br><span class="muted">${top.join(", ")}</span>`;
-      else if (z.nodata) html += `<br><span class="muted">no species table</span>`;
+      if (top.length) html += `<span class="muted">${top.join(", ")}</span>`;
+      else if (z.nodata) html += `<span class="muted">no species table</span>`;
     }
-    tip.innerHTML = html; tip.style.display = "block";
-    const r = wrap.getBoundingClientRect();
-    let tx = mx + 14, ty = my + 14;
-    if (tx + 260 > r.width) tx = mx - 270;
-    if (ty + 90 > r.height) ty = my - 90;
-    tx = Math.max(4, Math.min(tx, r.width - tip.offsetWidth - 4));
-    ty = Math.max(4, ty);
-    tip.style.left = tx + "px"; tip.style.top = ty + "px";
+    tip.innerHTML = html; tip.classList.add("show");
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let tx = cx + 16, ty = cy + 16;
+    if (tx + tw > innerWidth - 8) tx = cx - tw - 16;
+    if (ty + th > innerHeight - 8) ty = cy - th - 16;
+    tip.style.left = Math.max(8, tx) + "px"; tip.style.top = Math.max(8, ty) + "px";
+  }
+
+  function speciesRow(id, share, right, found) {
+    const sp = D.species[id];
+    return `<div class="row ${found ? "found" : ""}" data-sp="${id}"><span class="nm"><span class="dot" style="background:${TIER_COL[sp.tier]}" title="${TIERS[sp.tier]}"></span><span>${esc(sp.name)}</span></span><span class="v num">${right}</span><span class="track"><i style="width:${Math.max(3, share * 100)}%;background:${TIER_COL[sp.tier]}"></i></span></div>`;
+  }
+  function tiles(values) {
+    return `<div class="tiles">${BANDS.map((bd, i) => `<div class="${i === state.band ? "on" : ""}"><b class="num">${values[i]}</b><small>${bd.name}</small></div>`).join("")}</div>`;
   }
 
   function renderDetail() {
     const a = area(), b = state.band, el = $("detail");
+    el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade");
     if (state.sel != null) {
       const z = a.zones[state.sel], list = shares(z, b);
-      const bands = BANDS.map((bd, i) => `<div class="${i === b ? "on" : ""}"><b>${z.counts[i]}</b><small>${bd.name}</small></div>`).join("");
-      const rows = list.map(s => {
-        const sp = D.species[s.id], found = s.id === state.species ? "found" : "";
-        return `<tr class="click ${found}" data-sp="${s.id}"><td><span class="dot" style="background:${TIER_COL[sp.tier]}" title="${TIERS[sp.tier]}"></span>${esc(sp.name)}</td><td class="num">${(s.share * 100).toFixed(1)}%<div class="bar" style="width:${Math.max(4, s.share * 100)}%;background:${TIER_COL[sp.tier]}"></div></td><td class="num">${s.w}</td></tr>`;
-      }).join("");
+      const rows = list.map(s => speciesRow(s.id, s.share, `${(s.share * 100).toFixed(1)}%<small>w ${s.w}</small>`, s.id === state.species)).join("");
       const off = z.fish.filter(f => f[1 + b] === 0).map(f => `<span class="chip">${esc(D.species[f[0]].name)}</span>`).join("");
-      el.innerHTML = `<h2>Zone ${z.n} <span class="muted">&middot; ${esc(a.name)}</span></h2>
-        <div class="muted">Centre x ${z.cx}, z ${z.cz}, height ${z.y}</div>
-        <h3>Fish count per band</h3><div class="bands">${bands}</div>
-        <h3>Species, ${BANDS[b].name} (${BANDS[b].time})</h3>
-        ${z.nodata ? `<p class="muted">This zone has no species table in fishFree_${esc(a.stem)}.</p>` :
-          rows ? `<table><thead><tr><th>Fish</th><th class="num">Share</th><th class="num">Weight</th></tr></thead><tbody>${rows}</tbody></table>` : `<p class="muted">No species spawn here in this band.</p>`}
-        ${off ? `<h3>Listed but not in this band</h3><div>${off}</div>` : ""}
-        <p><button class="btn" id="back">Back to area</button></p>`;
+      el.innerHTML = `<span class="k">Zone</span><h2>Zone ${z.n} <span class="muted">${esc(a.name)}</span></h2>
+        <div class="meta num">Centre x ${z.cx}, z ${z.cz} &middot; height ${z.y}</div>
+        <div class="sub"><span class="k">Fish held per band</span></div>${tiles(z.counts)}
+        <div class="sub"><span class="k">Species &middot; ${BANDS[b].name}</span><span class="meta">${BANDS[b].time}</span></div>
+        ${z.nodata ? `<p class="muted">This zone has no species table in fishFree_${esc(a.stem)}.</p>` : rows ? `<div class="rows">${rows}</div>` : `<p class="muted">No species spawn here in this band.</p>`}
+        ${off ? `<div class="sub"><span class="k">Listed, not in this band</span></div><div class="chips">${off}</div>` : ""}
+        <button class="back" id="back"><span>${ARROW_L}</span>Back to ${esc(a.name)}</button>`;
       $("back").onclick = () => { state.sel = null; refresh(); };
-      el.querySelectorAll("tr[data-sp]").forEach(tr => tr.onclick = () => setSpecies(+tr.dataset.sp));
+      el.querySelectorAll("[data-sp]").forEach(r => r.onclick = () => setSpecies(+r.dataset.sp));
       return;
     }
     if (state.species != null) {
-      const sp = D.species[state.species];
-      const hits = [];
-      D.areas.forEach((ar, ai) => ar.zones.forEach((z, zi) => {
-        const sh = speciesShare(z, state.species, b);
-        if (sh > 0) hits.push({ ai, zi, ar, z, sh });
-      }));
+      const sp = D.species[state.species], hits = [];
+      D.areas.forEach((ar, ai) => ar.zones.forEach((z, zi) => { const sh = speciesShare(z, state.species, b); if (sh > 0) hits.push({ ai, zi, ar, z, sh }); }));
       hits.sort((p, q) => (p.ai === state.area ? 0 : 1) - (q.ai === state.area ? 0 : 1) || q.sh - p.sh);
-      const rows = hits.map(h => `<tr class="click" data-a="${h.ai}" data-z="${h.zi}"><td>${esc(h.ar.name)}</td><td class="num">${h.z.n}</td><td class="num">${(h.sh * 100).toFixed(1)}%</td><td class="num">${h.z.counts[b]}</td></tr>`).join("");
-      const other = BANDS.map((bd, i) => {
-        let n = 0; D.areas.forEach(ar => ar.zones.forEach(z => { if (speciesShare(z, state.species, i) > 0) n++; }));
-        return `<div class="${i === b ? "on" : ""}"><b>${n}</b><small>${bd.name}</small></div>`;
-      }).join("");
-      el.innerHTML = `<h2><span class="dot" style="background:${TIER_COL[sp.tier]}"></span>${esc(sp.name)}</h2>
-        <div class="muted">Rarity: ${TIERS[sp.tier]}</div>
-        <h3>Zones per band</h3><div class="bands">${other}</div>
-        <h3>Where, ${BANDS[b].name}</h3>
-        ${rows ? `<table><thead><tr><th>Area</th><th class="num">Zone</th><th class="num">Share</th><th class="num">Fish</th></tr></thead><tbody>${rows}</tbody></table>` : `<p class="muted">Does not spawn in any zone in this band.</p>`}`;
-      el.querySelectorAll("tr[data-a]").forEach(tr => tr.onclick = () => focusZone(+tr.dataset.a, +tr.dataset.z));
+      const counts = BANDS.map((_, i) => { let n = 0; D.areas.forEach(ar => ar.zones.forEach(z => { if (speciesShare(z, state.species, i) > 0) n++; })); return n; });
+      const rows = hits.map(h => `<div class="row" data-a="${h.ai}" data-z="${h.zi}"><span class="nm"><span class="dot" style="background:${h.ai === state.area ? "var(--hot)" : "var(--faint)"}"></span><span>Zone ${h.z.n} <span class="muted" style="font-weight:400">${esc(h.ar.name)}</span></span></span><span class="v num">${(h.sh * 100).toFixed(1)}%<small>${h.z.counts[b]} fish</small></span><span class="track"><i style="width:${Math.max(3, h.sh * 100)}%;background:var(--gold)"></i></span></div>`).join("");
+      el.innerHTML = `<span class="k">Fish</span><h2><span class="dot" style="background:${TIER_COL[sp.tier]};margin-right:10px;vertical-align:4px"></span>${esc(sp.name)}</h2>
+        <div class="meta">${TIERS[sp.tier]}</div>
+        <div class="sub"><span class="k">Zones per band</span></div>${tiles(counts)}
+        <div class="sub"><span class="k">Where &middot; ${BANDS[b].name}</span><span class="meta">${hits.length} zones</span></div>
+        ${rows ? `<div class="rows">${rows}</div>` : `<p class="muted">Does not spawn in any zone in this band.</p>`}`;
+      el.querySelectorAll("[data-a]").forEach(r => r.onclick = () => focusZone(+r.dataset.a, +r.dataset.z));
       return;
     }
-    const totals = BANDS.map((bd, i) => `<div class="${i === b ? "on" : ""}"><b>${a.zones.reduce((s, z) => s + z.counts[i], 0)}</b><small>${bd.name}</small></div>`).join("");
+    const totals = BANDS.map((_, i) => a.zones.reduce((s, z) => s + z.counts[i], 0));
     const pool = {};
     a.zones.forEach(z => shares(z, b).forEach(s => { pool[s.id] = (pool[s.id] || 0) + s.share * z.counts[b]; }));
     const tot = Object.values(pool).reduce((s, v) => s + v, 0);
-    const rows = Object.entries(pool).sort((p, q) => q[1] - p[1]).map(([id, v]) => {
-      const sp = D.species[id];
-      return `<tr class="click" data-sp="${id}"><td><span class="dot" style="background:${TIER_COL[sp.tier]}"></span>${esc(sp.name)}</td><td class="num">${(v / tot * 100).toFixed(1)}%</td></tr>`;
-    }).join("");
-    el.innerHTML = `<h2>${esc(a.name)}</h2>
-      <div class="muted">${a.zones.length} zones &middot; stage ${a.stages.join(" + ")}</div>
-      <h3>Fish in the whole area per band</h3><div class="bands">${totals}</div>
-      <h3>Species mix, ${BANDS[b].name}</h3>
-      <p class="muted" style="margin:0 0 6px">Expected share of all fish in the area, each zone weighted by its fish count. Click a zone on the map for its own table.</p>
-      ${rows ? `<table><tbody>${rows}</tbody></table>` : `<p class="muted">No fish in this band.</p>`}`;
-    el.querySelectorAll("tr[data-sp]").forEach(tr => tr.onclick = () => setSpecies(+tr.dataset.sp));
+    const rows = Object.entries(pool).sort((p, q) => q[1] - p[1]).map(([id, v]) => speciesRow(+id, v / tot, (v / tot * 100).toFixed(1) + "%", false)).join("");
+    el.innerHTML = `<span class="k">Area</span><h2>${esc(a.name)}</h2>
+      <div class="meta">${a.zones.length} zones &middot; stage ${a.stages.join(" + ")}</div>
+      <div class="sub"><span class="k">Fish in the area per band</span></div>${tiles(totals)}
+      <div class="sub"><span class="k">Species mix &middot; ${BANDS[b].name}</span><span class="meta">${Object.keys(pool).length} species</span></div>
+      <p class="meta" style="margin:-4px 0 10px">Expected share of all fish, each zone weighted by its fish count. Click a zone for its own table.</p>
+      ${rows ? `<div class="rows">${rows}</div>` : `<p class="muted">No fish in this band.</p>`}`;
+    el.querySelectorAll("[data-sp]").forEach(r => r.onclick = () => setSpecies(+r.dataset.sp));
   }
 
   function focusZone(ai, zi) {
     const go = () => {
       state.sel = zi;
-      const a = area(), z = a.zones[zi], r = wrap.getBoundingClientRect();
+      const a = area(), z = a.zones[zi], b = safe();
       const [px, py] = toPx(a, z.cx, z.cz);
       const ext = Math.max(...z.c.map(c => Math.hypot(c[0] - z.cx, c[1] - z.cz))) * a.scale * 2;
-      const s = Math.min(8, Math.max(state.view.s, Math.min(r.width, r.height) / Math.max(ext * 3, 1)));
-      state.view = { s, x: r.width / 2 - px * s, y: r.height / 2 - py * s };
+      const s = Math.min(8, Math.max(state.view.s, Math.min(b.r - b.l, b.b - b.t) / Math.max(ext * 3, 1)));
+      state.view = { s, x: (b.l + b.r) / 2 - px * s, y: (b.t + b.b) / 2 - py * s };
       state.moved = true;
       refresh();
     };
     if (ai !== state.area) {
-      state.area = ai; state.moved = false; location.hash = "area=" + D.areas[ai].key;
+      state.area = ai; state.moved = false; history.replaceState(null, "", "#area=" + D.areas[ai].key);
       loadImage(area()).then(() => { fit(); go(); });
     } else go();
   }
@@ -394,25 +540,47 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
   function setSpecies(id) {
     state.species = id;
     $("search").value = id == null ? "" : D.species[id].name;
+    $("searchbox").classList.toggle("has", id != null);
+    closeSugg();
     state.sel = null;
     refresh();
   }
-  $("search").addEventListener("input", e => {
-    const v = e.target.value.trim().toLowerCase();
-    if (!v) { if (state.species != null) setSpecies(null); return; }
-    const ids = Object.keys(D.species);
-    const exact = ids.find(id => D.species[id].name.toLowerCase() === v);
-    if (exact) { state.species = +exact; state.sel = null; refresh(); }
-  });
+
+  let suggIx = 0, suggIds = [];
+  function openSugg() {
+    const v = $("search").value.trim().toLowerCase();
+    $("searchbox").classList.toggle("has", !!v);
+    suggIds = v ? SPECIES.filter(id => D.species[id].name.toLowerCase().includes(v)).sort((a, b) =>
+      D.species[a].name.toLowerCase().indexOf(v) - D.species[b].name.toLowerCase().indexOf(v)).slice(0, 40) : [];
+    suggIx = 0;
+    $("sugg").innerHTML = suggIds.map((id, i) => {
+      const n = D.species[id].name, at = n.toLowerCase().indexOf(v);
+      const label = esc(n.slice(0, at)) + "<mark>" + esc(n.slice(at, at + v.length)) + "</mark>" + esc(n.slice(at + v.length));
+      return `<button data-sp="${id}" class="${i === 0 ? "act" : ""}"><span class="dot" style="background:${TIER_COL[D.species[id].tier]}"></span>${label}<small>tier ${D.species[id].tier}</small></button>`;
+    }).join("") || (v ? `<button disabled><span class="muted">No fish called that</span></button>` : "");
+    $("sugg").classList.toggle("show", !!v);
+  }
+  function closeSugg() { $("sugg").classList.remove("show"); }
+  $("search").addEventListener("input", openSugg);
+  $("search").addEventListener("focus", () => { if ($("search").value && state.species == null) openSugg(); });
   $("search").addEventListener("keydown", e => {
-    if (e.key !== "Enter") return;
-    const v = e.target.value.trim().toLowerCase();
-    const id = Object.keys(D.species).find(id => D.species[id].name.toLowerCase().includes(v));
-    if (v && id) setSpecies(+id);
+    const btns = [...$("sugg").querySelectorAll("button[data-sp]")];
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault(); if (!btns.length) return;
+      suggIx = (suggIx + (e.key === "ArrowDown" ? 1 : -1) + btns.length) % btns.length;
+      btns.forEach((b, i) => b.classList.toggle("act", i === suggIx)); btns[suggIx].scrollIntoView({ block: "nearest" });
+    } else if (e.key === "Enter") { if (suggIds.length) setSpecies(suggIds[suggIx]); }
+    else if (e.key === "Escape") { closeSugg(); $("search").blur(); }
   });
-  $("clear").onclick = () => setSpecies(null);
+  $("sugg").addEventListener("mousedown", e => { const b = e.target.closest("button[data-sp]"); if (b) { e.preventDefault(); setSpecies(+b.dataset.sp); } });
+  document.addEventListener("pointerdown", e => { if (!e.target.closest("#searchbox")) closeSugg(); });
+  $("clear").onclick = () => { setSpecies(null); $("search").focus(); };
   $("labels").onclick = () => { state.labels = !state.labels; refresh(); };
-  $("helpbtn").onclick = () => { $("help").classList.toggle("show"); $("helpbtn").classList.toggle("on"); };
+  const help = open => { $("help").classList.toggle("show", open); $("helpbtn").classList.toggle("on", open); };
+  $("helpbtn").onclick = () => help(true);
+  $("helpclose").onclick = () => help(false);
+  $("help").onclick = e => { if (e.target === $("help")) help(false); };
+  document.addEventListener("keydown", e => { if (e.key === "Escape") help(false); if (e.key === "/" && document.activeElement !== $("search")) { e.preventDefault(); $("search").focus(); } });
   $("fit").onclick = () => { state.moved = false; fit(); draw(); };
   const zoomAt = (f, mx, my) => {
     state.moved = true;
@@ -420,8 +588,9 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
     state.view = { s, x: mx - (mx - v.x) * s / v.s, y: my - (my - v.y) * s / v.s };
     draw();
   };
-  $("zin").onclick = () => { const r = wrap.getBoundingClientRect(); zoomAt(1.4, r.width / 2, r.height / 2); };
-  $("zout").onclick = () => { const r = wrap.getBoundingClientRect(); zoomAt(1 / 1.4, r.width / 2, r.height / 2); };
+  const centre = () => { const b = safe(); return [(b.l + b.r) / 2, (b.t + b.b) / 2]; };
+  $("zin").onclick = () => zoomAt(1.4, ...centre());
+  $("zout").onclick = () => zoomAt(1 / 1.4, ...centre());
 
   canvas.addEventListener("wheel", e => {
     e.preventDefault();
@@ -433,10 +602,8 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
   canvas.addEventListener("pointerdown", e => {
     canvas.setPointerCapture(e.pointerId);
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    if (pointers.size === 2) {
-      const [p, q] = [...pointers.values()];
-      pinch = { d: Math.hypot(p.x - q.x, p.y - q.y) }; drag = null;
-    } else drag = { x: e.clientX, y: e.clientY, vx: state.view.x, vy: state.view.y, moved: false };
+    if (pointers.size === 2) { const [p, q] = [...pointers.values()]; pinch = { d: Math.hypot(p.x - q.x, p.y - q.y) }; drag = null; }
+    else drag = { x: e.clientX, y: e.clientY, vx: state.view.x, vy: state.view.y, moved: false };
   });
   canvas.addEventListener("pointermove", e => {
     const r = canvas.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
@@ -448,39 +615,44 @@ code { font-size: 12px; background: var(--panel2); border-radius: 5px; padding: 
     if (drag) {
       const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
       if (Math.abs(dx) + Math.abs(dy) > 3) { drag.moved = true; state.moved = true; canvas.classList.add("drag"); }
-      if (drag.moved) { state.view.x = drag.vx + dx; state.view.y = drag.vy + dy; draw(); tip.style.display = "none"; return; }
+      if (drag.moved) { state.view.x = drag.vx + dx; state.view.y = drag.vy + dy; draw(); tip.classList.remove("show"); return; }
     }
+    if (e.pointerType === "touch") return;
     const h = zoneAt(mx, my);
     if (h !== state.hover) { state.hover = h; draw(); }
-    showTip(h, mx, my);
+    showTip(h, e.clientX, e.clientY);
   });
   const end = e => {
     pointers.delete(e.pointerId);
     if (pointers.size < 2) pinch = null;
     if (drag && !drag.moved && e.type === "pointerup") {
       const r = canvas.getBoundingClientRect();
-      const h = zoneAt(e.clientX - r.left, e.clientY - r.top);
-      state.sel = h; refresh();
+      state.sel = zoneAt(e.clientX - r.left, e.clientY - r.top); refresh();
+      if (mobile.matches && state.sel != null) $("detailpanel").scrollIntoView({ behavior: "smooth", block: "start" });
     }
     drag = null; canvas.classList.remove("drag");
   };
   canvas.addEventListener("pointerup", end);
   canvas.addEventListener("pointercancel", end);
-  canvas.addEventListener("pointerleave", () => { if (!drag) { state.hover = null; tip.style.display = "none"; draw(); } });
+  canvas.addEventListener("pointerleave", () => { if (!drag) { state.hover = null; tip.classList.remove("show"); draw(); } });
 
   function refresh() {
     $("bands").querySelectorAll("button").forEach((b, i) => b.classList.toggle("on", i === state.band));
+    moveIndicator();
     $("labels").classList.toggle("on", state.labels);
     const a = area();
-    $("areatitle").innerHTML = `${esc(a.name)}<small>${BANDS[state.band].name}, ${BANDS[state.band].time}</small>`;
+    $("titleix").textContent = String(state.area + 1).padStart(2, "0");
+    $("titlename").textContent = a.name;
+    $("titleband").textContent = `${BANDS[state.band].name} · ${BANDS[state.band].time}`;
     buildAreas(); renderDetail(); draw();
   }
 
-  buildBands(); buildLegend(); buildSpecies();
+  buildBands(); buildLegend();
   const m = /area=(\d+)/.exec(location.hash);
   const start = m ? D.areas.findIndex(a => a.key === +m[1]) : 0;
-  if (document.fonts) document.fonts.ready.then(() => draw());
+  if (document.fonts) document.fonts.ready.then(() => { moveIndicator(); draw(); });
   new ResizeObserver(resize).observe(wrap);
+  mobile.addEventListener("change", () => { state.moved = false; resize(); });
   selectArea(start >= 0 ? start : 0);
 })();
 </script>
